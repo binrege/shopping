@@ -1,0 +1,14 @@
+.home__tab {
+    .van-tabs--line .van-tabs__wrap {
+        display: none !important;
+    }
+}
+
+.home__tab2 {
+    .van-tabs--line .van-tabs__wrap {
+        display: none !important;
+    }
+    .van-field__body {
+        display: none !important;
+    }
+}

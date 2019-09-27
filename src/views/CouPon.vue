@@ -12,30 +12,33 @@
     </div>
     <div>
       <van-tabs v-model="activeName">
-  <van-tab title="未使用" name="a">
-    <div>
-
+        <van-tab title="未使用" name="a">
+          <div class="home__tab">
+            <van-coupon-list
+              enabled-title="优惠券"
+              :coupons="coupons"
+              :chosen-coupon="chosenCoupon"
+              :disabled-coupons="disabledCoupons"
+              @change="onChange1"
+              @exchange="onExchange1"
+            />
+          </div>
+        </van-tab>
+        <van-tab title="已使用" name="b">
+          <div class="home__tab2">
+            <van-coupon-list
+              disabled-title="优惠券"
+              :coupons="disabledCoupons"
+              :disabled-coupons="disabledCoupons"
+              @change="onChange2"
+              @exchange="onExchange2"
+            />
+          </div>
+        </van-tab>
+        <van-tab title="已过期" name="c"></van-tab>
+      </van-tabs>
     </div>
-  </van-tab>
-  <van-tab title="已使用" name="b">b</van-tab>
-  <van-tab title="已过期" name="c"></van-tab>
-</van-tabs>
-    </div>
-    <div>
-      <!-- 优惠券单元格 -->
-      <van-coupon-cell :coupons="coupons" :chosen-coupon="chosenCoupon" @click="showList = true" />
-
-      <!-- 优惠券列表 -->
-      <van-popup v-model="showList" position="bottom">
-        <van-coupon-list
-          :coupons="coupons"
-          :chosen-coupon="chosenCoupon"
-          :disabled-coupons="disabledCoupons"
-          @change="onChange"
-          @exchange="onExchange"
-        />
-      </van-popup>
-    </div>
+ 
   </div>
 </template>
 
@@ -43,43 +46,60 @@
 export default {
   data() {
     return {
-      activeName:'a',
-      showList: false,
+      activeName: "a",
+      showList: true,
       chosenCoupon: -1,
       coupons: [coupon],
-      disabledCoupons: [coupon]
+      disabledCoupons: [discoupon]
     };
   },
-    methods: {
+  methods: {
     onClickLeft() {
-      Toast('返回');
+      this.$toast("返回");
     },
     onClickRight() {
-      Toast('优惠券说明');
-    }
-  },
-
-  methods: {
-    onChange(index) {
+      this.$toast("优惠券说明");
+    },
+    onChange1(index) {
       this.showList = false;
       this.chosenCoupon = index;
     },
-    onExchange(code) {
+    onExchange1(code) {
       this.coupons.push(coupon);
+    },
+     onChange2(index) {
+     
+    },
+    onExchange2(code) {
+     
     }
   }
 };
 const coupon = {
   available: 1,
-  condition: "满100减16\n最多优惠32元",
+  condition: "无门槛金额",
   reason: "金额不足",
   value: 1600,
-  name: "奶制品优惠券",
+  name: "纯露化妆水无门槛10元卷",
+  startAt: 1564588800,
+  endAt: 1569859200,  
+  valueDesc: "10",
+  unitDesc: "元",
+  description:'仅限购买工厂商品店商品'
+};
+const discoupon = {
+  available: 1,
+  condition: "无门槛金额",
+  reason: "金额不足",
+  value: 1600,
+  name: "纯露化妆水无门槛20元卷",
   startAt: 1564588800,
   endAt: 1569859200,
-  valueDesc: "16",
-  unitDesc: "元"
+  valueDesc: "20",
+  unitDesc: "元",
+  description:'仅限购买工厂商品店商品'
 };
+
 </script>
 
 <style lang="scss" scoped>
