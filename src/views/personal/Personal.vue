@@ -32,6 +32,40 @@
         </div>
       </div>
     </div>
+    <div class="body">
+      <div class="body-head">
+        <div class="text">我的订单</div>
+        <div class="lookall">
+          查看全部 
+        </div>
+        <div  class="lookallimg">
+           <img  src="../../assets/lookall.svg" />
+        </div>
+      </div>
+      <van-divider :style="{ color: '#141212', borderColor: '#141212', padding: '0 5px' }"></van-divider>
+      <div class="body-bottom">
+        <div class="payment">
+          <div>1</div>
+          <div>2</div>
+        </div>
+        <div class="delivery">
+          <div>3</div>
+          <div>4</div>
+        </div>
+        <div class="goods">
+          <div>5</div>
+          <div>6</div>
+        </div>
+        <div class="evaluation">
+          <div>7</div>
+          <div>8</div>
+        </div>
+        <div class="return">
+          <div>9</div>
+          <div>10</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -71,7 +105,8 @@ export default {
 <style  scoped>
 .all {
   width: 100%;
-  height: 100%;
+  height: 670px;
+  background: #f5f1f1;
 }
 .head-picture {
   width: 60px;
@@ -94,7 +129,7 @@ export default {
 }
 .head-person {
   width: 80%;
-  background: #f5f1f1;
+  background: #ffffff;
   position: relative;
   height: 90%;
   margin: 50px auto;
@@ -108,20 +143,55 @@ export default {
   margin: 30px 0 0 130px;
   font-size: 25px;
 }
-.elasticity{
+.elasticity {
   margin-top: 85px;
-  display:flex;
+  display: flex;
 }
-.item{
-  margin-left: 10px
+.item {
+  margin-left: 10px;
 }
-.item-number ,.item-incident{
+.item-number,
+.item-incident {
   width: 60px;
   height: 20px;
   font-size: 16px;
-  text-align:center;
+  text-align: center;
 }
-.item-number{
+.item-number {
+}
+.body {
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  background: #ffffff;
+  margin-top: 75%;
+}
+.body-head {
+  flex: 1;
+  width: auto;
+  height: 32px;
+  display: flex;
   
+}
+.text{
+  padding: 12px 0 0 15px;
+
+}
+.lookall {
+  width: auto;
+  height: 32px;
+  margin-left:52%; 
+  padding: 12px 0 0 0;
+
+}
+.lookallimg {
+  height: 32px;
+  width: 32px;
+  padding: 9px 0 0 0;
+}
+.body-bottom {
+  flex: 2;
+  display: flex;
+  justify-content: space-around;
 }
 </style>
