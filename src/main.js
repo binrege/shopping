@@ -4,13 +4,24 @@ import router from './router'
 import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';
-import { Image } from 'vant';
+import VueLazyload from 'vue-lazyload'
+// import { Image } from 'vant';
+// import { Swipe, SwipeItem } from 'vant';
+// import { Lazyload } from 'vant';
 
-Vue.use(Image);
+// // options 为可选参数，无则不传
+// Vue.use(Lazyload, options);
+// Vue.use(Swipe).use(SwipeItem);
+// Vue.use(Image);
 Vue.use(Vant);
 
 Vue.config.productionTip = false
-
+Vue.use(VueLazyload, {
+    preLoad: 1.3,
+    error: require('./assets/logo.png'),
+    loading: require('./assets/szrp.jpg'),
+    attempt: 1
+})
 new Vue({
     router,
     store,

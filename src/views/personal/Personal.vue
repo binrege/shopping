@@ -2,8 +2,8 @@
   <div class="all">
     <div class="head">
       <div class="head-picture">
-        <img class="picture" src="../../assets/set.svg" />
-        <img class="picture" src="../../assets/message.svg" />
+        <img class="picture" src="../../assets/personal/set.svg" />
+        <img class="picture" src="../../assets/personal/message.svg" />
       </div>
       <div class="head-person">
         <van-image
@@ -31,40 +31,65 @@
           </div>
         </div>
       </div>
+      <div class="head-bottom">
+        <div class="bottom-picture1">
+          <img src="../../assets/personal/vip.svg" />
+        </div>
+        <div class="bottom-text1">卡拉黑卡</div>
+        <div class="bottom-text2">点击查看特权</div>
+        <div class="bottom-picture2">
+          <img src="../../assets/personal/lookall.svg" />
+        </div>
+      </div>
     </div>
     <div class="body">
       <div class="body-head">
         <div class="text">我的订单</div>
-        <div class="lookall">
-          查看全部 
-        </div>
-        <div  class="lookallimg">
-           <img  src="../../assets/lookall.svg" />
+        <div class="lookall">查看全部</div>
+        <div class="lookallimg">
+          <img src="../../assets/personal/lookall.svg" />
         </div>
       </div>
       <van-divider :style="{ color: '#141212', borderColor: '#141212', padding: '0 5px' }"></van-divider>
       <div class="body-bottom">
         <div class="payment">
-          <div>1</div>
-          <div>2</div>
+          <div class="payment-img">
+            <img src="../../assets/personal/payment.svg" />
+          </div>
+          <div>待付款</div>
         </div>
         <div class="delivery">
-          <div>3</div>
-          <div>4</div>
+          <div class="delivery-img">
+            <img src="../../assets/personal/delivery.svg" />
+          </div>
+          <div>待发货</div>
         </div>
         <div class="goods">
-          <div>5</div>
-          <div>6</div>
+          <div class="goods-img">
+            <img src="../../assets/personal/goods.svg" />
+          </div>
+          <div>代收货</div>
         </div>
         <div class="evaluation">
-          <div>7</div>
-          <div>8</div>
+          <div class="evaluation-img">
+            <img src="../../assets/personal/evaluation.svg" />
+          </div>
+          <div>评价</div>
         </div>
         <div class="return">
-          <div>9</div>
-          <div>10</div>
+          <div class="return-img">
+            <img src="../../assets/personal/return.svg" />
+          </div>
+          <div>退款/换货</div>
         </div>
       </div>
+    </div>
+    <div class="shuffling">
+      <van-swipe :autoplay="3000">
+        <van-swipe-item v-for="(image, index) in images" :key="index">
+          <img  class="img1" v-lazy="image" />
+        </van-swipe-item>
+      </van-swipe>
     </div>
   </div>
 </template>
@@ -74,6 +99,7 @@ export default {
   data() {
     return {
       color: "red",
+
       arr: [
         {
           number: 1,
@@ -91,6 +117,10 @@ export default {
           number: 3,
           incident: "钱包"
         }
+      ],
+      images: [
+        "https://img.yzcdn.cn/vant/apple-1.jpg",
+        "https://img.yzcdn.cn/vant/apple-2.jpg"
       ]
     };
   },
@@ -133,8 +163,10 @@ export default {
   position: relative;
   height: 90%;
   margin: 50px auto;
-  border-radius: 5px;
+  border-radius: 10px;
+  z-index: 2;
 }
+
 .head-portrait {
   position: absolute;
   margin: -20px 0 0 15px;
@@ -143,10 +175,42 @@ export default {
   margin: 30px 0 0 130px;
   font-size: 25px;
 }
+
 .elasticity {
   margin-top: 85px;
   display: flex;
 }
+.head-bottom {
+  width: 80%;
+  height: 25%;
+  position: relative;
+  background: #0a0a0a;
+  border-radius: 10px;
+  margin: -60px auto;
+  z-index: 1;
+  display: flex;
+}
+.bottom-picture1 {
+  padding: 15px 0 0 10px;
+}
+.bottom-text1 {
+  padding: 20px 0 0 0px;
+  opacity: 0.8;
+  font-size: 15px;
+  color: #ffffff;
+}
+.bottom-picture2 {
+  width: 15px;
+  height: 15px;
+  padding: 15px 10px 0 0px;
+}
+.bottom-text2 {
+  padding: 25px 0 0 110px;
+  opacity: 0.5;
+  font-size: 10px;
+  color: #ffffff;
+}
+
 .item {
   margin-left: 10px;
 }
@@ -159,30 +223,28 @@ export default {
 }
 .item-number {
 }
+
 .body {
   position: absolute;
   width: 100%;
   height: 20%;
   background: #ffffff;
-  margin-top: 75%;
+  margin-top: 80%;
 }
 .body-head {
   flex: 1;
   width: auto;
   height: 32px;
   display: flex;
-  
 }
-.text{
+.text {
   padding: 12px 0 0 15px;
-
 }
 .lookall {
   width: auto;
   height: 32px;
-  margin-left:52%; 
+  margin-left: 52%;
   padding: 12px 0 0 0;
-
 }
 .lookallimg {
   height: 32px;
@@ -193,5 +255,24 @@ export default {
   flex: 2;
   display: flex;
   justify-content: space-around;
+}
+.payment-img,
+.delivery-img,
+.goods-img {
+  padding-left: 9px;
+}
+.return-img {
+  padding-left: 20px;
+}
+.shuffling {
+  width: 100%;
+  height: 200px;
+  padding-top: 120%;
+}
+.img1{
+  width: 100%;
+  height: 160px;
+  max-height: 100%;
+  max-width: 100%;
 }
 </style>
