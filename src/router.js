@@ -25,6 +25,11 @@ export default new Router({
       component: () => import('./views/Index.vue')
     },
     {
+      path: '/searchList',
+      name: 'searchList',
+      component: () => import('./views/SearchList.vue')
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
