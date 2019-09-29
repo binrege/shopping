@@ -8,7 +8,7 @@
         <form action="/">
           <van-search
             v-model="value"
-            placeholder="请输入搜索关键词"
+            placeholder="在优惠券适用商品中搜索"
             show-action
             @search="onSearch"
             @cancel="onCancel"
@@ -19,8 +19,12 @@
         <img src="../assets/classfy.svg" />
       </div>
     </div>
-    <div>
-
+    <div class="screen">
+      <div>综合</div>
+      <div>销售</div>
+      <div>价格</div>
+      <div>逛品牌</div>
+      <div>筛选</div>
     </div>
   </div>
 </template>
@@ -42,5 +46,14 @@ export default {};
 }
 .classfy {
   padding: 15px 5px 15px 5px;
+}
+
+.screen {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  border: 1px solid red;
+  justify-content: space-between;
+
 }
 </style>
