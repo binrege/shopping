@@ -5,6 +5,10 @@
   </div>
 </template>
 
-<style>
-
+<style lang="scss">
+  @import "./styles/common";
+  body, html {
+    padding: 0;
+    margin: 0;
+  }
 </style>
