@@ -26,15 +26,36 @@
       <div>逛品牌</div>
       <div>筛选</div>
     </div>
+    <div class="brand">
+      <div>考拉3周年</div>
+      <div>考拉自营</div>
+      <div>品牌</div>
+      <div>分类</div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      // value:[],
+    }
+  },
+  methods: {
+    onSearch() {
+      this.$toast("搜索成功");
+    },
+    onCancel() {
+      this.$toast("取消成功");
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 .head {
+  height: 45px;
   display: flex;
 }
 .returnimg {
@@ -50,10 +71,18 @@ export default {};
 
 .screen {
   display: flex;
-  width: 100%;
-  height: 50px;
-  border: 1px solid red;
+  width: 99%;
+  height: 30px;
+  border: 1px solid rgb(248, 245, 245);
   justify-content: space-between;
-
+  padding-top: 10px;
+}
+.brand{
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  border: 1px solid rgb(248, 245, 245);
+  justify-content: space-between;
+  padding-top: 10px;
 }
 </style>

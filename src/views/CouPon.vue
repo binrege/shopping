@@ -152,7 +152,7 @@ export default {
       this.coupons.push(coupon);
     },
     onChange2(index) {},
-    onExchange2(code) {}
+    onExchange2(code) {},
   }
 };
 const coupon = {
