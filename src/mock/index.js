@@ -5,6 +5,7 @@ Mock.mock('api/getList', 'get', {
     code: 200,
     msg: 'success',
     'data|10': [{
+        images: '@dataImage(1080x400)',
         image: '@dataImage(32x32)',
         name: '@cname()',
 

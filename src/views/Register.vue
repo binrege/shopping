@@ -16,6 +16,7 @@
             @click-right-icon="$toast('question')"
           />
           <van-field
+            @keyup="Change"
             v-model="phone"
             required
             label="手机号"
@@ -36,7 +37,15 @@
         </van-cell-group>
         <van-cell-group>
           <van-field v-model="captcha" center label="短信验证码" placeholder="请输入短信验证码">
-            <van-button slot="button" size="small" type="primary" @click="Sent">发送验证码</van-button>
+            <van-button
+              v-if="!btnShow"
+              slot="button"
+              disabled
+              size="small"
+              type="primary"
+              @click="Sent"
+            >发送验证码</van-button>
+            <van-button v-if="btnShow" slot="button" size="small" type="primary" @click="Sent">发送验证码</van-button>
           </van-field>
         </van-cell-group>
       </div>
@@ -49,12 +58,18 @@
 </template>
 
 <script>
-import Util from '../../utils/utils';
+import Util from "../../utils/utils";
 export default {
-  
   name: "register",
   data() {
     return {
+      loginForm: [
+        {
+          username: "",
+          phone: ""
+        }
+      ],
+      btnShow: false,
       username: "",
       phone: "",
       password: "",
@@ -75,38 +90,52 @@ export default {
           // on cancel
         });
     },
-    Login(){
-       if (this.username === '' ) {        
-          this.$notify({ type: 'warning', message: '用户名不能为空' }); 
-       }else if (this.password === '') {
-        this.$notify({ type: 'warning', message: '密码不能为空' });
-      }else if (this.phone === '') {
-        this.$notify({ type: 'warning', message: '手机号不能为空' });
-      }else if (this.captcha === '') {
-        this.$notify({ type: 'warning', message: '验证码不能为空' }); 
-      }else{
+    Login() {
+      if (this.username === "") {
+        this.$notify({ type: "warning", message: "用户名不能为空" });
+      } else if (this.password === "") {
+        this.$notify({ type: "warning", message: "密码不能为空" });
+      } else if (this.phone === "") {
+        this.$notify({ type: "warning", message: "手机号不能为空" });
+      } else if (this.captcha === "") {
+        this.$notify({ type: "warning", message: "验证码不能为空" });
+      } else {
         this.$dialog
-        .confirm({
-          title: "提示",
-          message: "是否确定注册？"
-        })
-        .then(() => {
-          // on confirm
-        })
-        .catch(() => {
-          // on cancel
-        });
+          .confirm({
+            title: "提示",
+            message: "是否确定注册？"
+          })
+          .then(() => {
+            this.loginForm.username = this.username;
+            this.loginForm.phone = this.phone;
+            console.log("111111" + this.loginForm.username);
+
+            localStorage.setItem(
+              "loginMsg",
+              JSON.stringify(this.loginForm.username)
+            );
+            this.isLogin = true;
+            this.$router.push("/");
+            this.$toast("登陆成功!");
+            // on confirm
+          })
+          .catch(() => {
+            // on cancel
+          });
       }
     },
-    Sent(){
-
-      if (this.phone === '') {
-        this.$notify({ type: 'warning', message: '手机号不能为空' });
-      } else if (!Util.phoneReg.test(this.phone)){
-					this.$notify({ type: 'warning', message: '手机号输入有误' });
-				}
+    Change() {
+      if (this.phone.length >= 1) {
+        this.btnShow = true;
+      }
+    },
+    Sent() {
+      if (this.phone === "") {
+        this.$notify({ type: "warning", message: "手机号不能为空" });
+      } else if (!Util.phoneReg.test(this.phone)) {
+        this.$notify({ type: "warning", message: "手机号输入有误" });
+      }
     }
-  
   }
 };
 </script>

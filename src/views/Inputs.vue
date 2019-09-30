@@ -137,24 +137,32 @@ export default {
       this.show = true;
     },
     Login() {
-      if (this.loginForm.username === "") {
+      if (this.uname === "") {
         // alert('账号或密码不能为空');
         this.$notify({ type: "warning", message: "用户名不能为空" });
-      } else if (this.loginForm.password === "") {
+      } else if (this.pwd === "") {
         this.$notify({ type: "warning", message: "密码不能为空" });
-      } else {
-
+      }else if(this.uname === "admin"&&this.pwd === "123"){
         this.loginForm.username=this.uname;
         this.loginForm.password=this.pwd;
         console.log("111111"+this.loginForm.username)
         
         localStorage.setItem("loginMsg",JSON.stringify(this.loginForm.username));
         this.isLogin = true;
-        
+        this.$router.push("/");
+        this.$toast('登陆成功!');
         
 
         //与后端请求代码，暂时还没有请求地址，先省略了
         console.log(JSON.stringify(this.loginForm.username));
+
+      }else{
+        this.$toast('用户名或密码错误');
+        this.pwd="";
+
+      
+
+        
        // this.$router.push("/");
 
         // this.$store.dispatch('toLogin', {
@@ -244,17 +252,18 @@ export default {
   color: #2c3e50;
 }
 .inputs {
-  padding-top: 50px;
+  padding-top: 120px;
   margin: 0 auto;
   height: 200px;
 }
 .lod {
   margin: 0 auto;
   width: 300px;
+  padding-top: 50px;
 }
 .load {
   margin: 0 auto;
-  padding-top: 30px;
+  margin-top: 50px;
   width: 300px;
 }
 .load-left {

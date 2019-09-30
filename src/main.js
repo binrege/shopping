@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './mock'
+import dayjs from 'dayjs'
 
 import { Dialog } from 'vant';
 import Vant from 'vant';
@@ -13,6 +14,9 @@ import { Swipe, SwipeItem } from 'vant';
 Vue.use(Swipe).use(SwipeItem);
 Vue.use(Vant);
 Vue.use(Dialog);
+Vue.prototype.$dayjs = dayjs;
+
+
 // Vue.use(Popup);
 // Vue.use(Notify);
 import VueLazyload from 'vue-lazyload'
