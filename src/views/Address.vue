@@ -57,7 +57,7 @@ export default {
       this.$router.replace("/Addaddress");
       Toast("新增地址");
     },
-
+     
     onEdit(item, index) {
       Toast("编辑地址:" + index);
     },
