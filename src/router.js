@@ -26,6 +26,12 @@ export default new Router({
             name: 'personal',
             component: () =>
                 import ('./views/personal/Personal.vue')
+        },
+        {
+            path: '/order',
+            name: 'order',
+            component: () =>
+                import ('./views/personal/Order.vue')
         }
     ]
 })
