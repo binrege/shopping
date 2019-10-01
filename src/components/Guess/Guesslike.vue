@@ -29,9 +29,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="box2">
-          1
-      </div>-->
     </div>
   </div>
 </template>
@@ -125,10 +122,11 @@ img {
   width: 50%;
   font-size: 10px;
   text-align: left;
-  padding-top: 8px;
+  padding-top: 7.5px;
   color: gray;
   padding-left: 2px;
 }
+//竖线
 #divider {
   border-left: 1.5px solid grey;
   margin-top: 8px;
@@ -137,14 +135,14 @@ img {
 }
 //商品标签
 .lable {
-  height: 44px;
+  height: 30px;
   width: 110%;
   display: flex;
-  margin-top: 5px;
+  margin-top: 4px;
 }
 //标签1
 .lableone {
-  height: 19.5px;
+  height: 16px;
   font-size: 12px;
   border-radius: 12%;
   border: 1px solid red;
@@ -153,12 +151,12 @@ img {
 }
 //标签中文文本
 .lableCh {
-  padding-top: 3.5px;
+  padding-top: 2px;
   padding-left: 2px;
 }
 //标签2
 .labletwo {
-  height: 18px;
+  height: 16px;
   font-size: 14px;
   border-radius: 10%;
   margin-left: 4px;
@@ -169,8 +167,9 @@ img {
 }
 //标签2中文文本
 .lableCh1 {
+  height: 14px;
   background-color: red;
-  padding-top: 1px;
+  padding-bottom: 2px;
   padding-left: 2px;
 }
 //标签3
@@ -184,9 +183,4 @@ img {
   padding-top: 1px;
   padding-left: 5px;
 }
-// .box2{
-//     height: 200px;
-//     width: 50%;
-//     border: 1px solid green
-// }
 </style>
