@@ -11,7 +11,7 @@
       />
     </div>
     <div>
-      <van-tabs v-model="activeName">
+      <van-tabs v-model="activeName" @disabled="onClickDisabled">
         <van-tab title="未使用" name="a">
           <div class="home__tab">
             <van-coupon-list
@@ -23,9 +23,10 @@
               @exchange="onExchange1"
             />
             <button class="exchange">用考拉豆兑换几张吧~ →</button>
-            <div class="bottom">
-              <div class="bottom-head">猜你喜欢</div>
-              <div class="bottom-body">
+            <div class="bottom1">
+              <Guesslike msg />
+              <!-- <div class="bottom-head">猜你喜欢</div> -->
+              <!-- <div class="bottom-body">
                 <div class="Card1">
                   <div>
                     <van-card
@@ -62,8 +63,8 @@
                     />
                   </div>
                 </div>
-              </div>
-              <div class="bottom-tail">已经到底咯~</div>
+              </div>-->
+              <!-- <div class="bottom-tail">已经到底咯~</div> -->
             </div>
           </div>
         </van-tab>
@@ -76,9 +77,10 @@
               @change="onChange2"
               @exchange="onExchange2"
             />
-            <div class="bottom">
-              <div class="bottom-head">猜你喜欢</div>
-              <div class="bottom-body">
+            <div class="bottom2">
+              <Guesslike msg />
+              <!-- <div class="bottom-head">猜你喜欢</div> -->
+              <!-- <div class="bottom-body">
                 <div class="Card1">
                   <div>
                     <van-card
@@ -115,19 +117,29 @@
                     />
                   </div>
                 </div>
-              </div>
-              <div class="bottom-tail">已经到底咯~</div>
+              </div>-->
+              <!-- <div class="bottom-tail">已经到底咯~</div> -->
             </div>
           </div>
         </van-tab>
-        <van-tab title="已过期" name="c"></van-tab>
+        <van-tab title="已过期" name="c" disabled></van-tab>
       </van-tabs>
     </div>
   </div>
 </template>
 
 <script>
+import Guesslike from "../components/Guess/Guesslike.vue";
 export default {
+  name: "bottom1",
+  components: {
+    Guesslike
+  },
+  name: "bottom2",
+  components: {
+    Guesslike
+  },
+
   data() {
     return {
       activeName: "a",
@@ -138,6 +150,9 @@ export default {
     };
   },
   methods: {
+    onClickDisabled(c, title) {
+      
+    },
     onClickLeft() {
       this.$toast("返回");
     },
@@ -152,7 +167,7 @@ export default {
       this.coupons.push(coupon);
     },
     onChange2(index) {},
-    onExchange2(code) {},
+    onExchange2(code) {}
   }
 };
 const coupon = {
