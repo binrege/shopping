@@ -27,16 +27,32 @@
       <div>筛选</div>
     </div>
     <div class="Brand">
-      <div class="year"><div class="min-year">考拉3周年</div></div>
-      <div class="own">考拉自营</div>
-      <div class="brand">品牌</div>
-      <div class="classfying">分类</div>
+      <div class="year">
+        <div class="min-year">考拉3周年</div>
+      </div>
+      <div class="own">
+        <div class="min-own">考拉自营</div>
+      </div>
+      <div class="brand">
+        <div class="min-brand">品牌</div>
+      </div>
+      <div class="classfying">
+        <div class="min-classfying">分类</div>
+      </div>
+    </div>
+    <div class="model">
+      <Model msg=""/>
     </div>
   </div>
 </template>
 
 <script>
+import Model from '../components/Guess/Model.vue'
 export default {
+  name:'model',
+  components:{
+    Model
+  },
   data() {
     return {
       // value:[],
@@ -90,51 +106,87 @@ export default {
   justify-content: space-between;
   padding-top: 10px;
 }
+//考拉3周年
 .year {
   flex: 1;
   height: 28px;
   width: 92px;
   text-align: center;
-  padding:0;
+  padding: 0;
   margin: 0;
   // border: 1px solid red;
 }
-.min-year{
-  height:85%;
+//文本盒子
+.min-year {
+  height: 85%;
   width: 90%;
   text-align: center;
   font-weight: 600;
   padding-top: 4px;
   margin: 0 4.5px;
   font-size: 14px;
-  color: red;
-  background-color: rgb(233, 231, 231);
+  color: #e62c30;
+  background-color: #F5F5F5;
 }
+//考拉自营
 .own {
   flex: 1;
-  height: auto;
-  font-weight: 700;
-  text-align: center;
-  padding-top: 3px;
-  background-color: rgb(241, 241, 241);
-  border: 1px solid red;
+  height: 28px;
+  width: 92px;
+  padding: 0;
+  margin: 0;
 }
+//own文本盒子
+.min-own {
+  height: 85%;
+  width: 90%;
+  text-align: center;
+  font-weight: 600;
+  padding-top: 4px;
+  margin: 0 4.5px;
+  font-size: 14px;
+  background-color: #F5F5F5;
+}
+//品牌（未完善）
 .brand {
   flex: 1;
-  height: auto;
-  font-weight: 700;
-  text-align: center;
-  padding-top: 3px;
-  background-color: rgb(241, 241, 241);
-  border: 1px solid red;
+  height: 28px;
+  width: 92px;
+  padding: 0;
+  margin: 0;
 }
+//brand文本盒子
+.min-brand {
+  height: 85%;
+  width: 90%;
+  text-align: center;
+  font-weight: 600;
+  padding-top: 4px;
+  margin: 0 4.5px;
+  font-size: 14px;
+  background-color: #F5F5F5;
+}
+//分类（未完善）
 .classfying {
   flex: 1;
-  height: auto;
-  font-weight: 700;
+  height: 28px;
+  width: 92px;
+  padding: 0;
+  margin: 0;
+}
+//classfing文本盒子
+.min-classfying {
+  height: 85%;
+  width: 90%;
   text-align: center;
-  padding-top: 3px;
-  background-color: rgb(241, 241, 241);
-  border: 1px solid red;
+  font-weight: 600;
+  padding-top: 4px;
+  margin: 0 4.5px;
+  font-size: 14px;
+  background-color: #F5F5F5;
+}
+.model{
+  height: auto;
+  width: 100%;
 }
 </style>
