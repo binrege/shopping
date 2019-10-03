@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './mock'
-
 import Vant from 'vant';
 import 'vant/lib/index.css';
 

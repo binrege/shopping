@@ -151,7 +151,6 @@ export default {
   },
   methods: {
     onClickDisabled(c, title) {
-      
     },
     onClickLeft() {
       this.$toast("返回");
@@ -200,7 +199,7 @@ const discoupon = {
 .exchange {
   height: 40px;
   width: 95%;
-  margin: 0 3px 5px 10px;
+  margin: 2px 3px 5px 10px;
   line-height: 30px;
   background-color: #fff;
   text-align: center;

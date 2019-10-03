@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-divider :style="{ color: 'black', borderColor:'gray', padding: '0 30px'}">猜你喜欢</van-divider>
+    <van-divider :style="{ color: 'black', borderColor:'gray', padding: '10px 30px'}">猜你喜欢</van-divider>
     <div class="guesslike">
       <div class="style" v-for="(good,index) in goods" :key="index">
         <div class="about">
@@ -41,6 +41,7 @@ export default {
       goods: []
     };
   },
+  //模拟数据
   mounted() {
     axios
       .get("api/getList")
@@ -75,7 +76,7 @@ export default {
 
   width: 130px;
 }
-//图片框
+//图片框大小设置
 .image {
   height:60%;
   width: 60%;
