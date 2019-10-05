@@ -68,7 +68,7 @@
           <div class="goods-img">
             <img src="../../assets/personal/goods.svg" />
           </div>
-          <div>代收货</div>
+          <div>待收货</div>
         </div>
         <div class="evaluation">
           <div class="evaluation-img">

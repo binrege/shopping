@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="payment">
-      <div class="payment-head">
+    <div class="evaluation">
+      <div class="evaluation-head">
         <!-- 待付款（时间和待付款标签） -->
         <div class="nowtime">{{NowTime| formatDate}}</div>
-        <div class="payment-font">待付款</div>
+        <div class="evaluation-font">已发货</div>
       </div>
-      <div class="payment-body">
+      <div class="evaluation-body">
         <!-- 待付款的商品信息，数量 -->
         <div class="body-picture">
           <img src="../../assets/personal/goods.svg" />
@@ -22,14 +22,15 @@
           <div class="body-describe-check">查看产品使用说明</div>
         </div>
       </div>
-      <div class="payment-bottom">
+      <div class="evaluation-bottom">
         <!-- 商品数量，总价，取消订单，立即付款 -->
         <div>
-          <div style="color:red">共{{num}}件 | 应付总额：￥{{money}}</div>
+          <div style="color:red;padding-left:60px">共{{num}}件 | 应付总额：￥{{money}}</div>
         </div>
-        <div class="payment-bottom-two">
-          <div class="payment-bottom-cancel">取消订单</div>
-          <div class="payment-bottom-pay">立即付款</div>
+        <div class="evaluation-bottom-three">
+          <div class="evaluation-bottom-storage">储物流</div>            
+          <div class="evaluation-bottom-cancel">取消订单</div>
+          <div class="evaluation-bottom-confirm">确认收货</div>
         </div>
       </div>
     </div>
@@ -74,21 +75,21 @@ export default {
 </script>
 
 <style  scoped>
-.payment {
+.evaluation {
   margin-top: 20px;
   width: 100%;
   height: 60%;
   justify-content: space-between;
   flex-direction: column;
 }
-.payment-head {
+.evaluation-head {
   font-size: 14px;
   padding: 4px;
   display: flex;
   justify-content: space-between;
   flex: 1;
 }
-.payment-body {
+.evaluation-body {
   display: flex;
 
   flex: 2;
@@ -108,24 +109,31 @@ export default {
   font-size: 6px;
   color:red;
 }
-.payment-bottom {
-  margin-left: 50%;
+.evaluation-bottom {
+  margin-left: 30%;
   flex: 2;
-  
 }
-.payment-bottom-two{
+.evaluation-bottom-three{
   margin-top: 8px;
   display: flex;
-  font-size: 14px;
 }
-.payment-bottom-cancel {
+.evaluation-bottom-storage{
   width: 75px;
   text-align: center;
   border: 1px solid gray;
   border-radius: 10px;
+  margin-right: 10px;
   font-size: 14px;
 }
-.payment-bottom-pay {
+.evaluation-bottom-cancel {
+  width: 75px;
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+.evaluation-bottom-confirm {
   width: 75px;
   text-align: center;
   border: 1px solid gray;
@@ -133,7 +141,8 @@ export default {
   background-color: red;
   font-weight: 700;
   color:white;
-  margin-left: 20px;
+  margin-right: 10px;
+  font-size: 14px;
 }
 img {
   width: 100%;
