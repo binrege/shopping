@@ -24,7 +24,7 @@
       <div>销售</div>
       <div>价格</div>
       <div>逛品牌</div>
-      <div>筛选</div>
+      <div>筛选<van-icon name="screen" slot="right" color="black" /></div>
     </div>
     <div class="Brand">
       <div class="year">
@@ -93,8 +93,9 @@ export default {
   display: flex;
   width: 99%;
   height: 30px;
+  color: #C0C0C0;
   border: 1px solid rgb(248, 245, 245);
-  justify-content: space-between;
+  justify-content: space-around;
   padding-top: 10px;
 }
 //分类栏

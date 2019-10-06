@@ -23,13 +23,40 @@
       </div>
     </div>
 
-    <van-count-down :time="time">
-      <template v-slot="timeData">
-        <span class="item">{{ timeData.hours }}</span>
-        <span class="item">{{ timeData.minutes }}</span>
-        <span class="item">{{ timeData.seconds }}</span>
-      </template>
-    </van-count-down>
+    <div class="mainbody">
+      <div class="bodyone">
+        <div class="bodyleft">
+
+          <div class="bodyimg">
+            <img src="../assets/voucher.jpg"/>
+          </div>
+
+          <div class="bodytxt">
+            <div class="txtup">个护299-100卷</div>
+            <div class="txtdown">
+              <div class="txtpriceone">￥100</div>
+              <div class="txtpricetwo">满299可用</div>
+            </div>
+          </div>
+        </div>
+        <div class="dotted"></div>
+        <div class="bodyright">
+          <div class="rightup">距开抢</div>
+          <div class="Item">
+            <van-count-down :time="time">
+              <template v-slot="timeData">
+                <span class="item">{{ timeData.hours }}</span>
+                <span class="item">{{ timeData.minutes }}</span>
+                <span class="item">{{ timeData.seconds }}</span>
+              </template>
+            </van-count-down>
+          </div>
+
+          <button class="rightdown">提醒我</button>
+          
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -62,50 +89,178 @@ img {
 }
 //导航栏
 .head {
-  display: flex;
-  justify-content: space-between;
   height: 40px;
   width: 100%;
   background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
 }
 //神券秒杀
 .seckill {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   padding-top: 8px;
   color: red;
+  flex: 1;
 }
 //精选
 .selected {
-  font-size: 15px;
+  font-size: 14px;
   color: #949494;
   padding-top: 8px;
+  padding-left: 15px;
+  text-align: center;
+  flex: 1;
 }
 //母婴
 .moba {
-  font-size: 15px;
+  font-size: 14px;
   color: #949494;
   padding-top: 8px;
+  text-align: center;
+  flex: 1;
 }
 //营养保健
 .nutrition {
-  font-size: 15px;
+  font-size: 14px;
   color: #949494;
   padding-top: 8px;
+  text-align: center;
+  flex: 1;
 }
 //下拉分类框（未完善）
 .pull {
   font-size: 20px;
   color: #949494;
   padding-top: 6px;
+  text-align: end;
+  flex: 1;
 }
+//领券外界框
+.mainbody {
+  height: 500px;
+  width: 100%;
+}
+//领劵内框
+.bodyone {
+  border-radius: 8px;
+  height: 100px;
+  width: 95%;
+  background-color: #ffffff;
+  margin: 12px 10px 12px 10px;
+  display: flex;
+}
+//优惠券左边
+.bodyleft {
+  height: 100%;
+  width: 70%;
+  display: flex;
+}
+//优惠券图片
+.bodyimg {
+  height: 80px;
+  width: 80px;
+  margin: 10px 15px 10px 10px;
+  border: 1px solid green;
+}
+//图片自动适应图片框大小
+img {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+//优惠券文本内容
+.bodytxt {
+  height: 80px;
+  width: 120px;
+  margin: 10px 30px 10px 0;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+}
+//优惠券上方文本内容
+.txtup {
+  height: 20px;
+  width: 100%;
+  font-size: 12px;
+}
+//优惠券下方内容
+.txtdown {
+  height: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 36px;
+}
+//优惠券左边价格
+.txtpriceone {
+  font-weight: 700;
+  font-size: 16px;
+  color: #e51c23;
+}
+//优惠券右边价格
+.txtpricetwo {
+  font-size: 9px;
+  padding-left: 2px;
+  padding-top: 4px;
+  color: #e51c23;
+}
+//垂直虚线
+.dotted {
+  height: 100%;
+  width: 0;
+  border-right: gray 2px dotted;
+}
+//优惠券右边框
+.bodyright {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+//优惠券右上边文本内容
+.rightup {
+  height: 15px;
+  width: 50%;
+  font-weight: 600;
+  font-size: 10px;
+  text-align: center;
+  color: red;
+  margin-left: 25px;
+  margin-top: 10px;
+}
+//倒计时框
+.Item{
+  height: 22px;
+  width: 80%;
+  text-align: center;
+  margin-left: 8px;
+  margin-top: 2px;
+}
+//倒计时
 .item {
   display: inline-block;
-  width: 22px;
-  margin-right: 5px;
+  height: 20px;
+  width: 20px;
+  text-align:center;
   color: #fff;
-  font-size: 12px;
-  text-align: center;
+  font-size: 10px;
+  margin-right: 4px;
   background-color: #e51c23;
+}
+//优惠券右下按钮
+.rightdown{
+  border-radius: 50px;
+  height: 25px;
+  width: 80%;
+  font-weight: 700;
+  font-size: 10px;
+  padding-top: 6px;
+  margin-top: 6px;
+  margin-left: 10px;
+  color: #ffffff;
+  background-color: #E51C23;
+  border: 1px solid #E51C23;
 }
 </style>
