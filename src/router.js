@@ -32,6 +32,12 @@ export default new Router({
             name: 'order',
             component: () =>
                 import ('./views/personal/Order.vue')
+        },
+        {
+            path: '/classify',
+            name: 'classify',
+            component: () =>
+                import ('./views/classify/Classify.vue')
         }
     ]
 })
