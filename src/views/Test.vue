@@ -3,6 +3,8 @@
     <div>
       <van-button round type="info" size="large" @click="Msg1">确认注册</van-button>
     </div>
+    <div class="tese"></div>
+
     <div>
       <van-cell  @click="showPopup">展示弹出层</van-cell>
 
@@ -97,6 +99,15 @@ export default {
     padding-top: 15px;
     font-size: 10px;
 
+}
+.tese{
+  margin: 0 auto;
+  width: 95%;
+  margin-top: 30px;
+
+  height: 300px;
+  border-radius: 12px;
+  background-color: blue;
 }
 /* .popup-message a{
     

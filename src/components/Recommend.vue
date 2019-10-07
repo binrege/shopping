@@ -1,30 +1,25 @@
 <template>
-  <div>
-    <div class="top">
-      <div class="title">限时活动</div>
-      <div class="Time">{{time2}}</div>
-      <div class="countdown">
-        <van-count-down :time="time" />
-      </div>
-    </div>
+  <div class="recommend">
     <div class="below">
       <div class="below-div" v-for="(discount,index) in discounts" :key="index">
         <div class="below-img">
-          <img :src="discount.imagediscounts" />
+          <img :src="discount.image_good" class="img_good" />
         </div>
+        <div class="below-title">{{discount.title}}</div>
         <div class="price">
           <div class="going-price">￥{{discount.going_price}}</div>
           <div class="origin-price">￥{{discount.origin_price}}</div>
         </div>
       </div>
-    </div>
+    </div>aa
   </div>
 </template>
 
 <script>
 import axios from "axios";
 export default {
-  name: "TimeActivities",
+  name: "Recommend",
+
   data() {
     return {
       discounts: [],
@@ -55,51 +50,41 @@ export default {
 </script>
 
 <style scoped>
-.top {
-  margin-top: 13px;
-  margin-left: 5px;
-  display: flex;
-}
-
-.title{
-  font-size: 17px;  
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-weight:600;
-}
-.Time {
-  padding-left: 3px;
-  margin-top: 4px;
-}
-.countdown {
-  padding-left: 3px;
-  margin-top: 4px;
-}
 .below {
   float: left;
   margin: 0 auto;
   width: 100%;
-  height: 100px;
+  height: auto;
   overflow: auto;
-  
-  padding-left:2px;
 }
 .below-div {
-  margin-left: 7px;
-  
+  margin-right: 2px;
+  margin-left: 5px;
+  margin-top: 20px;
   float: left;
-  padding-top: 5px;
-  width: 75px;
-  
+  width: 170px;
+  border-radius: 12px;
+  background-color: rgba(239, 245, 245, 0.993);
 }
 
 .below-img {
   display: flex;
   justify-content: center;
+  /* width: 160px;
+  height: 160px;
+  border-radius: 12px 12px 0px 0px; */
+}
+.img_good{
+  border-radius: 12px 12px 0px 0px;   
+}
+.below-title{
+    margin:6px 10px;
 }
 .price {
-  padding-top: 5px;
+
   display: flex;
   justify-content: center;
+  margin: 10px 0
 }
 .going-price {
   font-size: 15px;
@@ -112,4 +97,5 @@ export default {
   padding-top: 6px;
   text-decoration: line-through;
 }
+</style>
 </style>

@@ -1,13 +1,12 @@
 <template>
   <div class="home">
-    
     {{user}}
     <div class="carousel">
       <div class="carousel1">
         <van-swipe :autoplay="3000" class="van">
           <van-swipe-item v-for="(classify,index) in classifys" :key="index">
             <div class="carousel2">
-              <img v-lazy="classify.images" width="100%"/>
+              <img v-lazy="classify.images" width="100%" />
             </div>
           </van-swipe-item>
         </van-swipe>
@@ -29,37 +28,64 @@
       </div>
     </div>
     <div class="activity">
-      <div class="activity-1">
+      <!-- 上层活动 -->
+      <div class="activity-top">
         <div class="time">
           <TimeActivities />
         </div>
-       
 
         <div class="split">
-        
+          <div class="split1"></div>
         </div>
-        <div class="recommend"></div>
+        <div class="recommend">
+          <Find />
+        </div>
       </div>
-      
+      <!-- 下层活动 -->
+      <div class="activity-bottom">
+        <div class="special">
+          <Special />
+        </div>
+
+        <div class="split">
+          <div class="split1"></div>
+        </div>
+        <div class="new">
+          <New />
+        </div>
+      </div>
+    </div>
+    <div class="recommend">
+      <!-- <van-tabs v-model="active" swipeable>
+         <van-tab v-for="index in 8" :title="'标签 ' + index">内容 {{ index }}</van-tab>
+      </van-tabs> -->
+      <div class="recommend-text">智能推荐</div>
+      <div class="good">
+        <Recommend />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import TimeActivities from '@/components/activity/TimeActivities.vue';
-
+import TimeActivities from "@/components/activity/TimeActivities.vue";
+import Find from "@/components/activity/Find.vue";
+import Special from "@/components/activity/Special.vue";
+import New from "@/components/activity/New.vue";
+import Recommend from "@/components/Recommend.vue";
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'home',
+  name: "home",
   data() {
     return {
       user: [
         {
           username: "",
-          password: ""
+          password: "",
+          index:[],
         }
       ],
       classifys: [],
@@ -71,7 +97,10 @@ export default {
   },
   components: {
     TimeActivities,
-    
+    Find,
+    Special,
+    New,
+    Recommend
   },
   mounted() {
     console.log(localStorage.loginMsg);
@@ -103,15 +132,13 @@ export default {
   padding-top: 0;
 }
 
-
-
 .classify {
   background-color: rgb(245, 247, 248);
   margin: 0 auto;
   padding-top: 20px;
   padding-bottom: 20px;
   width: 100%;
-  
+
   height: auto;
 }
 .classify-1 {
@@ -130,6 +157,8 @@ export default {
 }
 .classify-text {
   text-align: center;
+  color: rgb(83, 100, 117);
+  font-size: 11px;
 }
 .activity {
   margin: 0 auto;
@@ -139,25 +168,55 @@ export default {
   height: 300px;
   border-radius: 12px;
 }
-.activity-1 {
+.activity-top {
   display: flex;
-  background-color: rgb(218, 228, 228);
-  height: 130px;
+
+  height: 150px;
 }
 .time {
-  background-color: aqua;
-  width: 300px;
-  padding-right: 10px;
+  /* background-color: aqua; */
+  width: 340px;
 }
 .split {
   margin: 0 auto;
   /* background-color: rgb(170, 192, 192); */
-  width: 20px;
-  
+  width: 15px;
+  padding: 11% 0;
+}
+.split1 {
+  margin: 0 auto;
+  height: 100%;
+  width: 0;
+  border-right: rgb(139, 148, 125) 2px solid;
+  padding: 8% 0;
 }
 .recommend {
-  background-color: rgb(96, 105, 105);
-  padding-left: 10px;
+  /* background-color: rgb(96, 105, 105); */
   width: 300px;
+}
+.activity-bottom {
+  display: flex;
+  background-color: rgb(234, 255, 255);
+  height: 150px;
+  border-radius: 0px 0px 12px 12px;
+}
+.special {
+  /* background-color: rgb(203, 248, 248); */
+  width: 300px;
+}
+.new {
+  /* background-color: rgb(160, 179, 179); */
+  width: 300px;
+}
+.recommend {
+  margin: 0 auto;
+  width: 98%;
+  height: auto;
+}
+.recommend-text {
+  font-size: 20px;
+  font-family: inherit;
+  font-weight: 600;
+  color: rgb(223, 51, 85);
 }
 </style>
