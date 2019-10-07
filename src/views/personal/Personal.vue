@@ -44,39 +44,39 @@
     </div>
     <div class="body">
       <div class="body-head">
-        <div class="text">我的订单</div>
-        <div class="lookall">查看全部</div>
-        <div class="lookallimg">
+        <div class="text" @click="clickLookall">我的订单</div>
+        <div class="lookall" @click="clickLookall">查看全部</div>
+        <div class="lookallimg" @click="clickLookallimg">
           <img src="../../assets/personal/lookall.svg" />
         </div>
       </div>
       <van-divider :style="{ color: '#141212', borderColor: '#141212', padding: '0 5px' }"></van-divider>
       <div class="body-bottom">
-        <div class="payment">
+        <div class="payment" @click="clickPayment">
           <div class="payment-img">
             <img src="../../assets/personal/payment.svg" />
           </div>
           <div>待付款</div>
         </div>
-        <div class="delivery">
+        <div class="delivery" @click="clickDelivery">
           <div class="delivery-img">
             <img src="../../assets/personal/delivery.svg" />
           </div>
           <div>待发货</div>
         </div>
-        <div class="goods">
+        <div class="goods" @click="clickGoods">
           <div class="goods-img">
             <img src="../../assets/personal/goods.svg" />
           </div>
           <div>待收货</div>
         </div>
-        <div class="evaluation">
+        <div class="evaluation" @click="clickEvaluation">
           <div class="evaluation-img">
             <img src="../../assets/personal/evaluation.svg" />
           </div>
           <div>评价</div>
         </div>
-        <div class="return">
+        <div class="return" @click="clickReturn">
           <div class="return-img">
             <img src="../../assets/personal/return.svg" />
           </div>
@@ -87,7 +87,7 @@
     <div class="shuffling">
       <van-swipe :autoplay="3000">
         <van-swipe-item v-for="(image, index) in images" :key="index">
-          <img  class="img1" v-lazy="image" />
+          <img class="img1" v-lazy="image.images" />
         </van-swipe-item>
       </van-swipe>
     </div>
@@ -95,6 +95,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -124,9 +125,44 @@ export default {
       ]
     };
   },
+  mounted() {
+    axios
+      .get("api/getList")
+      .then(response => {
+        let res = response.data;
+        if (res.code === 200) {
+          this.images = res.data;
+        }
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
   methods: {
     clickNumber(item, index) {
       //alert(item.name+" "+item.price+" "+index)
+    },
+    clickLookall() {
+      this.$router.push("./Order");
+    },
+    clickLookallimg() {
+      this.$router.push("./Order");
+    },
+    clickPayment() {
+      this.$router.push("./Order");
+    },
+    clickDelivery() {
+      this.$router.push("./Order");
+    },
+    clickGoods() {
+      this.$router.push("./Order");
+    },
+    clickEvaluation() {
+      this.$toast("功能尚未完善，程序员正在加油");
+    },
+    clickReturn() {
+      this.$toast("功能尚未完善，程序员正在加油");
     }
   }
 };
@@ -269,7 +305,7 @@ export default {
   height: 200px;
   padding-top: 120%;
 }
-.img1{
+.img1 {
   width: 100%;
   height: 160px;
   max-height: 100%;

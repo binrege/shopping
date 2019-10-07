@@ -4,7 +4,7 @@
       <van-nav-bar
         title="我的订单"
         left-text="返回"
-        right-text="按钮"
+        right-text="搜索"
         left-arrow
         @click-left="onClickLeft"
         @click-right="onClickRight"
@@ -34,7 +34,7 @@
           <Goods/>
         </div>
       </van-tab>
-      <van-tab title="待收获">
+      <van-tab title="待收货">
         <div class="evaluation">
           <Evaluation/>
         </div>
@@ -67,10 +67,10 @@ export default {
   },
   methods: {
     onClickLeft() {
-      this.$toast("返回");
+      this.$router.push("./Personal")
     },
     onClickRight() {
-      this.$toast("按钮");
+      this.$toast("亲，还没做出开哦");
     },
     onClickDisabled(name, title) {
       this.$toast(title + '区，还在开发');
