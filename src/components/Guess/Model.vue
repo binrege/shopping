@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Model">
     <div class="guesslike">
       <div class="style" v-for="(good,index) in goods" :key="index">
         <div class="about">
@@ -59,10 +59,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.Model{
+  height: auto;
+  width: 100%;
+}
 //横向循环盒子
 .guesslike {
-  height: 220px;
-  width: 90%;
+  height: 210px;
+  width: 100%;
+  border-bottom: 1px solid rgb(248, 245, 245);
 }
 //循环样式
 .style {
@@ -72,7 +77,7 @@ export default {
   margin-left: 35px;
 }
 .about {
-
+  height: auto;
   width: 130px;
 }
 //图片框
@@ -103,7 +108,6 @@ img {
   height: auto;
   width: 85%;
   margin-top: 5px;
-  // border: 1px solid orange;
   display: flex;
 }
 //总价框

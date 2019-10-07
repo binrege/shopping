@@ -22,49 +22,9 @@
               @change="onChange1"
               @exchange="onExchange1"
             />
-            <button class="exchange">用考拉豆兑换几张吧~ →</button>
+            <button class="exchange" @click="onClickvoucher">用考拉豆兑换几张吧~ →</button>
             <div class="bottom1">
               <Guesslike msg />
-              <!-- <div class="bottom-head">猜你喜欢</div> -->
-              <!-- <div class="bottom-body">
-                <div class="Card1">
-                  <div>
-                    <van-card
-                      price="2.00"
-                      desc="描述信息"
-                      title="商品标题"
-                      thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                    />
-                  </div>
-                  <div>
-                    <van-card
-                      price="2.00"
-                      desc="描述信息"
-                      title="商品标题"
-                      thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                    />
-                  </div>
-                </div>
-                <div class="Card2">
-                  <div>
-                    <van-card
-                      price="2.00"
-                      desc="描述信息"
-                      title="商品标题"
-                      thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                    />
-                  </div>
-                  <div>
-                    <van-card
-                      price="2.00"
-                      desc="描述信息"
-                      title="商品标题"
-                      thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                    />
-                  </div>
-                </div>
-              </div>-->
-              <!-- <div class="bottom-tail">已经到底咯~</div> -->
             </div>
           </div>
         </van-tab>
@@ -79,46 +39,6 @@
             />
             <div class="bottom2">
               <Guesslike msg />
-              <!-- <div class="bottom-head">猜你喜欢</div> -->
-              <!-- <div class="bottom-body">
-                <div class="Card1">
-                  <div>
-                    <van-card
-                      price="2.00"
-                      desc="描述信息"
-                      title="商品标题"
-                      thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                    />
-                  </div>
-                  <div>
-                    <van-card
-                      price="2.00"
-                      desc="描述信息"
-                      title="商品标题"
-                      thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                    />
-                  </div>
-                </div>
-                <div class="Card2">
-                  <div>
-                    <van-card
-                      price="2.00"
-                      desc="描述信息"
-                      title="商品标题"
-                      thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                    />
-                  </div>
-                  <div>
-                    <van-card
-                      price="2.00"
-                      desc="描述信息"
-                      title="商品标题"
-                      thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-                    />
-                  </div>
-                </div>
-              </div>-->
-              <!-- <div class="bottom-tail">已经到底咯~</div> -->
             </div>
           </div>
         </van-tab>
@@ -151,6 +71,9 @@ export default {
   },
   methods: {
     onClickDisabled(c, title) {
+    },
+    onClickvoucher(){
+      this.$router.push("./Voucher");
     },
     onClickLeft() {
       this.$toast("返回");
@@ -203,6 +126,8 @@ const discoupon = {
   margin: 2px 3px 5px 10px;
   line-height: 30px;
   background-color: #fff;
+  font-weight: 700;
+  font-size: 14px;
   text-align: center;
   border: 1px solid gray;
   border-radius: 50px;

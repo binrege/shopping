@@ -2,7 +2,7 @@
   <div>
     <div class="head">
       <div class="returnimg">
-        <img src="../assets/return.svg" />
+        <van-icon name="arrow-left" />
       </div>
       <div class="serch">
         <form action="/">
@@ -20,11 +20,27 @@
       </div>
     </div>
     <div class="screen">
-      <div>综合</div>
+      <div class="Compre">
+        综合
+        <div class="compre">
+          <van-icon name="arrow-down" />
+        </div>
+      </div>
       <div>销售</div>
-      <div>价格</div>
+      <div class="Price">
+        价格
+        <div class="price">
+          <van-icon name="arrow-up" />
+          <van-icon name="arrow-down" />
+        </div>
+      </div>
       <div>逛品牌</div>
-      <div>筛选<van-icon name="screen" slot="right" color="black" /></div>
+      <div class="Filter">
+        筛选
+        <div class="filter">
+          <van-icon name="filter-o" />
+        </div>
+      </div>
     </div>
     <div class="Brand">
       <div class="year">
@@ -34,23 +50,33 @@
         <div class="min-own">考拉自营</div>
       </div>
       <div class="brand">
-        <div class="min-brand">品牌</div>
+        <div class="min-brand">
+          品牌
+          <div class="brandicon">
+            <van-icon name="arrow-down" />
+          </div>
+        </div>
       </div>
       <div class="classfying">
-        <div class="min-classfying">分类</div>
+        <div class="min-classfying">
+          分类
+          <div class="classfyicon">
+          <van-icon name="arrow-down" />
+          </div>
+        </div>
       </div>
     </div>
     <div class="model">
-      <Model msg=""/>
+      <Model msg />
     </div>
   </div>
 </template>
 
 <script>
-import Model from '../components/Guess/Model.vue'
+import Model from "../components/Guess/Model.vue";
 export default {
-  name:'model',
-  components:{
+  name: "model",
+  components: {
     Model
   },
   data() {
@@ -72,7 +98,7 @@ export default {
 <style lang="scss" scoped>
 //导航栏
 .head {
-  height: 45px;
+  height: 43px;
   display: flex;
 }
 //返回按钮
@@ -86,26 +112,60 @@ export default {
 }
 //分类框
 .classfy {
-  padding: 15px 5px 15px 5px;
+  padding: 14px 5px 15px 5px;
 }
 //筛选栏
 .screen {
   display: flex;
-  width: 99%;
-  height: 30px;
-  color: #C0C0C0;
-  border: 1px solid rgb(248, 245, 245);
+  width: 100%;
+  height: 26px;
+  font-size: 14px;
+  color: #c0c0c0;
+  border-bottom: 1px solid rgb(248, 245, 245);
+  border-top: 1px solid rgb(248, 245, 245);
   justify-content: space-around;
-  padding-top: 10px;
+  padding-top: 4px;
+  margin-top: 10px;
+}
+//综合
+.Compre {
+  font-weight: 700;
+  color: red;
+  display: flex;
+}
+//综合icon
+.compre {
+  font-size: 1px;
+  margin-left: 1px;
+  margin-top: 4px;
+}
+//价格
+.Price {
+  display: flex;
+}
+//价格icon
+.price {
+  font-size: 2px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 1px;
+}
+//筛选
+.Filter {
+  display: flex;
+}
+//筛选icon
+.filter {
+  margin-top: 2px;
 }
 //分类栏
 .Brand {
   display: flex;
   justify-content: space-between;
-  height: 30px;
-  // border: 1px solid rgb(248, 245, 245);
-  justify-content: space-between;
-  padding-top: 10px;
+  height: 35px;
+  margin-bottom: 10px;
+  padding-top: 6px;
+  border-bottom: 1px solid rgb(248, 245, 245);
 }
 //考拉3周年
 .year {
@@ -127,7 +187,7 @@ export default {
   margin: 0 4.5px;
   font-size: 14px;
   color: #e62c30;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 //考拉自营
 .own {
@@ -146,9 +206,9 @@ export default {
   padding-top: 4px;
   margin: 0 4.5px;
   font-size: 14px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
-//品牌（未完善）
+//品牌
 .brand {
   flex: 1;
   height: 28px;
@@ -160,14 +220,21 @@ export default {
 .min-brand {
   height: 85%;
   width: 90%;
-  text-align: center;
   font-weight: 600;
   padding-top: 4px;
   margin: 0 4.5px;
   font-size: 14px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
 }
-//分类（未完善）
+//brand icon
+.brandicon {
+  font-size: 10px;
+  margin-left: 1px;
+  margin-top: 4px;
+}
+//分类
 .classfying {
   flex: 1;
   height: 28px;
@@ -179,14 +246,21 @@ export default {
 .min-classfying {
   height: 85%;
   width: 90%;
-  text-align: center;
   font-weight: 600;
   padding-top: 4px;
   margin: 0 4.5px;
   font-size: 14px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
 }
-.model{
+//classfy icon
+.classfyicon{
+  font-size: 10px;
+  margin-top: 4px;
+  margin-left: 1px;
+}
+.model {
   height: auto;
   width: 100%;
 }

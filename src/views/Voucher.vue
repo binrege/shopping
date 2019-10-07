@@ -2,8 +2,8 @@
   <div class="voucher">
     <van-sticky>
       <div class="navigation">
-        <van-nav-bar title="领卷中心" left-arrow>
-          <van-icon name="share" slot="right" color="black" />
+        <van-nav-bar title="领卷中心" left-arrow @click-left="onClickcoupon">
+          <van-icon name="share" slot="right" color="black"/>
           <van-icon name="more" slot="right" color="black" />
         </van-nav-bar>
       </div>
@@ -20,7 +20,7 @@
       <div class="moba">母婴</div>
       <div class="nutrition">营养保健</div>
       <div class="pull">
-        <van-icon name="more" slot="right" color="black" />
+        <van-icon name="arrow-down" />
       </div>
     </div>
 
@@ -39,6 +39,7 @@
                 <div class="txtpricetwo">满299可用</div>
               </div>
             </div>
+
           </div>
           <div class="dotted"></div>
           <div class="bodyright">
@@ -53,7 +54,7 @@
               </van-count-down>
             </div>
 
-            <button class="rightdown">提醒我</button>
+            <button class="rightdown" @click="onClickremind">提醒我</button>
           </div>
         </div>
       </div>
@@ -83,6 +84,14 @@ export default {
       .catch(err => {
         console.log(err);
       });
+  },
+  methods: {
+    onClickcoupon(){
+      this.$router.push("./CouPon");
+    },
+    onClickremind() {
+      this.$toast("提醒成功");
+    }
   }
 };
 </script>
@@ -118,44 +127,51 @@ img {
   font-size: 14px;
   padding-top: 8px;
   color: red;
-  flex: 1;
+  flex: 0.9;
 }
 //精选
 .selected {
+  font-weight: 700;
   font-size: 14px;
   color: #949494;
   padding-top: 8px;
   padding-left: 15px;
   text-align: center;
-  flex: 1;
+  flex: 0.5;
 }
 //母婴
 .moba {
+  font-weight: 700;
   font-size: 14px;
   color: #949494;
+  padding-left: 12px;
   padding-top: 8px;
   text-align: center;
-  flex: 1;
+  flex: 0.5;
 }
 //营养保健
 .nutrition {
+  font-weight: 700;
   font-size: 14px;
   color: #949494;
+  margin-left: 6px;
   padding-top: 8px;
   text-align: center;
   flex: 1;
 }
 //下拉分类框（未完善）
 .pull {
-  font-size: 20px;
+  font-weight: 700;
+  font-size: 16px;
   color: #949494;
-  padding-top: 6px;
+  margin-right: 6px;
+  margin-top: 10px;
   text-align: end;
   flex: 1;
 }
 //领券外界框
 .mainbody {
-  height: 500px;
+  height: 710px;
   width: 100%;
 }
 //领劵内框
@@ -164,7 +180,7 @@ img {
   height: 100px;
   width: 95%;
   background-color: #ffffff;
-  margin: 12px 10px 12px 10px;
+  margin: 10px 10px 12px 10px;
   display: flex;
 }
 //优惠券左边
