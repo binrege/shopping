@@ -196,6 +196,7 @@ const discoupon = {
 </script>
 
 <style lang="scss" scoped>
+//跳转到领券中心的Button
 .exchange {
   height: 40px;
   width: 95%;

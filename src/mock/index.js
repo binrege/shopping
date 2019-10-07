@@ -6,6 +6,7 @@ Mock.mock('api/getList', 'get', {
     msg: 'success',
     'data|8': [{
         image: '@dataImage(124x142)',
-        text: '@csentence(8,12)',
+        text: '@csentence(8,16)',
+        img: '@dataImage(70x70)',
     }]
 })

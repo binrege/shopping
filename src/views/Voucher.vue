@@ -24,36 +24,37 @@
     </div>
 
     <div class="mainbody">
-      <div class="bodyone">
-        <div class="bodyleft">
+      <div >
+        
+        <div class="bodyone" v-for="(voucher,index) in vouchers" :key="index">
+          <div class="bodyleft">
+            <div class="bodyimg">
+              <img :src="voucher.img" />
+            </div>
 
-          <div class="bodyimg">
-            <img src="../assets/voucher.jpg"/>
-          </div>
-
-          <div class="bodytxt">
-            <div class="txtup">个护299-100卷</div>
-            <div class="txtdown">
-              <div class="txtpriceone">￥100</div>
-              <div class="txtpricetwo">满299可用</div>
+            <div class="bodytxt">
+              <div class="txtup">个护299-100卷</div>
+              <div class="txtdown">
+                <div class="txtpriceone">￥100</div>
+                <div class="txtpricetwo">满299可用</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="dotted"></div>
-        <div class="bodyright">
-          <div class="rightup">距开抢</div>
-          <div class="Item">
-            <van-count-down :time="time">
-              <template v-slot="timeData">
-                <span class="item">{{ timeData.hours }}</span>
-                <span class="item">{{ timeData.minutes }}</span>
-                <span class="item">{{ timeData.seconds }}</span>
-              </template>
-            </van-count-down>
-          </div>
+          <div class="dotted"></div>
+          <div class="bodyright">
+            <div class="rightup">距开抢</div>
+            <div class="Item">
+              <van-count-down :time="time">
+                <template v-slot="timeData">
+                  <span class="item">{{ timeData.hours }}</span>
+                  <span class="item">{{ timeData.minutes }}</span>
+                  <span class="item">{{ timeData.seconds }}</span>
+                </template>
+              </van-count-down>
+            </div>
 
-          <button class="rightdown">提醒我</button>
-          
+            <button class="rightdown">提醒我</button>
+          </div>
         </div>
       </div>
     </div>
@@ -61,12 +62,28 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      time: 30 * 60 * 1000
+      time: 30 * 60 * 1000,
+      vouchers : [],
     };
-  }
+  },
+  mounted() {
+    axios
+      .get("api/getList")
+      .then(response => {
+        let res = response.data;
+        if (res.code === 200) {
+          this.vouchers = res.data;
+        }
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
 };
 </script>
 
@@ -158,10 +175,9 @@ img {
 }
 //优惠券图片
 .bodyimg {
-  height: 80px;
-  width: 80px;
-  margin: 10px 15px 10px 10px;
-  border: 1px solid green;
+  height: 70px;
+  width: 70px;
+  margin: 13px 15px 10px 10px;
 }
 //图片自动适应图片框大小
 img {
@@ -183,6 +199,7 @@ img {
 .txtup {
   height: 20px;
   width: 100%;
+  font-weight: 700;
   font-size: 12px;
 }
 //优惠券下方内容
@@ -202,7 +219,8 @@ img {
 //优惠券右边价格
 .txtpricetwo {
   font-size: 9px;
-  padding-left: 2px;
+  font-weight: 700;
+  padding-left: 3px;
   padding-top: 4px;
   color: #e51c23;
 }
@@ -210,7 +228,7 @@ img {
 .dotted {
   height: 100%;
   width: 0;
-  border-right: gray 2px dotted;
+  border-right: rgb(153, 152, 152) 2px dotted;
 }
 //优惠券右边框
 .bodyright {
@@ -231,7 +249,7 @@ img {
   margin-top: 10px;
 }
 //倒计时框
-.Item{
+.Item {
   height: 22px;
   width: 80%;
   text-align: center;
@@ -243,14 +261,14 @@ img {
   display: inline-block;
   height: 20px;
   width: 20px;
-  text-align:center;
+  text-align: center;
   color: #fff;
   font-size: 10px;
   margin-right: 4px;
   background-color: #e51c23;
 }
 //优惠券右下按钮
-.rightdown{
+.rightdown {
   border-radius: 50px;
   height: 25px;
   width: 80%;
@@ -260,7 +278,7 @@ img {
   margin-top: 6px;
   margin-left: 10px;
   color: #ffffff;
-  background-color: #E51C23;
-  border: 1px solid #E51C23;
+  background-color: #e51c23;
+  border: 1px solid #e51c23;
 }
 </style>

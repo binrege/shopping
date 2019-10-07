@@ -40,6 +40,7 @@ export default {
       goods: []
     };
   },
+  //模拟数据
   mounted() {
     axios
       .get("api/getList")
@@ -92,7 +93,7 @@ img {
   height: auto;
   width: 100%;
   margin-top: 7px;
-  border: 1px solid violet;
+  font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 700;
@@ -118,10 +119,10 @@ img {
 //单价框
 .pricetwo {
   height: auto;
-  width: 50%;
+  width: 60%;
   font-size: 10px;
   text-align: left;
-  padding-top: 7.5px;
+  padding-top: 6px;
   color: gray;
   padding-left: 2px;
 }

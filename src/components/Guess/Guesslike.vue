@@ -73,12 +73,11 @@ export default {
   margin-left: 35px;
 }
 .about {
-
   width: 130px;
 }
 //图片框大小设置
 .image {
-  height:60%;
+  height: 60%;
   width: 60%;
   margin-left: 20%;
 }
@@ -94,7 +93,7 @@ img {
   height: auto;
   width: 100%;
   margin-top: 7px;
-  border: 1px solid violet;
+  font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 700;
@@ -120,11 +119,11 @@ img {
 //单价框
 .pricetwo {
   height: auto;
-  width: 50%;
+  width: 60%;
   font-size: 10px;
   text-align: left;
-  padding-top: 7.5px;
   color: gray;
+  padding-top: 6px;
   padding-left: 2px;
 }
 //竖线
