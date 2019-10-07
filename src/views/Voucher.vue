@@ -1,12 +1,13 @@
 <template>
   <div class="voucher">
-    <div class="navigation">
-      <van-nav-bar title="领卷中心" left-arrow>
-        <van-icon name="share" slot="right" color="black" />
-        <van-icon name="more" slot="right" color="black" />
-      </van-nav-bar>
-    </div>
-
+    <van-sticky>
+      <div class="navigation">
+        <van-nav-bar title="领卷中心" left-arrow>
+          <van-icon name="share" slot="right" color="black" />
+          <van-icon name="more" slot="right" color="black" />
+        </van-nav-bar>
+      </div>
+    </van-sticky>
     <div class="image">
       <img src="../assets/new.jpg" />
     </div>
@@ -24,8 +25,7 @@
     </div>
 
     <div class="mainbody">
-      <div >
-        
+      <div>
         <div class="bodyone" v-for="(voucher,index) in vouchers" :key="index">
           <div class="bodyleft">
             <div class="bodyimg">
@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       time: 30 * 60 * 1000,
-      vouchers : [],
+      vouchers: []
     };
   },
   mounted() {
@@ -83,7 +83,7 @@ export default {
       .catch(err => {
         console.log(err);
       });
-  },
+  }
 };
 </script>
 
