@@ -107,5 +107,56 @@ export default {
   padding-top: 6px;
   text-decoration: line-through;
 }
+/* //商品标签 */
+.lable {
+  height: 30px;
+  width: 110%;
+  display: flex;
+  margin-top: 4px;
+}
+/* //标签1 */
+.lableone {
+  height: 20px;
+  margin-left: 5px;
+  font-size: 12px;
+  border-radius: 12%;
+  border: 1px solid red;
+  color: red;
+  flex: 0.6;
+}
+/* //标签中文文本 */
+.lableCh {
+  padding-top: 1px;
+  padding-left: 2px;
+}
+/* //标签2 */
+.labletwo {
+  height: 20px;
+  font-size: 14px;
+  border-radius: 10%;
+  margin-left: 4px;
+  font-weight: 700;
+  color: white;
+  border: 1.5px solid red;
+  flex: 1;
+}
+/* //标签2中文文本 */
+.lableCh1 {
+  height: 20px;
+  background-color: red;
+  padding-bottom: 2px;
+  padding-left: 2px;
+}
+/* //标签3 */
+.lablethree {
+  font-size: 12px;
+  color: gray;
+  flex: 2;
+}
+/* //标签3中文文本 */
+.lableCh2 {
+  padding-top: 1px;
+  padding-left: 5px;
+}
 </style>
 </style>
