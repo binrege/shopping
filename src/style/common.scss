@@ -1,4 +1,29 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+.shuffling {
+    .van-swipe-item {
+        height: 150px !important;
+        width: 100% !important;
+    }
+}
+
+.classify {
+    .van-divider {
+        margin: 0 !important;
+    }
+}
+
+// 分类侧边
+.sidebar {
+    .van-sidebar {
+        border: 1px solid gray !important;
+    }
+    .van-sidebar-item {
+        background-color: #8a8585;
+    }
+=======
+>>>>>>> bf9e32488263db49c5eee5b2c6c914c6ff205153
 .home__tab {
     .van-tabs--line .van-tabs__wrap {
         display: none !important;
@@ -38,6 +63,7 @@
     //         font-size: 20px !important;
     //     }
     // }
+<<<<<<< HEAD
 =======
 .shuffling {
     .van-swipe-item {
@@ -61,4 +87,7 @@
         background-color: #8a8585;
     }
 >>>>>>> origin/yangyu
+=======
+>>>>>>> 2e5ebc38708571d8b1ed6945ae63f4c2c07a7d66
+>>>>>>> bf9e32488263db49c5eee5b2c6c914c6ff205153
 }
