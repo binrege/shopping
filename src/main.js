@@ -3,6 +3,8 @@ import App from './App.vue'
 import './mock'
 import router from './router'
 import store from './store'
+import './mock'
+import dayjs from 'dayjs'
 
 import './mock'
 import Vant from 'vant';
@@ -35,6 +37,7 @@ import { DropdownMenu, DropdownItem } from 'vant';
 import './mock'
 
 
+
 Vue.use(DropdownMenu).use(DropdownItem);
 
 Vue.use(Tag);
@@ -51,6 +54,28 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 import VueLazyload from 'vue-lazyload'
 Vue.use(Vant);
+
+import { Swipe, SwipeItem } from 'vant';
+
+Vue.use(Swipe).use(SwipeItem);
+Vue.use(Vant);
+Vue.use(Dialog);
+Vue.prototype.$dayjs = dayjs;
+
+
+// Vue.use(Popup);
+// Vue.use(Notify);
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload)
+
+// or with options
+Vue.use(VueLazyload, {
+    preLoad: 1.3,
+    error: 'dist/error.png',
+    loading: 'dist/loading.gif',
+    attempt: 1
+})
 
 
 Vue.config.productionTip = false
