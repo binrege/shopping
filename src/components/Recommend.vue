@@ -10,6 +10,17 @@
           <div class="going-price">￥{{discount.going_price}}</div>
           <div class="origin-price">￥{{discount.origin_price}}</div>
         </div>
+        <div class="lable">
+          <div class="lableone">
+            <div class="lableCh">自营</div>
+          </div>
+          <div class="labletwo">
+            <div class="lableCh1">特价</div>
+          </div>
+          <div class="lablethree">
+            <div class="lableCh2">97.8%好评</div>
+          </div>
+        </div>
       </div>
     </div>aa
   </div>
@@ -74,17 +85,16 @@ export default {
   height: 160px;
   border-radius: 12px 12px 0px 0px; */
 }
-.img_good{
-  border-radius: 12px 12px 0px 0px;   
+.img_good {
+  border-radius: 12px 12px 0px 0px;
 }
-.below-title{
-    margin:6px 10px;
+.below-title {
+  margin: 6px 10px;
 }
 .price {
-
   display: flex;
   justify-content: center;
-  margin: 10px 0
+  margin: 10px 0;
 }
 .going-price {
   font-size: 15px;
