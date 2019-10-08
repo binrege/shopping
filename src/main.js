@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
+import './mock'
 import router from './router'
 import store from './store'
+
 import axios from './http';
 import dayjs from 'dayjs';
 import Vant from 'vant';
@@ -31,6 +33,19 @@ Vue.config.productionTip = false;
 
 
 
+import Vant from 'vant';
+import 'vant/lib/index.css';
+import VueLazyload from 'vue-lazyload'
+Vue.use(Vant);
+
+
+Vue.config.productionTip = false
+Vue.use(VueLazyload, {
+    preLoad: 1.3,
+    error: require('./assets/logo.png'),
+    loading: require('./assets/szrp.jpg'),
+    attempt: 1
+})
 new Vue({
     router,
     store,
