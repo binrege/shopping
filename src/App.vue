@@ -12,9 +12,9 @@ export default {
       userName: sessionStorage.userName
     };
   },
-  methods:{
+  methods: {
     //子组件(register)将用户名传过来
-    userSignIn(userName){
+    userSignIn(userName) {
       sessionStorage.userName = userName;
       this.userName = sessionStorage.userName;
     }
@@ -22,11 +22,12 @@ export default {
 };
 </script>
 <style type="scss">
-    @import "./styles/common";
-    body, html {
-        padding: 0;
-        margin: 0;
-    }
+@import "./styles/common";
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

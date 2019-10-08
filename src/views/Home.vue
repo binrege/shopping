@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    {{user}}
+    {{ user }}
     <div class="carousel">
       <div class="carousel1">
         <van-swipe :autoplay="3000" class="van">
-          <van-swipe-item v-for="(classify,index) in classifys" :key="index">
+          <van-swipe-item v-for="(classify, index) in classifys" :key="index">
             <div class="carousel2">
               <img v-lazy="classify.images" width="100%" />
             </div>
@@ -14,14 +14,18 @@
     </div>
     <div class="classify">
       <!-- <div class="classify-1" v-for="(product,index) in products" :key="index"> -->
-      <div class="classify-1" v-for="(classify,index) in classifys" :key="index">
+      <div
+        class="classify-1"
+        v-for="(classify, index) in classifys"
+        :key="index"
+      >
         <div class="classify-1-1">
           <div class="classify-image">
             <img :src="classify.image" title="classify.image" />
           </div>
 
           <div class="classify-text">
-            {{classify.name}}
+            {{ classify.name }}
             <!-- {{product.productPrice}} -->
           </div>
         </div>
@@ -85,7 +89,7 @@ export default {
         {
           username: "",
           password: "",
-          index:[],
+          index: []
         }
       ],
       classifys: [],
