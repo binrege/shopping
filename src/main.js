@@ -5,9 +5,21 @@ import router from './router'
 import store from './store'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import './mock'
 import Vant from 'vant';
 import 'vant/lib/index.css';
+=======
+import Subscribe from './components/shopping trolley/SubmitBar'
+import Commodity from './components/shopping trolley/Commodity'
+import Settlement from './components/shopping trolley/Settlement'
+
+
+import Vant from 'vant';
+import 'vant/lib/index.css';
+Vue.use(Vant);
+
+>>>>>>> wuhong
 
 
 Vue.use(Vant);
@@ -73,5 +85,11 @@ Vue.use(VueLazyload, {
 new Vue({
     router,
     store,
+<<<<<<< HEAD
+=======
+    Subscribe,
+    Commodity,
+    Settlement,
+>>>>>>> wuhong
     render: h => h(App)
 }).$mount('#app')

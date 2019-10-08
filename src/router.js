@@ -1,19 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Home from './views/CouPon.vue'
 =======
 
 >>>>>>> origin/yangyu
+=======
+import Home from './views/Home.vue'
+import Shopping from './views/Shopping'
+import Address from './views/Address'
+import Addaddress from './views/Addaddress'
+
+>>>>>>> wuhong
 
 Vue.use(Router)
 
 export default new Router({
 <<<<<<< HEAD
+<<<<<<< HEAD
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [{
 <<<<<<< HEAD
+=======
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes: [{
+>>>>>>> wuhong
             path: '/',
             name: 'home',
             component: Home
@@ -28,6 +42,7 @@ export default new Router({
                 import ( /* webpackChunkName: "about" */ './views/About.vue')
         },
         {
+<<<<<<< HEAD
             path: '/CouPon',
             name: 'CouPon',
             // route level code-splitting
@@ -165,3 +180,24 @@ export default new Router({
 
 
 >>>>>>> d710e111ff3c1f6a9d4e3d1474b8b2fa54ca9b59
+=======
+            path: '/shopping',
+            name: 'shopping',
+            component: () =>
+                import ( /* webpackChunkName: "about" */ './views/Shopping.vue')
+        },
+        {
+            path: '/address',
+            name: 'address',
+            component: () =>
+                import ( /* webpackChunkName: "about" */ './views/Address.vue')
+        },
+        {
+            path: '/Addaddress',
+            name: 'Addaddress',
+            component: () =>
+                import ( /* webpackChunkName: "about" */ './views/Addaddress.vue')
+        }
+    ]
+})
+>>>>>>> wuhong
