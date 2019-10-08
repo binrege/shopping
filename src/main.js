@@ -3,9 +3,20 @@ import App from './App.vue'
 import './mock'
 import router from './router'
 import store from './store'
+
 import './mock'
 import Vant from 'vant';
 import 'vant/lib/index.css';
+
+import Subscribe from './components/shopping trolley/SubmitBar'
+import Commodity from './components/shopping trolley/Commodity'
+import Settlement from './components/shopping trolley/Settlement'
+
+
+import Vant from 'vant';
+import 'vant/lib/index.css';
+Vue.use(Vant);
+
 
 
 Vue.use(Vant);
@@ -36,10 +47,6 @@ Vue.prototype.$axios=axios;//将axios挂载在整个vue上，Vue是整个根实�
 Vue.prototype.$dayjs=dayjs;
 Vue.config.productionTip = false;
 
-
-
-
-
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import VueLazyload from 'vue-lazyload'
@@ -56,5 +63,10 @@ Vue.use(VueLazyload, {
 new Vue({
     router,
     store,
+
+    Subscribe,
+    Commodity,
+    Settlement,
+
     render: h => h(App)
 }).$mount('#app')

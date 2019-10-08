@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-
-
 import Home from './views/CouPon.vue'
+
+import Home from './views/Home.vue'
+import Shopping from './views/Shopping'
+import Address from './views/Address'
+import Addaddress from './views/Addaddress'
+
 
 
 Vue.use(Router)
@@ -119,8 +123,24 @@ export default new Router({
           component: () =>
               import ( /* webpackChunkName: "about" */ './views/Voucher.vue')
       },
+
+    {
+        path: '/shopping',
+        name: 'shopping',
+        component: () =>
+            import ( /* webpackChunkName: "about" */ './views/Shopping.vue')
+    },
+    {
+        path: '/address',
+        name: 'address',
+        component: () =>
+            import ( /* webpackChunkName: "about" */ './views/Address.vue')
+    },
+    {
+        path: '/Addaddress',
+        name: 'Addaddress',
+        component: () =>
+            import ( /* webpackChunkName: "about" */ './views/Addaddress.vue')
+    }
   ]
 })
-
-
-
