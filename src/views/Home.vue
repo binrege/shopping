@@ -56,9 +56,9 @@
       </div>
     </div>
     <div class="recommend">
-      <!-- <van-tabs v-model="active" swipeable>
+      <van-tabs  swipeable>
          <van-tab v-for="index in 8" :title="'标签 ' + index">内容 {{ index }}</van-tab>
-      </van-tabs> -->
+      </van-tabs>
       <div class="recommend-text">智能推荐</div>
       <div class="good">
         <Recommend />
@@ -119,6 +119,9 @@ export default {
       .catch(err => {
         console.log(err);
       });
+  },
+  methods:{
+    active(){},
   }
 };
 </script>
