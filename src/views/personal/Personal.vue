@@ -205,15 +205,15 @@ export default {
 
 .head-portrait {
   position: absolute;
-  margin: -20px 0 0 15px;
+  margin: -20px 0 0 -100px;
 }
 .head-name {
-  margin: 30px 0 0 130px;
+margin-left: -10px;
   font-size: 25px;
 }
 
 .elasticity {
-  margin-top: 85px;
+  margin-top: 20%;
   display: flex;
 }
 .head-bottom {
