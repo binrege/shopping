@@ -14,6 +14,7 @@ import { Dialog } from 'vant';
 import { DropdownMenu, DropdownItem } from 'vant';
 import './mock'
 
+
 Vue.use(DropdownMenu).use(DropdownItem);
 
 Vue.use(Tag);
@@ -25,10 +26,13 @@ Vue.use(Dialog);
 Vue.prototype.$axios=axios;//将axios挂载在整个vue上，Vue是整个根实例，然后若想发送ajax请求，只需要this.$axios.路径
 Vue.prototype.$dayjs=dayjs;
 Vue.config.productionTip = false;
-Vue.config.productionTip = false
+
+
+
+
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')
