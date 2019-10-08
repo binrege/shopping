@@ -11,7 +11,7 @@
             label="用户名"
             right-icon="question-o"
             placeholder="请输入用户名"
-            @click-right-icon="$toast('question')"
+            @click-right-icon="$toast('用户名不能为空')"
           />
 
           <van-field
@@ -42,9 +42,10 @@
                     @keyup="Change"
                     v-model="phone"
                     label="手机号："
+                    border:false
                     right-icon="question-o"
                     placeholder="请输入手机号"
-                    @click-right-icon="$toast('question')"
+                    @click-right-icon="$toast('手机号为11位数字组成')"
                   />
                   <van-field v-model="password1" label="验证码：" placeholder="请输入短信验证码">
                     <van-button
@@ -79,7 +80,7 @@
           <label type="default" @click="goTo" class="right-text">新用户注册</label>
         </div>
       </div>
-      <div class="B">
+      <div class="below">
         <div class="content">
           <p class="title">第三方登录</p>
         </div>
@@ -329,10 +330,11 @@ font-size: 12px;
   color: #666666;
   position: absolute;
   top: -25px;
-  left: 120px;
+  left: 125px;
 }
-.B {
-  position: fixed;
+.below {
+  position: relative;
+  margin-top: 200px;
   bottom: 0;
 }
 .buttom {

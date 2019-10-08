@@ -173,6 +173,8 @@ export default {
   padding-top: 50px;
 }
 .lod {
-  padding-top: 50px;
+  /* padding-top: 60px; */
+  margin: 60px 30px;
+  /* width: 80% */
 }
 </style>

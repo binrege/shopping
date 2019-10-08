@@ -97,7 +97,7 @@ export default {
   justify-content: center;
 }
 .price {
-  padding-top: 5px;
+  padding-top: 7px;
   display: flex;
   justify-content: center;
 }

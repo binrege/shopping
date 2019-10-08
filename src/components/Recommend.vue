@@ -8,7 +8,8 @@
         <div class="below-title">{{discount.title}}</div>
         <div class="price">
           <div class="going-price">￥{{discount.going_price}}</div>
-          <div class="origin-price">￥{{discount.origin_price}}</div>
+          <div class="origin-price">￥{{discount.going_price*1.1 | toFixed(0)}}</div>
+          <div class="sales">{{discount.number}}人付款</div>
         </div>
         <div class="lable">
           <div class="lableone">
@@ -34,9 +35,16 @@ export default {
   data() {
     return {
       discounts: [],
+      
       time2: "",
       time: 60 * 60 * 1000
     };
+  },
+  filters: {
+    toFixed(input, param1) {
+      // 保留小数点后多少位
+      return "￥" + input.toFixed(param1);
+    }
   },
   mounted() {
     //获取当地时间
@@ -50,6 +58,7 @@ export default {
         let res = response.data;
         if (res.code === 200) {
           this.discounts = res.data;
+          
         }
         console.log(res);
       })
@@ -93,19 +102,25 @@ export default {
 }
 .price {
   display: flex;
-  justify-content: center;
+  
   margin: 10px 0;
 }
 .going-price {
-  font-size: 15px;
+  font-size: 18px;
   color: rgb(255, 4, 4);
 }
 .origin-price {
   font-size: 1px;
   color: rgb(160, 158, 158);
   padding-left: 5px;
-  padding-top: 6px;
+  padding-top: 8px;
   text-decoration: line-through;
+}
+.sales{
+  font-size: 3px;
+  color: rgb(160, 158, 158);
+  padding-top: 6px;
+  padding-left: 20px;
 }
 /* //商品标签 */
 .lable {
