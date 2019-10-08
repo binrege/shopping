@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .home__tab {
     .van-tabs--line .van-tabs__wrap {
         display: none !important;
@@ -37,4 +38,27 @@
     //         font-size: 20px !important;
     //     }
     // }
+=======
+.shuffling {
+    .van-swipe-item {
+        height: 150px !important;
+        width: 100% !important;
+    }
+}
+
+.classify {
+    .van-divider {
+        margin: 0 !important;
+    }
+}
+
+// 分类侧边
+.sidebar {
+    .van-sidebar {
+        border: 1px solid gray !important;
+    }
+    .van-sidebar-item {
+        background-color: #8a8585;
+    }
+>>>>>>> origin/yangyu
 }
