@@ -112,7 +112,7 @@ export default {
     this.user = JSON.parse(localStorage.getItem("loginMsg"));
     console.log("000000" + this.user);
     axios
-      .get("api/getList")
+      .get("api/getListL")
       .then(response => {
         let res = response.data;
         if (res.code === 200) {

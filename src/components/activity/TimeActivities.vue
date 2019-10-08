@@ -39,7 +39,7 @@ export default {
     this.time2 = this.$dayjs(times).format("hh时");
     console.log(time1);
     axios
-      .get("api/getList")
+      .get("api/getListL")
       .then(response => {
         let res = response.data;
         if (res.code === 200) {

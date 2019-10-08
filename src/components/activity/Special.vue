@@ -31,7 +31,7 @@ export default {
   },
   mounted() {
        axios
-      .get("api/getList")
+      .get("api/getListL")
       .then(response => {
         let res = response.data;
         if (res.code === 200) {
