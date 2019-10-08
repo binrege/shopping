@@ -101,9 +101,8 @@ img {
 //价格框
 .price {
   height: auto;
-  width: 85%;
+  width: 100%;
   margin-top: 5px;
-  // border: 1px solid orange;
   display: flex;
 }
 //总价框

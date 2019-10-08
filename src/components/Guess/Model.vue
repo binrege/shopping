@@ -106,7 +106,7 @@ img {
 //价格框
 .price {
   height: auto;
-  width: 85%;
+  width: 100%;
   margin-top: 5px;
   display: flex;
 }
