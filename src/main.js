@@ -12,6 +12,7 @@ import { Search } from 'vant';
 import { Tag } from 'vant';
 import { Dialog } from 'vant';
 import { DropdownMenu, DropdownItem } from 'vant';
+import './mock'
 
 Vue.use(DropdownMenu).use(DropdownItem);
 

@@ -9,13 +9,8 @@
           v-model="value"
         />
 
-        <div v-if="listmodel === false">
-          <img
-            src="../../assets/list.svg"
-            @click="ToDatu"
-            class="list_1"
-            alt=""
-          />
+        <div v-if="this.listmodle === false">
+          <img src="../../assets/list.svg" @click="ToDa" class="list_1" />
         </div>
         <div v-else>
           <img
@@ -72,24 +67,68 @@
         </div>
 
         <van-dropdown-menu class="brand">
-          <van-dropdown-item class="brand_item" v-model="value3" :options="option3" />
+          <van-dropdown-item
+            class="brand_item"
+            v-model="this.value3"
+            :options="this.option3"
+          />
         </van-dropdown-menu>
 
         <van-dropdown-menu class="sort">
-          <van-dropdown-item v-model="value3" :options="option4" />
+          <van-dropdown-item v-model="this.value3" :options="this.option4" />
         </van-dropdown-menu>
       </div>
-      <div class="top4"></div>
+      <div v-if="this.listmodle === false">
+        <div class="booklist1">
+          <div class="template1">
+            <div v-for="(book, index) in books" :key="index" class="book_list">
+              <div>
+                <img
+                  style="margin-left: 11%"
+                  :src="book.image"
+                  :title="book.name"
+                  class="image"
+                />
+                <div style="width: 50% ;margin-left: 11%">{{ book.date }}</div>
+                <div style="width: 50% ;margin-left: 11%">111</div>
+                <div style="width: 50% ;margin-left: 11%">222</div>
+                <div style="width: 50% ;margin-left: 11%">333</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else>
+        <div class="booklist2">
+          <div class="template2">
+            <div v-for="(book, index) in books" :key="index" class="book_list2">
+              <div>
+                <div style="margin-left:10px;float: left;height: 150px">
+                  <img
+                    style=""
+                    :src="book.image"
+                    :title="book.name"
+                    class="image"
+                  />
+                </div>
+                <div style="margin-left:10px;float: left;background-color: #0570db; width: 50%; height: 150px">{{ book.date }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  name: "SearchList_",
+  name: "searchList_",
   data() {
     return {
-      listmodel: false,
+      listmodle: false,
+      value: "",
       value1: 0,
       value2: "a",
       value3: 0,
@@ -112,16 +151,30 @@ export default {
         { text: "分类", value: 0 },
         { text: "品牌2", value: 1 },
         { text: "品牌3", value: 2 }
-      ]
+      ],
+      books: []
     };
   },
   methods: {
-    ToDatu() {
-      this.listmodel = true;
+    ToDa() {
+      this.listmodle = true;
     },
     TouList() {
-      this.listmodel = false;
+      this.listmodle = false;
     }
+  },
+  mounted() {
+    axios
+      .get("api/SearchList_")
+      .then(response => {
+        let res = response.data;
+        this.books = res.data;
+        console.log(this.books);
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
@@ -133,14 +186,14 @@ export default {
 }
 .top2 {
   border-top: 1px solid;
-  border-color: rgba(250,0,255,0.5);
+  border-color: rgba(250, 0, 255, 0.5);
 
   width: 100%;
   height: 50px;
 }
 .top3 {
   border-top: 1px solid;
-  border-color: rgba(250,0,255,0.5);
+  border-color: rgba(250, 0, 255, 0.5);
 
   display: flex;
   width: 100%;
@@ -148,7 +201,7 @@ export default {
 }
 .top4 {
   border-top: 1px solid;
-  border-color: rgba(250,0,255,0.5);
+  border-color: rgba(250, 0, 255, 0.5);
 
   width: 100%;
   height: 400px;
@@ -250,13 +303,17 @@ export default {
   flex: 1;
   color: red;
 }
-  .top3_2{
-    text-align: center;
-    line-height: 50px;
-    flex: 1;
-  }
-  .sort{
-    flex: 1;
-  }
-
+.top3_2 {
+  text-align: center;
+  line-height: 50px;
+  flex: 1;
+}
+.sort {
+  flex: 1;
+}
+.book_list {
+  display: inline-block;
+  width: 50%;
+  margin: 0px auto;
+}
 </style>

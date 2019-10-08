@@ -8,6 +8,7 @@
 </template>
 
 <script>
+
 //1.引入子组件
 import searchList_ from "../components/searchList/SearchList_";
 export default {
@@ -18,8 +19,11 @@ export default {
       searchList_
   },
   data() {
-    return {};
-  }
+    return {
+
+    };
+  },
+
 };
 </script>
 
