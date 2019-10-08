@@ -257,8 +257,7 @@ export default {
   font-size: 16px;
   text-align: center;
 }
-.item-number {
-}
+
 
 .body {
   position: absolute;
