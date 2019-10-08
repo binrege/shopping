@@ -3,6 +3,13 @@ import App from './App.vue'
 import './mock'
 import router from './router'
 import store from './store'
+import './mock'
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
+
+Vue.use(Vant);
+
 
 import axios from './http';
 import dayjs from 'dayjs';

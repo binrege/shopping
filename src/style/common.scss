@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .shuffling {
     .van-swipe-item {
         height: 150px !important;
@@ -19,4 +20,45 @@
     .van-sidebar-item {
         background-color: #8a8585;
     }
+=======
+.home__tab {
+    .van-tabs--line .van-tabs__wrap {
+        display: none !important;
+    }
+    .van-coupon-list__close {
+        display: none !important;
+    }
+    .van-coupon-list__list {
+        height: 170px !important;
+    }
+    .van-card {
+        width: 200px !important;
+    }
+}
+
+.home__tab2 {
+    .van-tabs--line .van-tabs__wrap {
+        display: none !important;
+    }
+    .van-field__body {
+        display: none !important;
+    }
+    .van-coupon-list__close {
+        display: none !important;
+    }
+    .van-coupon-list__list {
+        height: 170px !important;
+    }
+    .head {
+        .van-search {
+            width: 300px !important;
+        }
+    }
+    // .navigation {
+    //     .van-nav-bar__left,
+    //     .van-nav-bar__right {
+    //         font-size: 20px !important;
+    //     }
+    // }
+>>>>>>> 2e5ebc38708571d8b1ed6945ae63f4c2c07a7d66
 }
