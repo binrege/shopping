@@ -12,7 +12,7 @@
     <div class="below">
       <div class="below-div" v-for="(discount,index) in discounts" :key="index">
         <div class="below-img">
-          <img :src="discount.imagediscounts" />
+          <img :src="discount.imagediscounts" class="img"/>
         </div>
         
       </div>
@@ -31,7 +31,7 @@ export default {
   },
   mounted() {
        axios
-      .get("api/getList")
+      .get("api/getListR")
       .then(response => {
         let res = response.data;
         if (res.code === 200) {
@@ -77,26 +77,30 @@ export default {
   color: rgb(164, 149, 250);
 }
 .below {
-   
   float: left;
   margin: 0 auto;
-  width: 100%;
-  height: 80px;
+  width: 170px;
+  height: auto;
   overflow: auto;
-  padding-left:1px;
 }
 .below-div {
-     margin-top: 5px;
-  margin-left: 5px;
+  margin: 6px 4px;
   
   float: left;
-  padding-top: 5px;
-  width: 75px;
-  
+  width: 70px;
+  border-radius: 12px;
 }
+
 .below-img {
   display: flex;
   justify-content: center;
+  /* width: 160px;
+  height: 160px;
+  border-radius: 12px 12px 0px 0px; */
+}
+
+.img{
+  width: 100%;
 }
 
 

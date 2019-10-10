@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    {{user}}
+    <!-- {{user}} -->
     <div class="carousel">
       <div class="carousel1">
         <van-swipe :autoplay="3000" class="van">
@@ -17,7 +17,7 @@
       <div class="classify-1" v-for="(classify,index) in classifys" :key="index">
         <div class="classify-1-1">
           <div class="classify-image">
-            <img :src="classify.image" title="classify.image" />
+            <img :src="classify.image" title="classify.image" class="img"/>
           </div>
 
           <div class="classify-text">
@@ -37,7 +37,7 @@
         <div class="split">
           <div class="split1"></div>
         </div>
-        <div class="recommend">
+        <div class="find">
           <Find />
         </div>
       </div>
@@ -56,13 +56,29 @@
       </div>
     </div>
     <div class="recommend">
-      <van-tabs  swipeable>
-         <van-tab v-for="index in 8" :title="'标签 ' + index">内容 {{ index }}</van-tab>
+      <van-tabs  sticky animated swipeable >
+        <van-tab title="全部"><Recommend /></van-tab>
+        <van-tab title="外套"><Recommend /></van-tab>
+        <van-tab title="秋装"><Recommend /></van-tab>
+        <van-tab title="裤子"><Recommend /></van-tab>
+        <van-tab title="连衣裙"><Recommend /></van-tab>
+        <van-tab title="西装"><Recommend /></van-tab>
       </van-tabs>
-      <div class="recommend-text">智能推荐</div>
-      <div class="good">
-        <Recommend />
-      </div>
+      <!-- <van-tabs  swipeable>
+        <van-tab v-for="(title, index) in titles" :key="index"  >
+          <div slot="title">
+            {{title}}
+          </div>
+         <Recommend />
+        </van-tab>
+      </van-tabs>-->
+      <!-- <van-tabs swipeable>
+        <van-tab v-for="(title, index) in titles" :key="index">
+          <Recommend />
+        </van-tab>
+      </van-tabs>-->
+      <!-- <div class="recommend-text">智能推荐</div>
+      <div class="good"></div>-->
     </div>
   </div>
 </template>
@@ -85,14 +101,11 @@ export default {
         {
           username: "",
           password: "",
-          index:[],
+          index: []
         }
       ],
       classifys: [],
-      images: [
-        "https://img.yzcdn.cn/vant/apple-1.jpg",
-        "https://img.yzcdn.cn/vant/apple-2.jpg"
-      ]
+      titles: ["全部", "外套", "秋装", "裤子", "连衣裙", "西装", "鞋子"]
     };
   },
   components: {
@@ -120,26 +133,26 @@ export default {
         console.log(err);
       });
   },
-  methods:{
-    active(){},
+  methods: {
+    // active1() {},
   }
 };
 </script>
 <style scoped>
-/* .carousel {
+.carousel {
   width: 100%;
-} */
+}
 .carousel2 {
   width: 100%;
   height: 150px;
-  padding-top: 0;
+  
 }
 
 .classify {
   background-color: rgb(245, 247, 248);
   margin: 0 auto;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   width: 100%;
 
   height: auto;
@@ -147,16 +160,20 @@ export default {
 .classify-1 {
   display: inline-block;
   margin: 0 auto;
+  margin-left: 12px;
   padding: 9px;
   padding-top: 20px;
 }
 
 .classify-1-1 {
-  width: 56.3px;
+  width: 40px;
 }
 .classify-image {
   display: flex;
   justify-content: center;
+}
+.img{
+  width: 100%;
 }
 .classify-text {
   text-align: center;
@@ -180,12 +197,17 @@ export default {
   /* background-color: aqua; */
   width: 340px;
 }
+.find {
+  /* background-color: rgb(160, 179, 179); */
+  width: 340px;
+}
 .split {
   margin: 0 auto;
   /* background-color: rgb(170, 192, 192); */
   width: 15px;
   padding: 11% 0;
 }
+
 .split1 {
   margin: 0 auto;
   height: 100%;
@@ -193,10 +215,7 @@ export default {
   border-right: rgb(139, 148, 125) 2px solid;
   padding: 8% 0;
 }
-.recommend {
-  /* background-color: rgb(96, 105, 105); */
-  width: 300px;
-}
+
 .activity-bottom {
   display: flex;
   background-color: rgb(234, 255, 255);
@@ -213,7 +232,8 @@ export default {
 }
 .recommend {
   margin: 0 auto;
-  width: 98%;
+  margin-top: 20px;
+  width: 97.5%;
   height: auto;
 }
 .recommend-text {

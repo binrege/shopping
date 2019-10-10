@@ -8,7 +8,7 @@
         <div class="below-title">{{discount.title}}</div>
         <div class="price">
           <div class="going-price">￥{{discount.going_price}}</div>
-          <div class="origin-price">￥{{discount.going_price*1.1 | toFixed(0)}}</div>
+          <div class="origin-price">{{discount.going_price*1.1 | toFixed(0)}}</div>
           <div class="sales">{{discount.number}}人付款</div>
         </div>
         <div class="lable">
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-    </div>aa
+    </div>
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       discounts: [],
-      
+
       time2: "",
       time: 60 * 60 * 1000
     };
@@ -58,7 +58,6 @@ export default {
         let res = response.data;
         if (res.code === 200) {
           this.discounts = res.data;
-          
         }
         console.log(res);
       })
@@ -73,14 +72,13 @@ export default {
 .below {
   float: left;
   margin: 0 auto;
-  width: 100%;
+  width: 370px;
   height: auto;
   overflow: auto;
 }
 .below-div {
-  margin-right: 2px;
-  margin-left: 5px;
-  margin-top: 20px;
+  margin: 6px 4px;
+  
   float: left;
   width: 170px;
   border-radius: 12px;
@@ -96,13 +94,15 @@ export default {
 }
 .img_good {
   border-radius: 12px 12px 0px 0px;
+  width: 100%;
 }
 .below-title {
   margin: 6px 10px;
+  font-size: 19px;
 }
 .price {
   display: flex;
-  
+
   margin: 10px 0;
 }
 .going-price {
@@ -110,17 +110,17 @@ export default {
   color: rgb(255, 4, 4);
 }
 .origin-price {
-  font-size: 1px;
+  font-size: 10px;
   color: rgb(160, 158, 158);
-  padding-left: 5px;
-  padding-top: 8px;
+  margin-left: 5px;
+  margin-top: 8px;
   text-decoration: line-through;
 }
-.sales{
-  font-size: 3px;
+.sales {
+  font-size: 12px;
   color: rgb(160, 158, 158);
   padding-top: 6px;
-  padding-left: 20px;
+  padding-left: 8px;
 }
 /* //商品标签 */
 .lable {
@@ -146,14 +146,15 @@ export default {
 }
 /* //标签2 */
 .labletwo {
-  height: 20px;
+  text-align: center;
+  height: 22px;
   font-size: 14px;
   border-radius: 10%;
-  margin-left: 4px;
+  margin-left: 6px;
   font-weight: 700;
   color: white;
   border: 1.5px solid red;
-  flex: 1;
+  flex: 0.9;
 }
 /* //标签2中文文本 */
 .lableCh1 {
@@ -170,8 +171,8 @@ export default {
 }
 /* //标签3中文文本 */
 .lableCh2 {
-  padding-top: 1px;
-  padding-left: 5px;
+  padding-top: 3px;
+  padding-left: 7px;
 }
 </style>
 </style>

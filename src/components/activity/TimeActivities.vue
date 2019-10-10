@@ -10,7 +10,7 @@
     <div class="below">
       <div class="below-div" v-for="(discount,index) in discounts" :key="index">
         <div class="below-img">
-          <img :src="discount.imagediscounts" />
+          <img :src="discount.imagediscounts" class="img"/>
         </div>
         <div class="price">
           <div class="going-price">￥{{discount.going_price}}</div>
@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       discounts: [],
+      pictures:[],
       time2: "",
       time: 60 * 60 * 1000
     };
@@ -39,7 +40,7 @@ export default {
     this.time2 = this.$dayjs(times).format("hh时");
     console.log(time1);
     axios
-      .get("api/getList")
+      .get("api/getListR")
       .then(response => {
         let res = response.data;
         if (res.code === 200) {
@@ -61,41 +62,71 @@ export default {
   display: flex;
 }
 
-.title{
-  font-size: 17px;  
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-weight:600;
+.title {
+  font-size: 17px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 600;
 }
 .Time {
   padding-left: 3px;
-  margin-top: 4px;
+  margin-top: 6px;
+  font-size: 12px;
 }
 .countdown {
   padding-left: 3px;
   margin-top: 4px;
 }
+
 .below {
   float: left;
   margin: 0 auto;
-  width: 100%;
-  height: 100px;
+  width: 170px;
+  height: auto;
   overflow: auto;
-  
-  padding-left:2px;
 }
 .below-div {
-  margin-left: 7px;
+  margin: 6px 4px;
   
   float: left;
-  padding-top: 5px;
-  width: 75px;
-  
+  width: 70px;
+  border-radius: 12px;
 }
 
 .below-img {
   display: flex;
   justify-content: center;
+  /* width: 160px;
+  height: 160px;
+  border-radius: 12px 12px 0px 0px; */
 }
+
+.img{
+  width: 100%;
+}
+
+/* .below {
+  float: left;
+  margin: 0 auto;
+  width: 180px;
+  height: auto;
+  overflow: auto;
+
+  padding-left: 2px;
+}
+.below-div {
+  margin-left: 7px;
+
+  float: left;
+  padding-top: 5px;
+  width: 75px;
+}
+
+.below-img {
+  
+  display: flex;
+  justify-content: center;
+} */
 .price {
   padding-top: 7px;
   display: flex;
