@@ -8,16 +8,15 @@
       <div class="head-person">
         <div class="head-portrait">
           <van-image
-          class="head-img"
-          round
-          width="5.5rem"
-          height="5.5rem"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        />
-
+            class="head-img"
+            round
+            width="5.5rem"
+            height="5.5rem"
+            src="https://img.yzcdn.cn/vant/cat.jpeg"
+          />
         </div>
-        
-        <label class="head-name">墨白</label>
+
+        <label class="head-name">{{user}}</label>
         <div class="elasticity">
           <div v-for="(item,index) in arr" :key="index" class="item">
             <div
@@ -51,7 +50,7 @@
         <div class="text" @click="clickLookall">我的订单</div>
         <div class="lookall" @click="clickLookall">查看全部</div>
         <div class="lookallimg" @click="clickLookallimg">
-          <img  class="lookallimg-img" src="../../assets/personal/lookall.svg" />
+          <img class="lookallimg-img" src="../../assets/personal/lookall.svg" />
         </div>
       </div>
       <van-divider :style="{ color: '#141212', borderColor: '#141212', padding: '0 5px' }"></van-divider>
@@ -95,9 +94,8 @@
         </van-swipe-item>
       </van-swipe>
     </div>
-       <foot> </foot>
+    <foot></foot>
   </div>
-
 </template>
 
 <script>
@@ -107,6 +105,7 @@ export default {
   data() {
     return {
       color: "red",
+      user: "请先登录",
 
       arr: [
         {
@@ -133,6 +132,10 @@ export default {
     };
   },
   mounted() {
+    if (localStorage.getItem("loginMsg") != null) {
+      this.user = JSON.parse(localStorage.getItem("loginMsg"));
+    }
+
     axios
       .get("api/yyp")
       .then(response => {
@@ -146,7 +149,7 @@ export default {
         console.log(err);
       });
   },
-   components: {
+  components: {
     foot
   },
   methods: {
@@ -215,16 +218,16 @@ export default {
 
 .head-portrait {
   position: absolute;
-  width:98px;
-  height:auto;
+  width: 98px;
+  height: auto;
   margin: -20px 0 0 0;
 }
-.head-img{
+.head-img {
   width: 55px;
 }
 
 .head-name {
-  width: 50px;
+  width: auto;
   height: auto;
   font-size: 25px;
 }
@@ -248,7 +251,7 @@ export default {
   height: 32px;
   padding: 12px 0 0 10px;
 }
-.bottom-picture3{
+.bottom-picture3 {
   width: 32px;
   height: 32px;
 }
@@ -318,7 +321,7 @@ export default {
   width: 32px;
   padding: 6px 0 0 0;
 }
-.lookallimg-img{
+.lookallimg-img {
   height: 32px;
   width: 32px;
 }
