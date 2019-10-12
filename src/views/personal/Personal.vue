@@ -13,7 +13,7 @@
           height="5.5rem"
           src="https://img.yzcdn.cn/vant/cat.jpeg"
         />
-        <label class="head-name">墨白</label>
+        <label class="head-name">{{user}}</label>
         <div class="elasticity">
           <div v-for="(item, index) in arr" :key="index" class="item">
             <div
@@ -108,6 +108,7 @@ export default {
   data() {
     return {
       color: "red",
+      user:[ ],
 
       arr: [
         {
@@ -134,6 +135,7 @@ export default {
     };
   },
   mounted() {
+     this.user = JSON.parse(localStorage.getItem("loginMsg"));
     axios
       .get("api/yyp")
       .then(response => {
