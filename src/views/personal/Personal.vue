@@ -6,43 +6,43 @@
         <img class="picture" src="../../assets/personal/message.svg" />
       </div>
       <div class="head-person">
-        <van-image
-          class="head-portrait"
+        <div class="head-portrait">
+          <van-image
+          class="head-img"
           round
           width="5.5rem"
           height="5.5rem"
           src="https://img.yzcdn.cn/vant/cat.jpeg"
         />
+
+        </div>
+        
         <label class="head-name">墨白</label>
         <div class="elasticity">
-          <div v-for="(item, index) in arr" :key="index" class="item">
+          <div v-for="(item,index) in arr" :key="index" class="item">
             <div
-              @click="clickNumber(item, index)"
+              @click="clickNumber(item,index)"
               class="item-number"
               :class="{}"
               :style="{}"
-            >
-              {{ item.number }}
-            </div>
+            >{{item.number}}</div>
             <div
-              @click="clickIncident(item, index)"
+              @click="clickIncident(item,index)"
               class="item-incident"
               :class="{}"
               :style="{}"
-            >
-              {{ item.incident }}
-            </div>
+            >{{item.incident}}</div>
           </div>
         </div>
       </div>
       <div class="head-bottom">
         <div class="bottom-picture1">
-          <img src="../../assets/personal/vip.svg" />
+          <img src="../../assets/personal/vip.svg" class="bottom-picture3" />
         </div>
         <div class="bottom-text1">卡拉黑卡</div>
         <div class="bottom-text2">点击查看特权</div>
         <div class="bottom-picture2">
-          <img src="../../assets/personal/lookall.svg" />
+          <img src="../../assets/personal/lookall.svg" class="bottom-picture4" />
         </div>
       </div>
     </div>
@@ -51,42 +51,40 @@
         <div class="text" @click="clickLookall">我的订单</div>
         <div class="lookall" @click="clickLookall">查看全部</div>
         <div class="lookallimg" @click="clickLookallimg">
-          <img src="../../assets/personal/lookall.svg" />
+          <img  class="lookallimg-img" src="../../assets/personal/lookall.svg" />
         </div>
       </div>
-      <van-divider
-        :style="{ color: '#141212', borderColor: '#141212', padding: '0 5px' }"
-      ></van-divider>
+      <van-divider :style="{ color: '#141212', borderColor: '#141212', padding: '0 5px' }"></van-divider>
       <div class="body-bottom">
         <div class="payment" @click="clickPayment">
           <div class="payment-img">
-            <img src="../../assets/personal/payment.svg" />
+            <img class="payment-img1" src="../../assets/personal/payment.svg" />
           </div>
-          <div>待付款</div>
+          <div class="payment-font">待付款</div>
         </div>
         <div class="delivery" @click="clickDelivery">
           <div class="delivery-img">
-            <img src="../../assets/personal/delivery.svg" />
+            <img class="delivery-img1" src="../../assets/personal/delivery.svg" />
           </div>
-          <div>待发货</div>
+          <div class="delivery-font">待发货</div>
         </div>
         <div class="goods" @click="clickGoods">
           <div class="goods-img">
-            <img src="../../assets/personal/goods.svg" />
+            <img class="goods-img1" src="../../assets/personal/goods.svg" />
           </div>
-          <div>待收货</div>
+          <div class="goods-font">待收货</div>
         </div>
         <div class="evaluation" @click="clickEvaluation">
           <div class="evaluation-img">
-            <img src="../../assets/personal/evaluation.svg" />
+            <img class="evaluation-img1" src="../../assets/personal/evaluation.svg" />
           </div>
-          <div>评价</div>
+          <div class="evaluation-font">评价</div>
         </div>
         <div class="return" @click="clickReturn">
           <div class="return-img">
-            <img src="../../assets/personal/return.svg" />
+            <img class="return-img1" src="../../assets/personal/return.svg" />
           </div>
-          <div>退款/换货</div>
+          <div class="return-font">退款/换货</div>
         </div>
       </div>
     </div>
@@ -97,8 +95,9 @@
         </van-swipe-item>
       </van-swipe>
     </div>
-    <foot></foot>
+       <foot> </foot>
   </div>
+
 </template>
 
 <script>
@@ -147,11 +146,8 @@ export default {
         console.log(err);
       });
   },
-  components: {
-    //foot:foot
-    foot,
-
-
+   components: {
+    foot
   },
   methods: {
     clickNumber(item, index) {
@@ -211,7 +207,7 @@ export default {
   width: 80%;
   background: #ffffff;
   position: relative;
-  height: 90%;
+  height: 180px;
   margin: 50px auto;
   border-radius: 10px;
   z-index: 2;
@@ -219,29 +215,42 @@ export default {
 
 .head-portrait {
   position: absolute;
-  margin: -20px 0 0 -100px;
+  width:98px;
+  height:auto;
+  margin: -20px 0 0 0;
 }
+.head-img{
+  width: 55px;
+}
+
 .head-name {
-  margin-left: -10px;
+  width: 50px;
+  height: auto;
   font-size: 25px;
 }
 
 .elasticity {
-  margin-top: 20%;
+  margin-top: 85px;
   display: flex;
 }
 .head-bottom {
   width: 80%;
-  height: 25%;
+  height: auto;
   position: relative;
   background: #0a0a0a;
   border-radius: 10px;
-  margin: -60px auto;
+  margin: -60px auto 0 auto;
   z-index: 1;
   display: flex;
 }
 .bottom-picture1 {
-  padding: 15px 0 0 10px;
+  width: 32px;
+  height: 32px;
+  padding: 12px 0 0 10px;
+}
+.bottom-picture3{
+  width: 32px;
+  height: 32px;
 }
 .bottom-text1 {
   padding: 20px 0 0 0px;
@@ -254,6 +263,10 @@ export default {
   height: 15px;
   padding: 15px 10px 0 0px;
 }
+.bottom-picture4 {
+  width: 30px;
+  height: 30px;
+}
 .bottom-text2 {
   padding: 25px 0 0 110px;
   opacity: 0.5;
@@ -262,6 +275,8 @@ export default {
 }
 
 .item {
+  width: 60px;
+  height: 20px;
   margin-left: 10px;
 }
 .item-number,
@@ -275,7 +290,7 @@ export default {
 .body {
   position: absolute;
   width: 100%;
-  height: 20%;
+  height: auto;
   background: #ffffff;
   margin-top: 80%;
 }
@@ -286,18 +301,26 @@ export default {
   display: flex;
 }
 .text {
+  width: auto;
+  height: auto;
+  font-size: 15px;
   padding: 12px 0 0 15px;
 }
 .lookall {
   width: auto;
-  height: 32px;
+  height: auto;
   margin-left: 52%;
+  font-size: 15px;
   padding: 12px 0 0 0;
 }
 .lookallimg {
   height: 32px;
   width: 32px;
-  padding: 9px 0 0 0;
+  padding: 6px 0 0 0;
+}
+.lookallimg-img{
+  height: 32px;
+  width: 32px;
 }
 .body-bottom {
   flex: 2;
@@ -308,9 +331,32 @@ export default {
 .delivery-img,
 .goods-img {
   padding-left: 9px;
+  width: 48px;
+  height: 32px;
+}
+.payment-img1,
+.delivery-img1,
+.goods-img1,
+.evaluation-img1,
+.return-img1 {
+  width: 33px;
 }
 .return-img {
   padding-left: 20px;
+}
+.payment-font,
+.delivery-font,
+.goods-font {
+  margin-top: 5px;
+}
+.payment-font,
+.delivery-font,
+.goods-font,
+.evaluation-font,
+.return-font {
+  width: auto;
+  height: 20px;
+  font-size: 15px;
 }
 .shuffling {
   width: 100%;
