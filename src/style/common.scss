@@ -26,7 +26,7 @@
     .van-sidebar-item {
         background-color: #8a8585;
     }
-    .home__tab {
+    <<<<<<< HEAD .home__tab {
         .van-tabs--line .van-tabs__wrap {
             display: none !important;
         }
@@ -74,18 +74,66 @@
     }
 }
 
-.classify {
-    .van-divider {
-        margin: 0 !important;
+=======.home__tab {
+    .van-tabs--line .van-tabs__wrap {
+        display: none !important;
+    }
+    >>>>>>>849b80d75ff96c59dde25f7a940cd0c6298c4263 .van-coupon-list__close {
+        display: none !important;
+    }
+    .van-coupon-list__list {
+        height: 170px !important;
+    }
+    .van-card {
+        width: 200px !important;
     }
 }
 
-// 分类侧边
-.sidebar {
-    .van-sidebar {
-        border: 1px solid gray !important;
+.home__tab2 {
+    .van-tabs--line .van-tabs__wrap {
+        display: none !important;
     }
-    .van-sidebar-item {
-        background-color: #8a8585;
+    .van-field__body {
+        display: none !important;
     }
+    .van-coupon-list__close {
+        display: none !important;
+    }
+    .van-coupon-list__list {
+        height: 170px !important;
+    }
+    .head {
+        .van-search {
+            width: 300px !important;
+        }
+    }
+    // .navigation {
+    //     .van-nav-bar__left,
+    //     .van-nav-bar__right {
+    //         font-size: 20px !important;
+    //     }
+    // }
+    .shuffling {
+        .van-swipe-item {
+            height: 150px !important;
+            width: 100% !important;
+        }
+    }
+    .classify {
+        .van-divider {
+            margin: 0 !important;
+        }
+    }
+    // 分类侧边
+    .sidebar {
+        .van-sidebar {
+            border: 1px solid gray !important;
+        }
+        .van-sidebar-item {
+            background-color: #8a8585;
+        }
+    }
+}
+
+
 }
