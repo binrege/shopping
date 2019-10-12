@@ -193,6 +193,7 @@ export default {
     Change() {
       if (this.phone.length >= 1) {
         this.btnShow = true;
+        
       }
     },
 
