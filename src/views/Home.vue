@@ -54,6 +54,7 @@
           <New />
         </div>
       </div>
+
     </div>
     <div class="recommend">
       <van-tabs  sticky animated swipeable >
