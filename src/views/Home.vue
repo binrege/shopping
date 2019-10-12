@@ -3,6 +3,7 @@
     <search> </search>
     <div class="home">
      
+     
       <div class="carousel">
         <div class="carousel1">
           <van-swipe :autoplay="3000" class="van">
