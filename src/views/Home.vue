@@ -87,8 +87,6 @@ import Recommend from "@/components/Recommend.vue";
 import foot from "../components/footer/Foot";
 import search from "../components/top/Search";
 
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: "home",
