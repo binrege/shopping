@@ -232,6 +232,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .top {
   margin: 0 auto;
