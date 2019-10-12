@@ -15,19 +15,23 @@
         />
         <label class="head-name">墨白</label>
         <div class="elasticity">
-          <div v-for="(item,index) in arr" :key="index" class="item">
+          <div v-for="(item, index) in arr" :key="index" class="item">
             <div
-              @click="clickNumber(item,index)"
+              @click="clickNumber(item, index)"
               class="item-number"
               :class="{}"
               :style="{}"
-            >{{item.number}}</div>
+            >
+              {{ item.number }}
+            </div>
             <div
-              @click="clickIncident(item,index)"
+              @click="clickIncident(item, index)"
               class="item-incident"
               :class="{}"
               :style="{}"
-            >{{item.incident}}</div>
+            >
+              {{ item.incident }}
+            </div>
           </div>
         </div>
       </div>
@@ -50,7 +54,9 @@
           <img src="../../assets/personal/lookall.svg" />
         </div>
       </div>
-      <van-divider :style="{ color: '#141212', borderColor: '#141212', padding: '0 5px' }"></van-divider>
+      <van-divider
+        :style="{ color: '#141212', borderColor: '#141212', padding: '0 5px' }"
+      ></van-divider>
       <div class="body-bottom">
         <div class="payment" @click="clickPayment">
           <div class="payment-img">
@@ -91,10 +97,12 @@
         </van-swipe-item>
       </van-swipe>
     </div>
+    <foot></foot>
   </div>
 </template>
 
 <script>
+import foot from "../../components/footer/Foot";
 import axios from "axios";
 export default {
   data() {
@@ -138,6 +146,12 @@ export default {
       .catch(err => {
         console.log(err);
       });
+  },
+  components: {
+    //foot:foot
+    foot,
+
+
   },
   methods: {
     clickNumber(item, index) {
@@ -208,7 +222,7 @@ export default {
   margin: -20px 0 0 -100px;
 }
 .head-name {
-margin-left: -10px;
+  margin-left: -10px;
   font-size: 25px;
 }
 
@@ -257,7 +271,6 @@ margin-left: -10px;
   font-size: 16px;
   text-align: center;
 }
-
 
 .body {
   position: absolute;

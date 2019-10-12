@@ -7,6 +7,7 @@
     <div>
       <SubmitBar ></SubmitBar>
     </div>
+
   </div>
 </template>
 
@@ -14,6 +15,7 @@
 import SubmitBar from "@/components/shopping trolley/SubmitBar.vue";
 import Commodity from "@/components/shopping trolley/Commodity.vue";
 import Settlement from "@/components/shopping trolley/Settlement.vue";
+import foot from "../components/footer/Foot";
 export default {
   name: "app",
   data() {
@@ -26,7 +28,8 @@ export default {
     //子组件的引用
     SubmitBar,
     Commodity,
-    Settlement
+    Settlement,
+    foot
   },
   methods: {
    childClose(data) {

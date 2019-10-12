@@ -1,74 +1,79 @@
 <template>
-  <div class="home">
-    {{ user }}
-    <div class="carousel">
-      <div class="carousel1">
-        <van-swipe :autoplay="3000" class="van">
-          <van-swipe-item v-for="(classify, index) in classifys" :key="index">
-            <div class="carousel2">
-              <img v-lazy="classify.images" width="100%" />
+  <div>
+    <search> </search>
+    <div class="home">
+      {{ user }}
+      <div class="carousel">
+        <div class="carousel1">
+          <van-swipe :autoplay="3000" class="van">
+            <van-swipe-item v-for="(classify, index) in classifys" :key="index">
+              <div class="carousel2">
+                <img v-lazy="classify.images" width="100%" />
+              </div>
+            </van-swipe-item>
+          </van-swipe>
+        </div>
+      </div>
+      <div class="classify">
+        <!-- <div class="classify-1" v-for="(product,index) in products" :key="index"> -->
+        <div
+                class="classify-1"
+                v-for="(classify, index) in classifys"
+                :key="index"
+        >
+          <div class="classify-1-1">
+            <div class="classify-image">
+              <img :src="classify.image" title="classify.image" />
             </div>
-          </van-swipe-item>
-        </van-swipe>
-      </div>
-    </div>
-    <div class="classify">
-      <!-- <div class="classify-1" v-for="(product,index) in products" :key="index"> -->
-      <div
-        class="classify-1"
-        v-for="(classify, index) in classifys"
-        :key="index"
-      >
-        <div class="classify-1-1">
-          <div class="classify-image">
-            <img :src="classify.image" title="classify.image" />
-          </div>
 
-          <div class="classify-text">
-            {{ classify.name }}
-            <!-- {{product.productPrice}} -->
+            <div class="classify-text">
+              {{ classify.name }}
+              <!-- {{product.productPrice}} -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="activity">
-      <!-- 上层活动 -->
-      <div class="activity-top">
-        <div class="time">
-          <TimeActivities />
-        </div>
+      <div class="activity">
+        <!-- 上层活动 -->
+        <div class="activity-top">
+          <div class="time">
+            <TimeActivities />
+          </div>
 
-        <div class="split">
-          <div class="split1"></div>
+          <div class="split">
+            <div class="split1"></div>
+          </div>
+          <div class="recommend">
+            <Find />
+          </div>
         </div>
-        <div class="recommend">
-          <Find />
-        </div>
-      </div>
-      <!-- 下层活动 -->
-      <div class="activity-bottom">
-        <div class="special">
-          <Special />
-        </div>
+        <!-- 下层活动 -->
+        <div class="activity-bottom">
+          <div class="special">
+            <Special />
+          </div>
 
-        <div class="split">
-          <div class="split1"></div>
+          <div class="split">
+            <div class="split1"></div>
+          </div>
+          <div class="new">
+            <New />
+          </div>
         </div>
-        <div class="new">
-          <New />
+      </div>
+      <div class="recommend">
+        <!-- <van-tabs v-model="active" swipeable>
+           <van-tab v-for="index in 8" :title="'标签 ' + index">内容 {{ index }}</van-tab>
+        </van-tabs> -->
+        <div class="recommend-text">智能推荐</div>
+        <div class="good">
+          <Recommend />
         </div>
       </div>
     </div>
-    <div class="recommend">
-      <!-- <van-tabs v-model="active" swipeable>
-         <van-tab v-for="index in 8" :title="'标签 ' + index">内容 {{ index }}</van-tab>
-      </van-tabs> -->
-      <div class="recommend-text">智能推荐</div>
-      <div class="good">
-        <Recommend />
-      </div>
-    </div>
+    <foot> </foot>
   </div>
+
 </template>
 
 <script>
@@ -78,6 +83,10 @@ import Find from "@/components/activity/Find.vue";
 import Special from "@/components/activity/Special.vue";
 import New from "@/components/activity/New.vue";
 import Recommend from "@/components/Recommend.vue";
+//1.引入子组件
+import foot from "../components/footer/Foot";
+import search from "../components/top/Search";
+
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 
@@ -104,7 +113,9 @@ export default {
     Find,
     Special,
     New,
-    Recommend
+    Recommend,
+    foot,
+    search
   },
   mounted() {
     console.log(localStorage.loginMsg);

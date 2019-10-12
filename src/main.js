@@ -28,7 +28,11 @@ Vue.use(Icon);
 Vue.use(Tabbar).use(TabbarItem);
 Vue.use(Vant);
 Vue.use(Dialog);
+// this.$axios.req('api/',{
+//
+// }).then().catch()
 Vue.prototype.$axios=axios;//将axios挂载在整个vue上，Vue是整个根实例，然后若想发送ajax请求，只需要this.$axios.路径
+
 Vue.prototype.$dayjs=dayjs;
 Vue.config.productionTip = false;
 Vue.use(Swipe).use(SwipeItem);

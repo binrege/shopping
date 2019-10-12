@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-submit-bar :price="totalPrice*100" button-text="提交订单" @submit="showPopup">
+    <van-submit-bar :price="totalPrice*100" button-text="提交订单" @submit="showPopup" :style="{marginBottom:'50px'}">
       <van-popup v-model="show" closeable position="bottom" :style="{ height: '70%' }">
         <br />
         <br />
@@ -25,12 +25,15 @@
       </van-popup>
       <van-checkbox v-model="checked">全选</van-checkbox>
       <Settlement />
+
     </van-submit-bar>
-    <Settlement />
+    <foot></foot>
+
   </div>
 </template>
 <script>
 import Settlement from "./Settlement";
+import foot from "../../components/footer/Foot";
 //优惠券列表
 const coupon0 = {
   available: 1,
@@ -97,7 +100,8 @@ export default {
   },
   components: {
     //引用子组件
-    Settlement
+    Settlement,
+    foot
   },
   methods: {
     //提交订单弹窗

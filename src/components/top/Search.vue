@@ -131,18 +131,21 @@ export default {
 </script>
 
 <style scoped>
+  .top{
+    display: flex;
+  }
 .top1 {
-  float: left;
+
   margin-top: 10px;
   margin-left: 10px;
 }
 .top2 {
-  float: left;
+
   width: 77%;
 }
 .top3 {
   margin-top: 10px;
-  float: left;
+
 }
 .search1 {
   width: 100%;

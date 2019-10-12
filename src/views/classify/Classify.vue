@@ -1,73 +1,103 @@
 <template>
-  <div class="classify">
-    <!-- 头部搜索 -->
-    <div></div>
-    <van-divider :style="{ color: '#141212', borderColor: '#141212', padding: '50px 0 0 0' }"></van-divider>
-    <div class="classify-body">
-      <!-- 侧边推荐 -->
-      <div class="sidebar">
-        <van-sidebar v-model="activeKey">
-          <van-sidebar-item title="为你推荐"></van-sidebar-item>
-          <van-sidebar-item title="裤装"></van-sidebar-item>
-          <van-sidebar-item title="衬衫"></van-sidebar-item>
-          <van-sidebar-item title="T恤"></van-sidebar-item>
-          <van-sidebar-item title="包包"></van-sidebar-item>
-          <van-sidebar-item title="女鞋"></van-sidebar-item>
-          <van-sidebar-item title="连衣裙"></van-sidebar-item>
-        </van-sidebar>
+  <div>
+    <div class="classify">
+      <!-- 头部搜索 -->
+      <div>
+        <search> </search>
       </div>
-      <div class="vertical"></div>
-      <div class="sidebar-contents">
-        <div class="shuffling">
-          <van-swipe :autoplay="3000">
-            <van-swipe-item v-for="(image,index) in images" :key="index">
-              <img class="img1" v-lazy="image.images" />
-            </van-swipe-item>
-          </van-swipe>
+      <van-divider
+        :style="{
+          color: 'white',
+          borderColor: 'red',
+          padding: '0 0 0 0',
+
+
+        }"
+      ></van-divider>
+      <div class="classify-body">
+        <!-- 侧边推荐 -->
+        <div class="sidebar">
+          <van-sidebar v-model="activeKey">
+            <van-sidebar-item title="为你推荐"></van-sidebar-item>
+            <van-sidebar-item title="裤装"></van-sidebar-item>
+            <van-sidebar-item title="衬衫"></van-sidebar-item>
+            <van-sidebar-item title="T恤"></van-sidebar-item>
+            <van-sidebar-item title="包包"></van-sidebar-item>
+            <van-sidebar-item title="女鞋"></van-sidebar-item>
+            <van-sidebar-item title="连衣裙"></van-sidebar-item>
+          </van-sidebar>
         </div>
-        <div>
-          <div class="commonly">常用分类</div>
-          <div class="commonly-cycle">
-            <div class="commonly-cycle-one" v-for="(icon,index) in images" :key="index">
-              <div class="commonly-cycle-two">
-                <div class="commonly-icon">
-                  <img :src="icon.image" />
+        <div class="vertical"></div>
+        <div class="sidebar-contents">
+          <div class="shuffling">
+            <van-swipe :autoplay="3000">
+              <van-swipe-item v-for="(image, index) in images" :key="index">
+                <img class="img1" v-lazy="image.images" />
+              </van-swipe-item>
+            </van-swipe>
+          </div>
+          <div>
+            <div class="commonly">常用分类</div>
+            <div class="commonly-cycle">
+              <div
+                class="commonly-cycle-one"
+                v-for="(icon, index) in images"
+                :key="index"
+              >
+                <div class="commonly-cycle-two">
+                  <div class="commonly-icon">
+                    <img :src="icon.image" />
+                  </div>
+                  <div class="commonly-name">{{ icon.name }}</div>
                 </div>
-                <div class="commonly-name">{{icon.name}}</div>
               </div>
             </div>
           </div>
-        </div>
-        <van-divider :style="{ color: '#141212', borderColor: '#141212', padding: '0' }"></van-divider>
-        <div>
-          <div class="hot-top">
-            <div class="hot">热门分类</div>
-            <div class="hotlist">热销榜</div>
-            <div class="hot-arrow">
-              <van-icon name="arrow" />
+          <van-divider
+            :style="{ color: '#141212', borderColor: '#141212', padding: '0' }"
+          ></van-divider>
+          <div>
+            <div class="hot-top">
+              <div class="hot">热门分类</div>
+              <div class="hotlist">热销榜</div>
+              <div class="hot-arrow">
+                <van-icon name="arrow" />
+              </div>
             </div>
-          </div>
-          <div class="hot-cycle">
-            <div class="hot-cycle-one" v-for="(icon,index) in images" :key="index">
-              <div class="hot-cycle-two">
-                <div class="hot-icon">
-                  <img :src="icon.image" />
+            <div class="hot-cycle">
+              <div
+                class="hot-cycle-one"
+                v-for="(icon, index) in images"
+                :key="index"
+              >
+                <div class="hot-cycle-two">
+                  <div class="hot-icon">
+                    <img :src="icon.image" />
+                  </div>
+                  <div class="hot-name">{{ icon.name }}</div>
                 </div>
-                <div class="hot-name">{{icon.name}}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <foot></foot>
   </div>
 </template>
 
 <script>
+//1.引入子组件
+
 import axios from "axios";
+import search  from "../../components/top/Search";
+import foot from "../../components/footer/Foot";
 export default {
   name: "",
-  components: {},
+  components: {
+    foot,
+    search
+  },
   data() {
     return {
       activeKey: 0,
@@ -187,7 +217,4 @@ export default {
   color: #969799;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-
-
 </style>
-
