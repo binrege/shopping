@@ -22,7 +22,6 @@
 
           <div class="classify-text">
             {{classify.name}}
-            <!-- {{product.productPrice}} -->
           </div>
         </div>
       </div>
