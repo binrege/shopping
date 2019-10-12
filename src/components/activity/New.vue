@@ -31,7 +31,11 @@ export default {
   },
   mounted() {
        axios
+<<<<<<< HEAD
       .get("api/getListR")
+=======
+      .get("api/getListL")
+>>>>>>> 01b526021f7b334fe9ab5f9aa43e56e544fe0e58
       .then(response => {
         let res = response.data;
         if (res.code === 200) {

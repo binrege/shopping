@@ -1,6 +1,7 @@
 <template>
   <div class="top">
     <div>
+
       <div class="top1">登录|注册</div>
       <!-- <van-button type="primary">按钮</van-button> -->
       <div class="inputs">
