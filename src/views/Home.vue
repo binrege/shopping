@@ -2,7 +2,7 @@
   <div>
     <search> </search>
     <div class="home">
-      {{ user }}
+     
       <div class="carousel">
         <div class="carousel1">
           <van-swipe :autoplay="3000" class="van">
