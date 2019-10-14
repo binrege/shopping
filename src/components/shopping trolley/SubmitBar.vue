@@ -23,12 +23,10 @@
         <van-cell title="总价:" is-link value>{{totalPrice-discount/100}}</van-cell>
         <van-button type="warning" size="large">确认支付</van-button>
       </van-popup>
-      <van-checkbox v-model="checked">全选</van-checkbox>
+      <van-checkbox v-model="checked" @click="clickk">全选</van-checkbox>
       <Settlement />
-
     </van-submit-bar>
     <foot></foot>
-
   </div>
 </template>
 <script>
@@ -93,9 +91,9 @@ export default {
       //不可用优惠券列表
       disabledCoupons: [disabledCoupons],
       //订单全选框
-      checked: false,
+      checked: true,
       //优惠金额
-      discount: 0
+      discount: 0,
     };
   },
   components: {
@@ -107,6 +105,9 @@ export default {
     //提交订单弹窗
     showPopup() {
       this.show = true;
+    },
+    clickk(){
+      this.$emit('childFn',this.checked);
     },
     //选择优惠券，赋值优惠金额
     onChange(index) {
@@ -126,10 +127,10 @@ export default {
     }
   },
   computed: {
-    //未优惠时总结
+    //未优惠时总价
     totalPrice() {
       return this.$store.state.totalPrice;
-    }
+    },
   }
 };
 </script>

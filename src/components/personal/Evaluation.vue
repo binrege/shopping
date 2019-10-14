@@ -13,9 +13,9 @@
         </div>
         <div class="body-describe">
           <div class="body-describe-font">
-            <div>这件商品很强大，很好用，很厉害</div>
-            <div>
-              <div style="font-size:20px">￥{{money}}</div>
+            <div >这件商品很强大，很好用，很厉害</div>
+            <div class="mn-font">
+              <div>￥{{money}}</div>
               <div>×{{num}}</div>
             </div>
           </div>
@@ -24,7 +24,7 @@
       </div>
       <div class="evaluation-bottom">
         <!-- 商品数量，总价，取消订单，立即付款 -->
-        <div>
+        <div class="mn-font">
           <div style="color:red;padding-left:60px">共{{num}}件 | 应付总额：￥{{money}}</div>
         </div>
         <div class="evaluation-bottom-three">
@@ -101,12 +101,16 @@ export default {
   padding: 0 20px 0 10px;
 }
 .body-describe-font {
+  font-size: 14px;
   display: flex;
+}
+.mn-font{
+  font-size: 17px;
 }
 .body-describe-check{
   padding: 4px 0 0 60%;
   text-align: center;
-  font-size: 6px;
+  font-size: 10px;
   color:red;
 }
 .evaluation-bottom {

@@ -76,7 +76,7 @@ export default {
       this.$router.push("./Voucher");
     },
     onClickLeft() {
-      this.$toast("返回");
+      this.$router.push("personal");
     },
     onClickRight() {
       this.$toast("优惠券说明");

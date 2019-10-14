@@ -1,39 +1,42 @@
 <template>
   <div>
-    <div class="goods">
-      <div class="goods-head">
-        <!-- 待付款（时间和待付款标签） -->
-        <div class="nowtime">{{NowTime| formatDate}}</div>
-        <div class="goods-font" >待发货</div>
-      </div>
-      <div class="goods-body">
-        <!-- 待付款的商品信息，数量 -->
-        <div class="body-picture">
-          <img src="../../assets/personal/goods.svg" />
+    <div v-for="">
+      <div class="goods">
+        <div class="goods-head">
+          <!-- 待付款（时间和待付款标签） -->
+          <div class="nowtime">{{NowTime| formatDate}}</div>
+          <div class="goods-font" >待发货</div>
         </div>
-        <div class="body-describe">
-          <div class="body-describe-font">
-            <div>这件商品很强大，很好用，很厉害</div>
-            <div>
-              <div style="font-size:20px">￥{{money}}</div>
-              <div>×{{num}}</div>
-            </div>
+        <div class="goods-body">
+          <!-- 待付款的商品信息，数量 -->
+          <div class="body-picture">
+            <img src="../../assets/personal/goods.svg" />
           </div>
-          <div class="body-describe-check">查看产品使用说明</div>
+          <div class="body-describe">
+            <div class="body-describe-font">
+              <div>这件商品很强大，很好用，很厉害</div>
+              <div class="mn-font">
+                <div>￥{{money}}</div>
+                <div>×{{num}}</div>
+              </div>
+            </div>
+            <div class="body-describe-check">查看产品使用说明</div>
+          </div>
         </div>
-      </div>
-      <div class="goods-bottom">
-        <!-- 商品数量，总价，取消订单，立即付款 -->
-        <div>
-          <div style="color:red;padding-left:60px">共{{num}}件 | 应付总额：￥{{money}}</div>
-        </div>
-        <div class="goods-bottom-three">
-          <div class="goods-bottom-remind">提醒发货</div>
-          <div class="goods-bottom-cancel">取消订单</div>
-          <div class="goods-bottom-logistics">查看物流</div>
+        <div class="goods-bottom">
+          <!-- 商品数量，总价，取消订单，立即付款 -->
+          <div class="mn-font">
+            <div style="color:red;padding-left:60px">共{{num}}件 | 应付总额：￥{{money}}</div>
+          </div>
+          <div class="goods-bottom-three">
+            <div class="goods-bottom-remind">提醒发货</div>
+            <div class="goods-bottom-cancel">取消订单</div>
+            <div class="goods-bottom-logistics">查看物流</div>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -101,13 +104,17 @@ export default {
   padding: 0 20px 0 10px;
 }
 .body-describe-font {
+   font-size: 14px;
   display: flex;
 }
 .body-describe-check{
   padding: 4px 0 0 60%;
   text-align: center;
-  font-size: 6px;
+  font-size: 10px;
   color:red;
+}
+.mn-font{
+  font-size: 17px;
 }
 .goods-bottom {
   margin-left: 30%;

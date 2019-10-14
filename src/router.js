@@ -53,6 +53,11 @@ export default new Router({
       component: () => import("./views/personal/Order.vue")
     },
     {
+      path: "/set",
+      name: "set",
+      component: () => import("./views/personal/Set.vue")
+    },
+    {
       path: "/classify",
       name: "classify",
       component: () => import("./views/classify/Classify.vue")
@@ -98,6 +103,17 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/Voucher.vue")
+    },
+
+
+    {
+      path: "/details",
+      name: "details",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+          import(/* webpackChunkName: "about" */ "./views/Details.vue")
     },
 
     {

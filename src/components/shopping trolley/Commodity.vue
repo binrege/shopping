@@ -41,8 +41,10 @@ export default {
     },
     //给totalPrice赋值
     onChange(num) {
-      this.$store.state.totalPrice = this.sun
-    }
+      // this.$store.state.totalPrice = this.sun
+      this.$emit('childClose',this.sun);
+      this.$emit('childClose1',this.sun);
+    },
   },
   computed: {
     //计算总价

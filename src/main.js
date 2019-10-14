@@ -5,11 +5,11 @@ import router from './router'
 import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';
-import dayjs from 'dayjs'
-import Subscribe from './components/shopping trolley/SubmitBar'
-import Commodity from './components/shopping trolley/Commodity'
-import Settlement from './components/shopping trolley/Settlement'
-import VueLazyload from 'vue-lazyload'
+import dayjs from 'dayjs';
+import Subscribe from './components/shopping trolley/SubmitBar';
+import Commodity from './components/shopping trolley/Commodity';
+import Settlement from './components/shopping trolley/Settlement';
+import VueLazyload from 'vue-lazyload';
 import axios from './http';
 import 'vant/lib/index.css';
 import { Tabbar, TabbarItem } from 'vant';

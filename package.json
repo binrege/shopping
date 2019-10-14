@@ -7,8 +7,6 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue-lazyload": "^1.2.3",
-
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
     "cssnano": "^4.1.8",
@@ -27,8 +25,10 @@
     "postcss-viewport-units": "^0.1.6",
     "postcss-write-svg": "^3.0.1",
     "qs": "^6.9.0",
+    "svg-sprite-loader": "^4.1.6",
     "vant": "^2.2.2",
     "vue": "^2.6.10",
+    "vue-lazyload": "^1.2.3",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
   },
