@@ -7,6 +7,7 @@
           <div class="nowtime">{{NowTime| formatDate}}</div>
           <div class="goods-font" >待发货</div>
         </div>
+<<<<<<< HEAD
         <div class="goods-body">
           <!-- 待付款的商品信息，数量 -->
           <div class="body-picture">
@@ -19,9 +20,27 @@
                 <div>￥{{money}}</div>
                 <div>×{{num}}</div>
               </div>
+=======
+        <div class="body-describe">
+          <div class="body-describe-font">
+            <div>这件商品很强大，很好用，很厉害</div>
+            <div class="mn-font">
+              <div>￥{{money}}</div>
+              <div>×{{num}}</div>
+>>>>>>> 5fe1246c5753d103a8720ab2dd432396514bf12a
             </div>
             <div class="body-describe-check">查看产品使用说明</div>
           </div>
+<<<<<<< HEAD
+=======
+          <div class="body-describe-check">查看产品使用说明</div>
+        </div>
+      </div>
+      <div class="goods-bottom">
+        <!-- 商品数量，总价，取消订单，立即付款 -->
+        <div class="mn-font">
+          <div style="color:red;padding-left:60px">共{{num}}件 | 应付总额：￥{{money}}</div>
+>>>>>>> 5fe1246c5753d103a8720ab2dd432396514bf12a
         </div>
         <div class="goods-bottom">
           <!-- 商品数量，总价，取消订单，立即付款 -->

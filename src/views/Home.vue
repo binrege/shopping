@@ -3,7 +3,12 @@
     <search> </search>
 
     <div class="home">
+<<<<<<< HEAD
       <!-- {{user}} -->
+=======
+     
+     
+>>>>>>> 5fe1246c5753d103a8720ab2dd432396514bf12a
       <div class="carousel">
         <div class="carousel1">
           <van-swipe :autoplay="3000" class="van">
@@ -90,6 +95,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
   import axios from "axios";
   import TimeActivities from "@/components/activity/TimeActivities.vue";
   import Find from "@/components/activity/Find.vue";
@@ -147,6 +153,65 @@
       // active1() {},
     }
   };
+=======
+import axios from "axios";
+import TimeActivities from "@/components/activity/TimeActivities.vue";
+import Find from "@/components/activity/Find.vue";
+import Special from "@/components/activity/Special.vue";
+import New from "@/components/activity/New.vue";
+import Recommend from "@/components/Recommend.vue";
+//1.引入子组件
+import foot from "../components/footer/Foot";
+import search from "../components/top/Search";
+
+
+export default {
+  name: "home",
+  data() {
+    return {
+      user: [
+        {
+          username: "",
+          password: "",
+          index: []
+        }
+      ],
+      classifys: [],
+      images: [
+        "https://img.yzcdn.cn/vant/apple-1.jpg",
+        "https://img.yzcdn.cn/vant/apple-2.jpg"
+      ]
+    };
+  },
+  components: {
+    TimeActivities,
+    Find,
+    Special,
+    New,
+    Recommend,
+    foot,
+    search
+  },
+  mounted() {
+    console.log(localStorage.loginMsg);
+    // if(localStorage.loginMsg)
+    this.user = JSON.parse(localStorage.getItem("loginMsg"));
+    console.log("000000" + this.user);
+    axios
+      .get("api/getListL")
+      .then(response => {
+        let res = response.data;
+        if (res.code === 200) {
+          this.classifys = res.data;
+        }
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+};
+>>>>>>> 5fe1246c5753d103a8720ab2dd432396514bf12a
 </script>
 <style scoped>
   .carousel {

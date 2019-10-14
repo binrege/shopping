@@ -16,7 +16,11 @@
           />
         </div>
 
+<<<<<<< HEAD
         <label class="head-name" @click="clickInputs">{{user}}</label>
+=======
+        <label class="head-name">{{user}}</label>
+>>>>>>> 5fe1246c5753d103a8720ab2dd432396514bf12a
         <div class="elasticity">
           <div v-for="(item,index) in arr" :key="index" class="item">
             <div

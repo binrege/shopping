@@ -193,6 +193,7 @@ export default {
     Change() {
       if (this.phone.length >= 1) {
         this.btnShow = true;
+        
       }
     },
 
@@ -231,6 +232,7 @@ export default {
   }
 };
 </script>
+
 
 <style scoped>
 .top {
