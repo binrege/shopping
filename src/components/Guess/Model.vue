@@ -1,18 +1,18 @@
 <template>
   <div class="Model">
     <div class="guesslike">
-      <div class="style" v-for="(good,index) in goods" :key="index">
+      <div class="style" v-for="(cdates,index) in dates" :key="index">
         <div class="about">
           <div class="image">
-            <img :src="good.image" />
+            <img :src="cdates.images.ipath" />
           </div>
 
-          <div class="describle">{{good.text}}</div>
+          <div class="describle" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;width:100px">{{cdates.description}}</div>
 
           <div class="price">
-            <div class="priceone">￥169</div>
+            <div class="priceone">￥{{cdates.cprice}}</div>
             <div id="divider"></div>
-            <div class="pricetwo">单件￥56.3</div>
+            <div class="pricetwo">单件 ￥{{cdates.cprice}}</div>
           </div>
 
           <div class="lable">
@@ -37,7 +37,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      goods: []
+      goods: [],
+      dates:[],
     };
   },
   //模拟数据
@@ -54,6 +55,19 @@ export default {
       .catch(err => {
         console.log(err);
       });
+    axios
+            .get("api/closingController/closinginfo")
+            .then(response => {
+              let res = response.data;
+
+              console.log(res);
+
+              this.dates = res;
+              console.log( this.dates );
+            })
+            .catch(err => {
+              console.log(err);
+            });
   }
 };
 </script>
@@ -101,6 +115,7 @@ img {
   font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: start;
   font-weight: 700;
 }
 //价格框
@@ -117,7 +132,7 @@ img {
   font-weight: 700;
   font-size: 15px;
   color: red;
-  padding-top: 2px;
+  margin-top: 3px;
   margin-left: 3px;
 }
 //单价框
@@ -126,9 +141,10 @@ img {
   width: 60%;
   font-size: 10px;
   text-align: left;
-  padding-top: 6px;
+  padding-top: 8px;
   color: gray;
   padding-left: 2px;
+  text-decoration: line-through;
 }
 //竖线
 #divider {
@@ -155,13 +171,12 @@ img {
 }
 //标签中文文本
 .lableCh {
-  padding-top: 2px;
-  padding-left: 2px;
+  padding-top: 1px;
 }
 //标签2
 .labletwo {
   height: 16px;
-  font-size: 14px;
+  font-size: 12px;
   border-radius: 10%;
   margin-left: 4px;
   font-weight: 700;
@@ -174,17 +189,19 @@ img {
   height: 14px;
   background-color: red;
   padding-bottom: 2px;
-  padding-left: 2px;
 }
 //标签3
 .lablethree {
-  font-size: 12px;
+  height: 16px;
+  width: 10px;
+  font-size: 10px;
   color: gray;
   flex: 2;
 }
 //标签3中文文本
 .lableCh2 {
+  text-align: start;
   padding-top: 1px;
-  padding-left: 5px;
+  padding-left: 4px;
 }
 </style>

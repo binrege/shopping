@@ -1,48 +1,57 @@
 <template>
   <div>
-    <div class="payment">
-      <div class="payment-head">
-        <!-- 待付款（时间和待付款标签） -->
-        <div class="nowtime">{{NowTime| formatDate}}</div>
-        <div class="payment-font">待付款</div>
-      </div>
-      <div class="payment-body">
-        <!-- 待付款的商品信息，数量 -->
-        <div class="body-picture">
-          <img src="../../assets/personal/goods.svg" />
+    <div v-for="(odate,index) in dates" :key="index">
+      <div class="payment">
+        <div class="payment-head">
+          <!-- 待付款（时间和待付款标签） -->
+          <div class="nowtime">{{odate.odate| formatDate}}</div>
+          <div class="payment-font">待付款</div>
         </div>
-        <div class="body-describe">
-          <div class="body-describe-font">
-            <div>这件商品很强大，很好用，很厉害</div>
-            <div class="mn-font">
-              <div>￥{{money}}</div>
-              <div>×{{num}}</div>
-            </div>
+        <div class="payment-body">
+          <!-- 待付款的商品信息，数量 -->
+          <div class="body-picture">
+            <img src="../../assets/personal/goods.svg" />
           </div>
-          <div class="body-describe-check">查看产品使用说明</div>
+          <div class="body-describe">
+            <div class="body-describe-font">
+              <div style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;width:220px">{{odate.closing.description}}</div>
+              <div class="mn-font">
+                <div>￥{{odate.closing.cprice}}</div>
+                <div>×{{odate.orders_closing.onum}}</div>
+              </div>
+            </div>
+            <div class="body-describe-check">查看产品使用说明</div>
+          </div>
         </div>
-      </div>
-      <div class="payment-bottom">
-        <!-- 商品数量，总价，取消订单，立即付款 -->
-        <div class="mn-font1">
-          <div style="color:red">共{{num}}件 | 应付总额：￥{{money}}</div>
-        </div>
-        <div class="payment-bottom-two">
-          <div class="payment-bottom-cancel">取消订单</div>
-          <div class="payment-bottom-pay">立即付款</div>
+        <div class="payment-bottom">
+          <!-- 商品数量，总价，取消订单，立即付款 -->
+          <div class="mn-font1">
+            <div style="color:red">共{{odate.orders_closing.onum}}件 | 应付总额：￥{{odate.closing.cprice*odate.orders_closing.onum}}</div>
+          </div>
+          <div class="payment-bottom-two">
+            <div class="payment-bottom-cancel">取消订单</div>
+            <div class="payment-bottom-pay">立即付款</div>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
+      payments:[{
       money: 120,
       num: 2,
       NowTime: new Date()
+      }
+      ],
+      dates:[],
+
     };
   },
   filters: {
@@ -55,20 +64,29 @@ export default {
       return year + "-" + month + "-" + day;
     }
   },
-  //更新时间
-  //   mounted() {
-  //     var that = this;
-  //     this.timer = setInterval(() => {
-  //       that.date = new Date(); //修改数据date
-  //     }, 1000);
-  //   },
-  //   beforeDestroy() {
-  //     if (this.timer) {
-  //       clearInterval(this.timer); //在Vue实例销毁前，清除我们的定时器
-  //     }
-  //   },
-  created() {},
 
+  created() {},
+mounted(){
+    //代付款
+  let postData = this.$qs.stringify({
+    status:1
+  });
+  axios
+          .post("api/ordersController/ordersinfo",
+                  postData
+          )
+          .then(response => {
+            let res = response.data;
+
+           // console.log(res);
+
+            this.dates = res;
+            //console.log( this.dates );
+          })
+          .catch(err => {
+            console.log(err);
+          });
+},
   methods: {}
 };
 </script>
@@ -100,27 +118,26 @@ export default {
   padding: 0 20px 0 10px;
 }
 .body-describe-font {
-   font-size: 14px;
+  font-size: 14px;
   display: flex;
 }
-.body-describe-check{
+.body-describe-check {
   padding: 4px 0 0 60%;
   text-align: center;
   font-size: 10px;
-  color:red;
+  color: red;
 }
-.mn-font{
+.mn-font {
   font-size: 17px;
 }
-.mn-font1{
+.mn-font1 {
   font-size: 15px;
 }
 .payment-bottom {
   margin-left: 50%;
   flex: 2;
-  
 }
-.payment-bottom-two{
+.payment-bottom-two {
   margin-top: 8px;
   display: flex;
   font-size: 14px;
@@ -139,7 +156,7 @@ export default {
   border-radius: 10px;
   background-color: red;
   font-weight: 700;
-  color:white;
+  color: white;
   margin-left: 20px;
 }
 img {

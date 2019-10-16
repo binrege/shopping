@@ -98,7 +98,8 @@
 <script>
 import Util from "../../utils/utils";
 import { mapMutations } from "vuex";
-import { stringify } from "querystring";
+import axios from "axios";
+
 export default {
   name: "inputs",
   
@@ -116,6 +117,7 @@ export default {
       loginMsg:[{
 
       }],
+      user:[],
       a:[],
       phone: "",
       password1: "",
@@ -130,6 +132,7 @@ export default {
     //     this.$notify({ type: 'warning', message: '手机号不能为空' });
     //   }
     // this.$notify('提示文案');
+
   },
   methods: {
    
@@ -138,32 +141,53 @@ export default {
       this.show = true;
     },
     Login() {
+      let postData = this.$qs.stringify({
+        name:this.uname.toString(),
+        password:this.pwd.toString(),
+
+      });
+
       if (this.uname === "") {
         // alert('账号或密码不能为空');
         this.$notify({ type: "warning", message: "用户名不能为空" });
       } else if (this.pwd === "") {
         this.$notify({ type: "warning", message: "密码不能为空" });
-      }else if(this.uname === "admin"&&this.pwd === "123"){
+      }else {
+        axios
+                .post("api/userController/userlogin",
+                        postData
+                )
+                .then(response => {
+                  let res = response.data;
+
+                  console.log(res);
+
+                  if (this.user == null) {
+                    this.$toast('用户名或密码错误！!');
+                    this.pwd="";
+                  }
+                  this.user = res;
+                  console.log( this.user );
+                })
+                .catch(err => {
+                  console.log(err);
+                });
         this.loginForm.username=this.uname;
         this.loginForm.password=this.pwd;
-        console.log("111111"+this.loginForm.username)
+       // console.log("111111"+this.loginForm.username)
         
         localStorage.setItem("loginMsg",JSON.stringify(this.loginForm.username));
         this.isLogin = true;
         this.$router.push("/");
+        console.log("用户名"+this.uname);
         this.$toast('登陆成功!');
         
 
         //与后端请求代码，暂时还没有请求地址，先省略了
-        console.log(JSON.stringify(this.loginForm.username));
+      //  console.log(JSON.stringify(this.loginForm.username));
 
-      }else{
-        this.$toast('用户名或密码错误');
-        this.pwd="";
+      }
 
-      
-
-        
        // this.$router.push("/");
 
         // this.$store.dispatch('toLogin', {
@@ -180,7 +204,7 @@ export default {
         // }).catch((error) => {
         //   console.log(error.response.data.message)
         // })
-      }
+
     },
 
     Login1() {

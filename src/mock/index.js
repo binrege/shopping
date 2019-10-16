@@ -24,6 +24,17 @@ Mock.mock('api/lh', 'get', {
         img: '@dataImage(70x70)',
     }]
 })
+Mock.mock('api/msg', 'get', {
+    //code为200代表请求成功
+    code: 200,
+    msg: 'success',
+    'data|3': [{
+        image: '@dataImage(25x23)',
+        text: '@csentence(14,24)',
+        data: '@datetime(yyyy.MM.dd)',
+    }]
+})
+
 
 Mock.mock('api/yyp', 'get', {
     // 200为成功
@@ -42,6 +53,24 @@ Mock.mock('api/getListL', 'get', {
     code: 200,
     msg: 'success',
     'data|10': [{
+        images: '@dataImage(1080x400)',
+        image: '@dataImage(32x32)',
+        image_good: '@dataImage(170x170)',
+        title: '@csentence( 3, 7 )',
+        imagediscounts: '@dataImage(70x70)',
+        going_price: '100',
+        // 'origin_price|1-20': number,
+        origin_price: '80',
+        name: '@cname()',
+
+    }],
+
+})
+Mock.mock('api/getListd', 'get', {
+    //200代表请求成功
+    code: 200,
+    msg: 'success',
+    'data': [{
         images: '@dataImage(1080x400)',
         image: '@dataImage(32x32)',
         image_good: '@dataImage(170x170)',

@@ -13,7 +13,8 @@
     <div>
       <van-tabs v-model="activeName" @disabled="onClickDisabled">
         <van-tab title="未使用" name="a">
-          <div class="home__tab">
+          <div class="home__tab" >
+            <div class="coupon" @click="onClickRightuse">
             <van-coupon-list
               enabled-title="优惠券"
               :coupons="coupons"
@@ -22,11 +23,12 @@
               @change="onChange1"
               @exchange="onExchange1"
             />
+            </div>
+          </div>
             <button class="exchange" @click="onClickvoucher">用考拉豆兑换几张吧~ →</button>
             <div class="bottom1">
               <Guesslike msg />
             </div>
-          </div>
         </van-tab>
         <van-tab title="已使用" name="b">
           <div class="home__tab2">
@@ -70,6 +72,9 @@ export default {
     };
   },
   methods: {
+    onClickRightuse(){
+      this.$router.push("./RightUse");
+    },
     onClickDisabled(c, title) {
     },
     onClickvoucher(){

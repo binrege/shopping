@@ -21,6 +21,8 @@ import { DropdownMenu, DropdownItem } from 'vant';
 import './mock';
 import 'vant/lib/index.css';
 import { Swipe, SwipeItem } from 'vant';
+import qs from 'qs';
+Vue.prototype.$qs = qs;
 Vue.use(DropdownMenu).use(DropdownItem);
 Vue.use(Tag);
 Vue.use(Search);

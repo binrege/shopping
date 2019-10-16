@@ -3,8 +3,8 @@
     <van-sticky>
       <div class="navigation">
         <van-nav-bar title="领卷中心" left-arrow @click-left="onClickcoupon">
-          <van-icon name="share" slot="right" color="black"/>
-          <van-icon name="more" slot="right" color="black" />
+          <van-icon name="share" slot="right" color="black" class="Share"/>
+          <van-icon name="more" slot="right" color="black" class="More"/>
         </van-nav-bar>
       </div>
     </van-sticky>
@@ -100,7 +100,13 @@ export default {
 .voucher {
   background-color: #f2f2f2;
 }
-
+.Share{
+  font-size: 20px;
+}
+.More{
+  margin-left: 6px;
+  font-size: 20px;
+}
 //图片框
 .image {
   height: 130px;
@@ -213,6 +219,7 @@ img {
 }
 //优惠券上方文本内容
 .txtup {
+  text-align: start;
   height: 20px;
   width: 100%;
   font-weight: 700;
@@ -237,7 +244,7 @@ img {
   font-size: 9px;
   font-weight: 700;
   padding-left: 3px;
-  padding-top: 4px;
+  padding-top: 6px;
   color: #e51c23;
 }
 //垂直虚线

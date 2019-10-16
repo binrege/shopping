@@ -1,19 +1,14 @@
 <template>
   <div id="app">
     <div>
+      购物车详情
       <div>
-        <van-checkbox v-model="checked1" @click="clc1" />
-        <Commodity @childClose="childClose" />
+        <Commodity @childClose="childClose"/>
       </div>
-      <div>
-        <van-checkbox v-model="checked2" @click="clc2" />
-        <Commodity @childClose1="childClose1" />
-      </div>
-
       <Settlement />
     </div>
     <div>
-      <SubmitBar @childFn="qx">{{totalPrice}}</SubmitBar>
+      <SubmitBar @childFn="qx" :add="add" show="show">{{totalPrice}}</SubmitBar>
     </div>
   </div>
 </template>
@@ -29,12 +24,11 @@ export default {
     return {
       //商品总和
       sum: 49,
-      sum1: 49,
-      checked1: true,
-      checked2: true,
       quanxuan: " ",
-      csum:0,
-      csum1:0,
+      csum: 0,
+      csum1: 0,
+      add: this.$route.query.add,
+      show:this.$route.query.show,
     };
   },
   components: {
@@ -45,31 +39,15 @@ export default {
     foot
   },
   methods: {
-    clc1() {
-      if (this.checked1 === true) this.sum = 0;
-      else this.sum = this.csum;
-    },
-    clc2() {
-      if (this.checked2 === true) this.sum1 = 0;
-      else this.sum1 = this.csum1;
-    },
     childClose(data) {
       // childValue就是子组件传过来的值
       this.csum = data;
       this.sum = data;
       console.log(data);
     },
-    childClose1(data) {
-      // childValue就是子组件传过来的值
-      this.csum1 = data;
-      this.sum1 = data;
-      console.log(data);
-    },
     qx(data) {
       if (data === true) data = false;
       else data = true;
-      this.checked1 = data;
-      this.checked2 = data;
       this.quanxuan = data;
     }
   },
@@ -79,9 +57,16 @@ export default {
       return (this.$store.state.totalPrice = this.zong);
     },
     zong() {
-      return this.sum + this.sum1;
+      return this.sum;
     }
-  }
+  },
+  created: function() {
+    this.getParams();
+  },
+  watch: {
+  // 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
+  '$route': 'getParams'
+},
 };
 </script>
 

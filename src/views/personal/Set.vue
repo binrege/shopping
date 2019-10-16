@@ -17,23 +17,25 @@
       </div>
       <div class="useroldpass">
         <label style="margin-right: 15px;">请 输 入 密码:</label>
-        <input v-model="pass" placeholder="请输入密码"  type="password"/>
+
+        <input v-model="pass" placeholder="请输入密码" type="password" />
       </div>
       <div class="usernewpass1">
         <label style="margin-right: 15px;">请输入新密码:</label>
-        <input v-model="pass1" placeholder="请输入密码" type="password"/>
+        <input v-model="pass1" placeholder="请输入密码" type="password" />
       </div>
       <div class="usernewpass2">
         <label style="margin-right: 15px;">请输入新密码:</label>
-        <input v-model="pass2" placeholder="请输入密码" type="password"/>
+        <input v-model="pass2" placeholder="请输入密码" type="password" />
       </div>
+
       <div class="Sbutton">
-        <van-button round type="primary" click="clickAlter">确认修改</van-button>
-        <van-button round type="warning" click="cliccancel">取消修改</van-button>
+        <van-button round type="primary" @click="clickAlter">确认修改</van-button>
+        <van-button round type="warning" @click="clickCancel">取消修改</van-button>
       </div>
     </div>
     <div class="Exit">
-      <van-button round type="danger" click="clickExit">退出登录</van-button>
+      <van-button round type="danger" @click="clickExit">退出登录</van-button>
     </div>
   </div>
 </template>
@@ -56,13 +58,35 @@ export default {
       this.$toast("叫你点就点啊！");
     },
     clickAlter() {
-      this.$toast("修改");
+      this.pass1;
+      this.pass2;
+      //判断输入密码和数据库中密码是否相同
+      if (this.pass != "123") {
+        this.pass="";
+        this.$toast("用户密码不正确请重新输入");
+      } else if (this.pass1 === "" || this.pass2 === "") {
+        this.$toast("请输入新密码");
+      } else if (this.pass1 != this.pass2) {
+        this.pass1 = "";
+        this.pass2 = "";
+        this.$toast("两次密码不相同");
+      } else if (this.pass === this.pass1) {
+        this.pass1 = "";
+        this.pass2 = "";
+        this.$toast("新密码和旧密码不能一样哟");
+      } else if (
+        this.pass1 != null &&
+        this.pass2 != null &&
+        this.pass1 === this.pass2
+      ) {
+        this.$toast("修改");
+      }
     },
-    cliccancel() {
+    clickCancel() {
       this.$toast("取消");
     },
     clickExit() {
-      localStorage.removeItem("loginMsg"); 
+      localStorage.removeItem("loginMsg");
       this.$router.push("Inputs");
       //移除所有的缓存数据
     }

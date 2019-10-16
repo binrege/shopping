@@ -1,15 +1,14 @@
 <template>
-  <div>
-    <div v-if="isfocus == false" class="top">
-      <van-icon class="top1" color="#5F5F5F" size="33px" name="scan" />
+  <div class="">
+    <div v-if="isfocus == false" class="top top__icon">
+      <van-icon class="top1 " color="#5F5F5F"  name="scan"></van-icon>
       <van-search
         class="top2"
         placeholder="请输入搜索关键词"
         v-model="value"
-        @focus="searchItem"
-      />
+        @focus="searchItem"></van-search>
 
-      <van-icon class="top3" color="#5F5F5F" size="33px" name="comment-o" />
+      <van-icon class="top3" color="#5F5F5F" size="33px" name="comment-o" @click="onClickMsg"/>
     </div>
     <div v-else>
       <van-search
@@ -91,6 +90,9 @@ export default {
   },
 
   methods: {
+    onClickMsg(){
+      this.$router.push("./Msg");
+    },
     searchItem() {
       this.isfocus = true;
       //把字符串转成对象

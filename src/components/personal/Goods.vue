@@ -1,13 +1,12 @@
 <template>
   <div>
-    <div v-for="">
+    <div v-for="(odate,index) in dates" :key="index">
       <div class="goods">
         <div class="goods-head">
           <!-- 待付款（时间和待付款标签） -->
-          <div class="nowtime">{{NowTime| formatDate}}</div>
-          <div class="goods-font" >待发货</div>
+          <div class="nowtime">{{odate.odate| formatDate}}</div>
+          <div class="goods-font">待发货</div>
         </div>
-<<<<<<< HEAD
         <div class="goods-body">
           <!-- 待付款的商品信息，数量 -->
           <div class="body-picture">
@@ -15,37 +14,19 @@
           </div>
           <div class="body-describe">
             <div class="body-describe-font">
-              <div>这件商品很强大，很好用，很厉害</div>
+              <div style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;width:220px">{{odate.closing.description}}</div>
               <div class="mn-font">
-                <div>￥{{money}}</div>
-                <div>×{{num}}</div>
+                <div>￥{{odate.closing.cprice}}</div>
+                <div>×{{odate.orders_closing.onum}}</div>
               </div>
-=======
-        <div class="body-describe">
-          <div class="body-describe-font">
-            <div>这件商品很强大，很好用，很厉害</div>
-            <div class="mn-font">
-              <div>￥{{money}}</div>
-              <div>×{{num}}</div>
->>>>>>> 5fe1246c5753d103a8720ab2dd432396514bf12a
             </div>
             <div class="body-describe-check">查看产品使用说明</div>
           </div>
-<<<<<<< HEAD
-=======
-          <div class="body-describe-check">查看产品使用说明</div>
-        </div>
-      </div>
-      <div class="goods-bottom">
-        <!-- 商品数量，总价，取消订单，立即付款 -->
-        <div class="mn-font">
-          <div style="color:red;padding-left:60px">共{{num}}件 | 应付总额：￥{{money}}</div>
->>>>>>> 5fe1246c5753d103a8720ab2dd432396514bf12a
         </div>
         <div class="goods-bottom">
           <!-- 商品数量，总价，取消订单，立即付款 -->
           <div class="mn-font">
-            <div style="color:red;padding-left:60px">共{{num}}件 | 应付总额：￥{{money}}</div>
+            <div style="color:red;padding-left:60px">共{{odate.orders_closing.onum}}件 | 应付总额：￥{{odate.closing.cprice*odate.orders_closing.onum}}</div>
           </div>
           <div class="goods-bottom-three">
             <div class="goods-bottom-remind">提醒发货</div>
@@ -55,17 +36,32 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
+  import axios from "axios";
 export default {
   data() {
     return {
-      money: 120,
-      num: 2,
-      NowTime: new Date()
+      goods: [
+        {
+          money: 120,
+          num: 2,
+          NowTime: new Date()
+        },
+        {
+          money: 250,
+          num: 2,
+          NowTime: new Date()
+        },
+        {
+          money: 630,
+          num: 3,
+          NowTime: new Date()
+        }
+      ],
+      dates:[],
     };
   },
   filters: {
@@ -91,7 +87,27 @@ export default {
   //     }
   //   },
   created() {},
+  mounted(){
+    //代发货
+    let postData = this.$qs.stringify({
+          status:2
+    });
+    axios
+            .post("api/ordersController/ordersinfo",
+                    postData
+            )
+            .then(response => {
+              let res = response.data;
 
+              //console.log(res);
+
+              this.dates = res;
+              //console.log( this.dates );
+            })
+            .catch(err => {
+              console.log(err);
+            });
+  },
   methods: {}
 };
 </script>
@@ -123,28 +139,27 @@ export default {
   padding: 0 20px 0 10px;
 }
 .body-describe-font {
-   font-size: 14px;
+  font-size: 14px;
   display: flex;
 }
-.body-describe-check{
+.body-describe-check {
   padding: 4px 0 0 60%;
   text-align: center;
   font-size: 10px;
-  color:red;
+  color: red;
 }
-.mn-font{
+.mn-font {
   font-size: 17px;
 }
 .goods-bottom {
   margin-left: 30%;
   flex: 2;
 }
-.goods-bottom-three{
+.goods-bottom-three {
   margin-top: 8px;
   display: flex;
-  
 }
-.goods-bottom-remind{
+.goods-bottom-remind {
   width: 75px;
   text-align: center;
   border: 1px solid gray;
@@ -167,7 +182,6 @@ export default {
   border-radius: 10px;
   margin-right: 10px;
   font-size: 14px;
-  
 }
 img {
   width: 100%;

@@ -22,22 +22,26 @@
         </div>
         <div class="evaluation">
           <Evaluation/>
-        </div>                
+        </div>
+        <div class="guesslike"><Guesslike msg /></div>
       </van-tab>
       <van-tab title="待付款">
         <div class="payment">
           <Payment/>
         </div>
+       <Guesslike msg />
       </van-tab>
       <van-tab title="待发货">
         <div class="goods">
           <Goods/>
         </div>
+        <Guesslike msg />
       </van-tab>
       <van-tab title="待收货">
         <div class="evaluation">
           <Evaluation/>
         </div>
+        <Guesslike msg />
       </van-tab>
       <van-tab title="评价" disabled>
 
@@ -50,6 +54,8 @@
 import Payment from '@/components/personal/Payment.vue'
 import Goods from '@/components/personal/Goods.vue'
 import Evaluation from '@/components/personal/Evaluation.vue'
+import Guesslike from '../../components/Guess/Guesslike'
+import axios from "axios";
 export default {
   name:'payment',
   name:'goods',
@@ -57,20 +63,29 @@ export default {
   components:{
     Payment,
     Goods,
-    Evaluation
+    Evaluation,
+    Guesslike
   },
   data() {
     return {
-        active:1,
+      active:0,
         
     };
+  },
+  mounted(){
+    this.active = this.$route.query.Active;
+
+    // this.active=JSON.parse(localStorage.getItem("accessActive"));
+    // console.log(this.active);
+
+
   },
   methods: {
     onClickLeft() {
       this.$router.push("./Personal")
     },
     onClickRight() {
-      this.$toast("亲，还没做出开哦");
+      this.$toast("亲，还没做出来哦");
     },
     onClickDisabled(name, title) {
       this.$toast(title + '区，还在开发');
@@ -81,5 +96,7 @@ export default {
 </script>
 
 <style  scoped>
+.guesslike{
 
+}
 </style>

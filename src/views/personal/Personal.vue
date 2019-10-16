@@ -16,11 +16,7 @@
           />
         </div>
 
-<<<<<<< HEAD
         <label class="head-name" @click="clickInputs">{{user}}</label>
-=======
-        <label class="head-name">{{user}}</label>
->>>>>>> 5fe1246c5753d103a8720ab2dd432396514bf12a
         <div class="elasticity">
           <div v-for="(item,index) in arr" :key="index" class="item">
             <div
@@ -59,7 +55,7 @@
       </div>
       <van-divider :style="{ color: '#141212', borderColor: '#141212', padding: '0 5px' }"></van-divider>
       <div class="body-bottom">
-        <div class="payment" @click="clickPayment">
+        <div class="payment" @click="clickPayment" >
           <div class="payment-img">
             <img class="payment-img1" src="../../assets/personal/payment.svg" />
           </div>
@@ -110,7 +106,7 @@ export default {
     return {
       color: "red",
       user: "请先登录",
-
+      accessActive:'',
       arr: [
         {
           number: 1,
@@ -169,19 +165,17 @@ export default {
       //alert(item.name+" "+item.price+" "+index)
     },
     clickIncident(item, index){
-      if (localStorage.getItem("loginMsg") != null) {
-        if(index===3){
-          this.$router.push("../CouPon");
-        }
+      if(index==3){
+        this.$router.push("../CouPon");
       }
-      else {
-        this.$toast("亲你还没登录哦");
-      }
-
     },
     clickLookall() {
       if (localStorage.getItem("loginMsg") != null) {
-        this.$router.push("./Order");
+        // this.accessActive=JSON.stringify("0")
+        // console.log(this.accessActive);
+        // localStorage.setItem("accessActive",);
+        // this.$router.push("./Order");
+        this.$router.push({path: './Order', query: {Active:0}})
       }
       else {
         this.$toast("亲你还没登录哦");
@@ -190,7 +184,9 @@ export default {
     },
     clickLookallimg() {
       if (localStorage.getItem("loginMsg") != null) {
-        this.$router.push("./Order");
+        // localStorage.setItem("accessActive",JSON.stringify("0"));
+        // this.$router.push("./Order");
+        this.$router.push({path: './Order', query: {Active:0}})
       }
       else {
         this.$toast("亲你还没登录哦");
@@ -198,7 +194,11 @@ export default {
     },
     clickPayment() {
       if (localStorage.getItem("loginMsg") != null) {
-        this.$router.push("./Order");
+        // this.accessActive=JSON.stringify("1")
+        
+        // localStorage.setItem("accessActive",JSON.stringify("1"));
+        this.$router.push({path: './Order', query: {Active:1}})
+        //this.$router.push("./Order");
       }
       else {
         this.$toast("亲你还没登录哦");
@@ -206,7 +206,9 @@ export default {
     },
     clickDelivery() {
       if (localStorage.getItem("loginMsg") != null) {
-        this.$router.push("./Order");
+        // localStorage.setItem("accessActive",JSON.stringify("2"));
+        //this.$router.push("./Order");
+        this.$router.push({path: './Order', query: {Active:2}})
       }
       else {
         this.$toast("亲你还没登录哦");
@@ -214,7 +216,9 @@ export default {
     },
     clickGoods() {
       if (localStorage.getItem("loginMsg") != null) {
-        this.$router.push("./Order");
+        // localStorage.setItem("accessActive",JSON.stringify("3"));
+        // this.$router.push("./Order");
+        this.$router.push({path: './Order', query: {Active:3}})
       }
       else {
         this.$toast("亲你还没登录哦");
@@ -227,13 +231,7 @@ export default {
       this.$toast("功能尚未完善，程序员正在加油");
     },
     clickSet(){
-      if (localStorage.getItem("loginMsg") != null) {
-        this.$router.push("./Set");
-      }
-      else {
-        this.$toast("亲你还没登录哦");
-      }
-
+      this.$router.push("./Set");
     }
   }
 };
@@ -418,6 +416,10 @@ export default {
   width: auto;
   height: 20px;
   font-size: 15px;
+}
+.evaluation-font,
+.return-font{
+  margin-top: 5px;
 }
 .shuffling {
   width: 100%;

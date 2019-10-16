@@ -1,7 +1,6 @@
 <template>
   <div>
     <van-nav-bar
-      fixed="ture"
       title="地址栏"
       left-text="返回"
       right-text="确定"
@@ -9,16 +8,15 @@
       @click-left="onClickLeft"
       @click-right="onClickRight"
     />
-    <div>
-      <van-address-list
-        v-model="chosenAddressId"
-        :list="list"
-        :disabled-list="disabledList"
-        disabled-text="以下地址超出配送范围"
-        @add="onAdd"
-        @edit="onEdit"
-      />
-    </div>
+    <van-address-list
+      v-model="chosenAddressId"
+      :list="list"
+      :disabled-list="disabledList"
+      disabled-text="以下地址超出配送范围"
+      @add="onAdd"
+      @edit="onEdit"
+    />
+    {{chosenAddressId}}
   </div>
 </template>
 
@@ -55,18 +53,17 @@ export default {
   methods: {
     onAdd() {
       this.$router.replace("/Addaddress");
-      Toast("新增地址");
     },
-     
-    onEdit(item, index) {
-      Toast("编辑地址:" + index);
-    },
+
+    onEdit(item, index) {},
     onClickLeft() {
       this.$router.replace("/Shopping");
-      Toast("返回");
     },
     onClickRight() {
-      Toast("按钮");
+      this.$router.push({
+        path: "/Shopping", //页面路劲 和上面名字任意一个都可以
+        query: { add: this.list[this.chosenAddressId - 1].address , show:"ture"} // 参数传值
+      });
     }
   }
 };

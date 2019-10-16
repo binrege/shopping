@@ -3,12 +3,9 @@
     <search> </search>
 
     <div class="home">
-<<<<<<< HEAD
+
       <!-- {{user}} -->
-=======
-     
-     
->>>>>>> 5fe1246c5753d103a8720ab2dd432396514bf12a
+
       <div class="carousel">
         <div class="carousel1">
           <van-swipe :autoplay="3000" class="van">
@@ -23,13 +20,13 @@
       <div class="classify">
         <!-- <div class="classify-1" v-for="(product,index) in products" :key="index"> -->
         <div class="classify-1" v-for="(classify,index) in classifys" :key="index">
-          <div class="classify-1-1">
-            <div class="classify-image">
-              <img :src="classify.image" title="classify.image" class="img"/>
+          <div class="classify-1-1" :id="classify.classcid" >
+            <div class="classify-image"  >
+              <img :src="classify.cimages"  class="img"/>
             </div>
 
             <div class="classify-text">
-              {{classify.name}}
+              {{classify.cname}}
               <!-- {{product.productPrice}} -->
             </div>
           </div>
@@ -65,7 +62,7 @@
 
       </div>
       <div class="recommend">
-        <van-tabs  sticky animated swipeable >
+        <van-tabs  >
           <van-tab title="全部"><Recommend /></van-tab>
           <van-tab title="外套"><Recommend /></van-tab>
           <van-tab title="秋装"><Recommend /></van-tab>
@@ -90,12 +87,12 @@
         <div class="good"></div>-->
       </div>
     </div>
+    <foot></foot>
   </div>
 
 </template>
 
 <script>
-<<<<<<< HEAD
   import axios from "axios";
   import TimeActivities from "@/components/activity/TimeActivities.vue";
   import Find from "@/components/activity/Find.vue";
@@ -119,6 +116,36 @@
           }
         ],
         classifys: [],
+        // imgs: [
+        //   {
+        //     url: require('../assets/classify/banshenqun.svg')
+        //   },
+        //   {
+        //     url: require('../assets/classify/changku.svg')
+        //   },
+        //   {
+        //     url: require('../assets/classify/chenshan.svg')
+        //   },
+        //   {
+        //     url: require('../assets/classify/fengyi.svg')
+        //   },
+        //   {
+        //     url: require('../assets/classify/lianyiqun.svg')
+        //   },
+        //   {
+        //     url: require('../assets/classify/maoyi.svg')
+        //   },
+        //   {
+        //     url: require('../assets/classify/niuzaiku.svg')
+        //   },
+        //   {
+        //     url: require('../assets/classify/qipao.svg')
+        //   }
+        // ],
+        images: [
+          "https://img.yzcdn.cn/vant/apple-1.jpg",
+          "https://img.yzcdn.cn/vant/apple-2.jpg"
+        ],
         titles: ["全部", "外套", "秋装", "裤子", "连衣裙", "西装", "鞋子"]
       };
     },
@@ -137,13 +164,18 @@
       this.user = JSON.parse(localStorage.getItem("loginMsg"));
       console.log("000000" + this.user);
       axios
-              .get("api/getListL")
+              .get("api/classify/classifyinfo")
               .then(response => {
                 let res = response.data;
+                res.map(item => {
+                  // item.cimages = require(item.cimages)
+                  // console.log(item.cimages)
+                })
+                this.classifys = res;
                 if (res.code === 200) {
-                  this.classifys = res.data;
+                  this.classifys = res;
                 }
-                console.log(res);
+                console.log( this.classifys);
               })
               .catch(err => {
                 console.log(err);
@@ -153,65 +185,7 @@
       // active1() {},
     }
   };
-=======
-import axios from "axios";
-import TimeActivities from "@/components/activity/TimeActivities.vue";
-import Find from "@/components/activity/Find.vue";
-import Special from "@/components/activity/Special.vue";
-import New from "@/components/activity/New.vue";
-import Recommend from "@/components/Recommend.vue";
-//1.引入子组件
-import foot from "../components/footer/Foot";
-import search from "../components/top/Search";
 
-
-export default {
-  name: "home",
-  data() {
-    return {
-      user: [
-        {
-          username: "",
-          password: "",
-          index: []
-        }
-      ],
-      classifys: [],
-      images: [
-        "https://img.yzcdn.cn/vant/apple-1.jpg",
-        "https://img.yzcdn.cn/vant/apple-2.jpg"
-      ]
-    };
-  },
-  components: {
-    TimeActivities,
-    Find,
-    Special,
-    New,
-    Recommend,
-    foot,
-    search
-  },
-  mounted() {
-    console.log(localStorage.loginMsg);
-    // if(localStorage.loginMsg)
-    this.user = JSON.parse(localStorage.getItem("loginMsg"));
-    console.log("000000" + this.user);
-    axios
-      .get("api/getListL")
-      .then(response => {
-        let res = response.data;
-        if (res.code === 200) {
-          this.classifys = res.data;
-        }
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-};
->>>>>>> 5fe1246c5753d103a8720ab2dd432396514bf12a
 </script>
 <style scoped>
   .carousel {
@@ -309,7 +283,7 @@ export default {
     margin: 0 auto;
     margin-top: 20px;
     width: 97.5%;
-    height: auto;
+    height: 1000px;
   }
   .recommend-text {
     font-size: 20px;

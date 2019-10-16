@@ -1,36 +1,38 @@
 <template>
   <div>
-    <div class="evaluation">
-      <div class="evaluation-head">
-        <!-- 待付款（时间和待付款标签） -->
-        <div class="nowtime">{{NowTime| formatDate}}</div>
-        <div class="evaluation-font">已发货</div>
-      </div>
-      <div class="evaluation-body">
-        <!-- 待付款的商品信息，数量 -->
-        <div class="body-picture">
-          <img src="../../assets/personal/goods.svg" />
+    <div v-for="(odate,index) in dates" :key="index">
+      <div class="evaluation">
+        <div class="evaluation-head">
+          <!-- 待付款（时间和待付款标签） -->
+          <div class="nowtime">{{odate.odate| formatDate}}</div>
+          <div class="evaluation-font">已发货</div>
         </div>
-        <div class="body-describe">
-          <div class="body-describe-font">
-            <div >这件商品很强大，很好用，很厉害</div>
-            <div class="mn-font">
-              <div>￥{{money}}</div>
-              <div>×{{num}}</div>
-            </div>
+        <div class="evaluation-body">
+          <!-- 待付款的商品信息，数量 -->
+          <div class="body-picture">
+            <img src="../../assets/personal/goods.svg" />
           </div>
-          <div class="body-describe-check">查看产品使用说明</div>
+          <div class="body-describe">
+            <div class="body-describe-font">
+              <div style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;width:220px">{{odate.closing.description}}</div>
+              <div class="mn-font">
+                <div>￥{{odate.closing.cprice}}</div>
+                <div>×{{odate.orders_closing.onum}}</div>
+              </div>
+            </div>
+            <div class="body-describe-check">查看产品使用说明</div>
+          </div>
         </div>
-      </div>
-      <div class="evaluation-bottom">
-        <!-- 商品数量，总价，取消订单，立即付款 -->
-        <div class="mn-font">
-          <div style="color:red;padding-left:60px">共{{num}}件 | 应付总额：￥{{money}}</div>
-        </div>
-        <div class="evaluation-bottom-three">
-          <div class="evaluation-bottom-storage">储物流</div>            
-          <div class="evaluation-bottom-cancel">取消订单</div>
-          <div class="evaluation-bottom-confirm">确认收货</div>
+        <div class="evaluation-bottom">
+          <!-- 商品数量，总价，取消订单，立即付款 -->
+          <div class="mn-font">
+            <div style="color:red;padding-left:60px">共{{odate.orders_closing.onum}}件 | 应付总额：￥{{odate.closing.cprice*odate.orders_closing.onum}}</div>
+          </div>
+          <div class="evaluation-bottom-three">
+            <div class="evaluation-bottom-storage">催物流</div>
+            <div class="evaluation-bottom-cancel">取消订单</div>
+            <div class="evaluation-bottom-confirm">确认收货</div>
+          </div>
         </div>
       </div>
     </div>
@@ -38,12 +40,24 @@
 </template>
 
 <script>
+  import axios from "axios";
 export default {
   data() {
     return {
+      evaluations:[{
       money: 120,
       num: 2,
       NowTime: new Date()
+      },
+      {
+      money: 420,
+      num: 2,
+      NowTime: new Date()
+      },
+      ]
+      ,
+      dates:[],
+
     };
   },
   filters: {
@@ -69,7 +83,27 @@ export default {
   //     }
   //   },
   created() {},
+  mounted(){
+    //代收货
+    let postData = this.$qs.stringify({
+      status:3
+    });
+    axios
+            .post("api/ordersController/ordersinfo",
+                    postData
+            )
+            .then(response => {
+              let res = response.data;
 
+             // console.log(res);
+
+              this.dates = res;
+              //console.log( this.dates );
+            })
+            .catch(err => {
+              console.log(err);
+            });
+  },
   methods: {}
 };
 </script>
@@ -104,24 +138,24 @@ export default {
   font-size: 14px;
   display: flex;
 }
-.mn-font{
+.mn-font {
   font-size: 17px;
 }
-.body-describe-check{
+.body-describe-check {
   padding: 4px 0 0 60%;
   text-align: center;
   font-size: 10px;
-  color:red;
+  color: red;
 }
 .evaluation-bottom {
   margin-left: 30%;
   flex: 2;
 }
-.evaluation-bottom-three{
+.evaluation-bottom-three {
   margin-top: 8px;
   display: flex;
 }
-.evaluation-bottom-storage{
+.evaluation-bottom-storage {
   width: 75px;
   text-align: center;
   border: 1px solid gray;
@@ -144,7 +178,7 @@ export default {
   border-radius: 10px;
   background-color: red;
   font-weight: 700;
-  color:white;
+  color: white;
   margin-right: 10px;
   font-size: 14px;
 }

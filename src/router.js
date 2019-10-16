@@ -22,6 +22,11 @@ export default new Router({
       component: () => import("./views/Index.vue")
     },
     {
+      path: "/Msg",
+      name: "Msg",
+      component: () => import("./views/Msg.vue")
+    },
+    {
       path: "/searchList",
       name: "searchList",
       component: () => import("./views/SearchList.vue")

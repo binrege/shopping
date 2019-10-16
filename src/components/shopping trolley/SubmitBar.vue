@@ -1,10 +1,16 @@
 <template>
   <div>
-    <van-submit-bar :price="totalPrice*100" button-text="提交订单" @submit="showPopup" :style="{marginBottom:'50px'}">
-      <van-popup v-model="show" closeable position="bottom" :style="{ height: '70%' }">
+    <van-submit-bar
+      :price="totalPrice*100"
+      button-text="结算"
+      @submit="showPopup"
+      :style="{marginBottom:'50px'}"
+    >
+      <van-popup v-model="show" closeable position="bottom" :style="{ height: '%' }">
         <br />
         <br />
         <van-cell title="请选择地址" is-link arrow-direction="down" value="默认地址" @click="open">
+          {{add}}
           <van-icon name="location" />
         </van-cell>
         <van-cell title="配送方式" is-link arrow-direction="down" value />
@@ -94,6 +100,8 @@ export default {
       checked: true,
       //优惠金额
       discount: 0,
+      //选中地址
+      address: 0
     };
   },
   components: {
@@ -101,13 +109,14 @@ export default {
     Settlement,
     foot
   },
+  props: ["add","show"],
   methods: {
     //提交订单弹窗
     showPopup() {
       this.show = true;
     },
-    clickk(){
-      this.$emit('childFn',this.checked);
+    clickk() {
+      this.$emit("childFn", this.checked);
     },
     //选择优惠券，赋值优惠金额
     onChange(index) {
@@ -130,7 +139,7 @@ export default {
     //未优惠时总价
     totalPrice() {
       return this.$store.state.totalPrice;
-    },
+    }
   }
 };
 </script>

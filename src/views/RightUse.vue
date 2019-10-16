@@ -2,7 +2,7 @@
   <div>
     <div class="head">
       <div class="returnimg">
-        <van-icon name="arrow-left" />
+        <van-icon name="arrow-left" @click="onClickReturn"/>
       </div>
       <div class="serch">
         <form action="/">
@@ -81,10 +81,13 @@ export default {
   },
   data() {
     return {
-      // value:[],
+       value:""
     };
   },
   methods: {
+    onClickReturn(){
+      this.$router.push("./CouPon");
+    },
     onSearch() {
       this.$toast("搜索成功");
     },
@@ -103,7 +106,7 @@ export default {
 }
 //返回按钮
 .returnimg {
-  margin: 14px 0 14px 5px;
+  margin: 20px 0 14px 5px;
 }
 //搜索框
 .serch {
@@ -112,20 +115,20 @@ export default {
 }
 //分类框
 .classfy {
-  padding: 14px 5px 15px 5px;
+  padding: 16px 5px 15px 5px;
 }
 //筛选栏
 .screen {
   display: flex;
   width: 100%;
-  height: 26px;
+  height: 34px;
   font-size: 14px;
   color: #c0c0c0;
   border-bottom: 1px solid rgb(248, 245, 245);
   border-top: 1px solid rgb(248, 245, 245);
   justify-content: space-around;
-  padding-top: 4px;
-  margin-top: 10px;
+  padding-top: 8px;
+  margin-top: 11px;
 }
 //综合
 .Compre {
@@ -162,9 +165,9 @@ export default {
 .Brand {
   display: flex;
   justify-content: space-between;
-  height: 35px;
+  height: 36px;
   margin-bottom: 10px;
-  padding-top: 6px;
+  padding-top: 5px;
   border-bottom: 1px solid rgb(248, 245, 245);
 }
 //考拉3周年
