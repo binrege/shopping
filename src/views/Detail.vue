@@ -50,9 +50,9 @@
     <div class="freight">
       <div>发货</div>
       <div class="freight-img">
-        <img src="../assets/classfy.svg" />
+        <img src="../assets/load.svg" width="24px"/>
       </div>
-      <div class="city">上海</div>
+      <div class="address">上海</div>
       <div class="divider"></div>
       <div class="express">快递费:</div>
       <div class="express-number">0.00</div>
@@ -176,85 +176,19 @@
     </div>
 
     <div>
-      <van-popup v-model="showchoice" position="bottom" :style="{ height: '72%' }"  round>
-        <!-- /* 选择规格 */ -->
-        <div class="shop">
-          <div class="shop-top">
-            <div class="shop-left">
-              <img
-              class="shop-img"
-                src="https://img14.360buyimg.com/n0/jfs/t1/51191/32/9505/160209/5d6d07d9E1f0c88b5/61ed5bbbb3792ae5.jpg"
-                width="100%"
-              />
-            </div>
-            <div class="shop-right">
-              <div class="shop-price">
-                <div class="shop-pricetitle">￥</div>
-                <div class="shop-pricenumber">1000</div>
-              </div>
-              <div class="shop-amount">库存：</div>
-              <div class="shop-title">请选择颜色，尺寸</div>
-            </div>
-          </div>
-
-          <div class="choice-color">
-            <div class="color-title">颜色</div>
-
-            <div
-              :class="{red: !isshow,blue: isshow}"
-              @click="dianji"
-              v-for="(colorname,index) in colorname"
-              :key="index"
-            >{{colorname}}</div>
-          </div>
-
-          <div class="choice-size">
-            <div class="size-title">尺码</div>
-            <div
-              :class="{nosize: !isshows,yessize: isshows}"
-              @click="go_sice"
-              v-for="(sizename,index) in sizename"
-              :key="index"
-            >{{sizename}}</div>
-          </div>
-          <!-- 选择地址 -->
-          <div class="address">
-            <div class="address_left">
-              <div class="address_top" v-for="(list,index) in list"
-              :key="index">
-                <div class="address_name">{{list.name}},</div>
-                <div class="address_tel">{{list.tel}}</div>
-              </div>
-              <div class="address_">{{add}}</div>
-            </div>
-            <div class="address_right" @click="right_address">
-              <img src="../assets/go.svg" class="right_icon">
-              
-            </div>
-          </div>
-
-          <!-- stepper步进行器 -->
-          <div class="shop-ampunt">
-            <div class="amount-title">购买数量</div>
-            <div class="amount-title1">（限购5件）</div>
-            <div class="amount-add">
-              <van-stepper
-                v-model="amount"
-                integer
-                min="1"
-                max="5"
-                async-change
-                @change="amount_onChange"
-              />
-            </div>
-          </div>
-          <div class="parameter1-bottom">
-            <div class="complete1" @click="sure">
-              <div class="complete1-text">确定</div>
-            </div>
-          </div>
-        </div>
-      </van-popup>
+      <van-sku
+        v-model="showshop"
+        :sku="sku"
+        :goods="goods"
+        :goods-id="goodsId"
+        :quota="quota"
+        :quota-used="quotaUsed"
+        :hide-stock="sku.hide_stock"
+        :initial-sku="initialSku"
+        :message-config="messageConfig"
+        @buy-clicked="onBuyClicked"
+        @add-cart="onAddCartClicked"
+      />
     </div>
   </div>
 </template>
@@ -268,35 +202,208 @@ export default {
   name: "Details",
   data() {
     return {
-      
-      buy:this.$route.query.buy,
-      app:this.$route.query.add,
-      showchoice:this.$route.query.showchoice,
-      add: this.$route.query.add,
-      isshows: true,
-      isshow: true,
       amount: "1",
       radio: "1",
       fixed: true,
       show: false,
       show1: false,
       showsize: false,
-      
       showyoufei: false,
-      
+      showchoice: false,
       classifys: [],
-      colorname: ["白色", "黄色", "蓝色", "绿色"],
-      sizename: ["27", "28", "29", "30"],
+
       time2: "",
       time: 60 * 60 * 1000,
-      list: [
-        {
-          id: "1",
-          name: "张三",
-          tel: "13000000000",
-          address: "浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室"
+      showshop: false,
+      sku: {
+        // 所有sku规格类目与其值的从属关系，比如商品有颜色和尺码两大类规格，颜色下面又有红色和蓝色两个规格值。
+        // 可以理解为一个商品可以有多个规格类目，一个规格类目下可以有多个规格值。
+        tree: [
+          {
+            k: "颜色",
+            k_id: "1",
+            v: [
+              {
+                id: "30349",
+                name: "天蓝色",
+                imgUrl:
+                  "https://img.yzcdn.cn/upload_files/2017/02/21/FjKTOxjVgnUuPmHJRdunvYky9OHP.jpg!100x100.jpg"
+              },
+              {
+                id: "1215",
+                name: "白色"
+              },
+              {
+                id: "1216",
+                name: "黑色"
+              }
+              ,
+              {
+                id: "1217",
+                name: "墨绿色"
+              }
+            ],
+            k_s: "s1",
+            count: 4
+          },
+          {
+            k: "尺寸",
+            k_id: "2",
+            v: [
+              {
+                id: "1193",
+                name: "27"
+              },
+              {
+                id: "1194",
+                name: "28"
+              },
+              {
+                id: "1195",
+                name: "29"
+              },
+              {
+                id: "1196",
+                name: "30"
+              }
+              ,
+              {
+                id: "1197",
+                name: "31"
+              }
+              ,
+              {
+                id: "1198",
+                name: "32"
+              }
+            ],
+            k_s: "s2",
+            count: 6
+          }
+        ],
+        // 所有 sku 的组合列表，比如红色、M 码为一个 sku 组合，红色、S 码为另一个组合
+        list: [
+          {
+            id: 2259, // skuId，下单时后端需要
+            price: 100, // 价格（单位分）
+            s1: "1215", // 规格类目 k_s 为 s1 的对应规格值 id
+            s2: "1193", // 规格类目 k_s 为 s2 的对应规格值 id
+            s3: "0", // 最多包含3个规格值，为0表示不存在该规格
+            stock_num: 120, // 当前 sku 组合对应的库存
+            discount: 112,
+            goodsId: 946755
+          },
+          {
+            id: 2257,
+            price: 130,
+            discount: 132,
+            s1: "30349",
+            s2: "1194",
+            s3: "0",
+            s4: "0",
+            s5: "0",
+            stock_num: 40, //库存
+            goodsId: 946755
+          },
+          {
+            id: 2257,
+            price: 130,
+            discount: 132,
+            s1: "30349",
+            s2: "1195",
+            s3: "0",
+            s4: "0",
+            s5: "0",
+            stock_num: 30, //库存
+            goodsId: 946755
+          },
+          {
+            id: 2258,
+            price: 100,
+            discount: 100,
+            s1: "30349",
+            s2: "1194",
+            s3: "0",
+            s4: "0",
+            s5: "0",
+            stock_num: 50, //库存
+            goodsId: 946755
+          }
+        ],
+        price: "1.00", // 默认价格（单位元）
+        stock_num: 227, // 商品总库存
+        collection_id: 2261, // 无规格商品 skuId 取 collection_id，否则取所选 sku 组合对应的 id
+        none_sku: false, // 是否无规格商品
+        messages: [
+          {
+            // 商品留言
+            datetime: "0", // 留言类型为 time 时，是否含日期。'1' 表示包含
+            multiple: "0", // 留言类型为 text 时，是否多行文本。'1' 表示多行
+            name: "留言", // 留言名称
+            type: "text", // 留言类型，可选: id_no（身份证）, text, tel, date, time, email
+            required: "1", // 是否必填 '1' 表示必填
+            placeholder: "" // 可选值，占位文本
+          }
+        ],
+        hide_stock: false // 是否隐藏剩余库存
+      },
+      goods: {
+        // 商品标题
+        title: "唐狮",
+        // 默认商品 sku 缩略图
+        picture: "https://img.yzcdn.cn/1.jpg"
+      },
+
+      goodsId: "946755",
+      quota: 3, //限购数量
+      quotaUsed: 0, //已经购买过的数量
+      //默认选中
+      initialSku: {
+        // s1: "0001",
+        // s2: "1001",
+        selectedNum: 1
+      },
+      messageConfig: {
+        // 图片上传回调，需要返回一个promise，promise正确执行的结果需要是一个图片url
+        uploadImg: () => {
+          return new Promise(resolve => {
+            setTimeout(
+              () =>
+                resolve(
+                  "https://img.yzcdn.cn/upload_files/2017/02/21/FjKTOxjVgnUuPmHJRdunvYky9OHP.jpg!100x100.jpg"
+                ),
+              1000
+            );
+          });
+        }
+      },
+      customStepperConfig: {
+        // 自定义限购文案
+        quotaText: "每次限购3件",
+        // 自定义步进器超过限制时的回调
+        handleOverLimit: data => {
+          const { action, limitType, quota, quotaUsed } = data;
+
+          if (action === "minus") {
+            Toast("至少选择一件商品");
+          } else if (action === "plus") {
+            // const { LIMIT_TYPE } = Sku.skuConstants;
+            if (limitType === LIMIT_TYPE.QUOTA_LIMIT) {
+              let msg = `单次限购${quota}件`;
+              if (quotaUsed > 0) msg += `，你已购买${quotaUsed}`;
+              Toast(msg);
+            } else {
+              Toast("库存不够了");
+            }
+          }
         },
-      ],
+        // 步进器变化的回调
+        handleStepperChange: currentValue => {},
+        // 库存
+        stockNum: 1999,
+        // 格式化库存
+        stockFormatter: stockNum => {}
+      }
     };
   },
   components: {
@@ -324,39 +431,7 @@ export default {
         console.log(err);
       });
   },
-
   methods: {
-    dianji(obj) {
-      if (obj.target.className == "red") obj.target.className = "blue";
-      else {
-        let divs = obj.target.parentElement.getElementsByTagName("div");
-        for (var i = 1; i < divs.length; i++) {
-          divs[i].className = "blue";
-        }
-        obj.target.className = "red";
-      }
-
-      // obj.className="red";
-      // console.log(obj);
-    },
-    go_sice(obj) {
-      if (obj.target.className == "nosize") obj.target.className = "yessize";
-      else {
-        let divs = obj.target.parentElement.getElementsByTagName("div");
-        for (var i = 1; i < divs.length; i++) {
-          divs[i].className = "yessize";
-        }
-        obj.target.className = "nosize";
-      }
-    },
-    amount_onChange() {
-      if (this.amount <= 1) {
-        this.$toast("最少选择购买一件");
-      } else if (this.amount >= 5) {
-        this.$toast("每人限购5件哟");
-      }
-    },
-    showPopupAddress() {},
     Return() {
       this.$router.go(-1);
     },
@@ -364,7 +439,7 @@ export default {
       //   Toast('点击图标');
     },
     onClickButton() {
-      this.showchoice = true;
+      this.showshop = true;
     },
     showPopupyoufei() {
       this.showyoufei = true;
@@ -379,17 +454,16 @@ export default {
       this.showsize = false;
     },
     onClickRight() {},
-    onBuyClicked() {},
-    onAddCartClicked() {},
+    // onBuyClicked() {},
+    // onAddCartClicked() {},
     complete() {
       this.show = false;
     },
-    sure() {
-      console.log(this.amount);
-      console.log(this.buy)
-    },
-    right_address(){
-      this.$router.push("/addressx");
+    sure() {},
+    onBuyClicked() {},
+    onAddCartClicked(data) {
+      this.$toast("buy:" + JSON.stringify(data));
+      console.log(JSON.stringify(data));
     }
   }
 };
@@ -526,6 +600,7 @@ export default {
   font-size: 15px;
 }
 .freight-img {
+  margin-top: -5px;
   margin-left: 30px;
 }
 /* //竖线 */
@@ -535,7 +610,7 @@ export default {
   height: 15px;
   margin-left: 5px;
 }
-.city {
+.address {
   font-size: 15px;
   margin-right: 10px;
 }
@@ -622,15 +697,10 @@ export default {
 }
 .shop-left {
   width: 150px;
-  border-radius: 12px;
-  margin-top: 10px;
-}
-.shop-img{
-  border-radius: 8px;
 }
 .shop-right {
-  margin-left: 40px;
-  margin-top: 20px;
+  margin-left: 80px;
+  margin-top: 10px;
 }
 .shop-price {
   color: rgb(240, 11, 11);
@@ -668,12 +738,8 @@ export default {
   margin: 5px;
   font-size: 14px;
 }
-/* .color-div1{
-  float: left;
-  display: left;
-} */
 .choice-size {
-  margin-top: 50px;
+  margin-top: 120px;
 }
 .size-title {
   margin: 5px 0;
@@ -690,43 +756,8 @@ export default {
   margin: 5px;
   font-size: 14px;
 }
-.address {
-  display: flex;
-  margin-top: 60px;
-}
-.address_left {
-  width: 280px;
-
-  flex: 0.8;
-}
-.address_top {
-  display: flex;
-}
-.address_name {
-  font-size: 16px;
-  color: #000;
-}
-.address_tel {
-  margin-top: 3px;
-  font-size: 14px;
-  color: rgb(78, 75, 75);
-}
-.address_ {
-  margin-top: 5px;
-  text-align: left;
-  font-size: 13px;
-}
-.address_right {
-  line-height: 50px;
-  flex: 0.2;
-}
-.right_icon {
-  vertical-align: middle;
-  width: 28px;
-}
 .shop-ampunt {
-  margin-top: 20px;
-  margin-bottom: 50px;
+  margin-top: 130px;
   display: flex;
 }
 .amount-title {
@@ -762,49 +793,6 @@ export default {
   margin-top: 10px;
   text-align: center;
   line-height: 30px;
-  font-size: 16px;
   color: azure;
-}
-.red {
-  float: left;
-  width: 70px;
-  height: 25px;
-  background-color: rgb(216, 210, 119);
-  border-radius: 15px;
-  margin: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  color: #000;
-}
-
-.blue {
-  float: left;
-  width: 70px;
-  height: 25px;
-  background-color: azure;
-  border-radius: 15px;
-  margin: 5px;
-  font-size: 14px;
-}
-.nosize {
-  float: left;
-  width: 70px;
-  height: 25px;
-  background-color: rgb(216, 210, 119);
-  border-radius: 15px;
-  margin: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  color: #000;
-}
-
-.yessize {
-  float: left;
-  width: 70px;
-  height: 25px;
-  background-color: azure;
-  border-radius: 15px;
-  margin: 5px;
-  font-size: 14px;
 }
 </style>

@@ -4,15 +4,14 @@
       <div class="nearlys">最近搜索</div>
       <van-icon class="deletes" size="22px" name="delete" />
     </div>
-        <div class="search2">
-          <div class="fond">搜索发现</div>
+    <div class="search2">
+      <div class="fond">搜索发现</div>
 
-          <div class="sort">常用分类</div>
-        </div>
-      <div class="search3">
-
-          <div class="sort">常用分类</div>
-      </div>
+      <div class="sort">常用分类</div>
+    </div>
+    <div class="search3">
+      <div class="sort">常用分类</div>
+    </div>
   </div>
 </template>
 
@@ -23,12 +22,16 @@ export default {
 </script>
 
 <style scoped>
+.main {
+  height: 2000px;
+  width: 100%;
+}
 .search1 {
   height: 30%;
   background: #0570db;
 }
-.search2{
-    margin-left: 3%;
+.search2 {
+  margin-left: 3%;
 }
 .nearlys {
   margin-left: 3%;
@@ -39,12 +42,12 @@ export default {
   float: right;
 }
 .fond {
-    margin-left: 3%;
+  margin-left: 3%;
 }
 .main {
-    background-color: #0570db;
+  background-color: #0570db;
 }
 .sort {
-    margin-left: 3%;
+  margin-left: 3%;
 }
 </style>

@@ -1,10 +1,12 @@
+vb
 <template>
   <div>
     <!-- 基础用法 -->
-    <div >
+     <div >
         <div width="100%">
         <button @click="Buttom1" width="100%"></button>
         </div>
+        <div>855522</div>
       <van-sku
         v-model="showBase"
         :sku="skuData.sku"
@@ -168,11 +170,11 @@ this.showBase=true;
   }
 };
 </script>
+<style scoped>
 
-<style lang="less">
-.demo-sku {
-  .sku-container {
+.sku-container {
     padding: 0 15px;
-  }
 }
+
 </style>
+

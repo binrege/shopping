@@ -1,16 +1,19 @@
 <template>
   <div class="">
     <div v-if="isfocus == false" class="top top__icon">
-      <van-icon class="top1 " color="#5F5F5F"  name="scan"></van-icon>
+      <img src="../../assets/saoyisao.svg" class="top1 ">
+      <!-- <van-icon  color="#5F5F5F"  name="scan"></van-icon> -->
       <van-search
         class="top2"
         placeholder="请输入搜索关键词"
         v-model="value"
         @focus="searchItem"></van-search>
 
-      <van-icon class="top3" color="#5F5F5F" size="33px" name="comment-o" @click="onClickMsg"/>
+        <img src="../../assets/xiaoxi.svg" class="top3 " @click="onClickMsg">
+
+      
     </div>
-    <div v-else>
+    <div v-else class="search_retuen">
       <van-search
         v-model="value"
         placeholder="请输入搜索关键词"
@@ -80,12 +83,14 @@
 <script>
 export default {
   name: "search",
+  homeshow:"flase",
   data() {
     return {
       isfocus: false,
       value: "",
       items: [],
-      show: false
+      show: false,
+      
     };
   },
 
@@ -122,6 +127,8 @@ export default {
     },
     onCancel() {
       this.isfocus = false;
+      
+
     }
   },
   mounted() {
@@ -135,47 +142,58 @@ export default {
 <style scoped lang="scss">
   .top{
     display: flex;
+    height: 60px;
   }
 .top1 {
 
-  margin-top: 10px;
-  margin-left: 10px;
+  
+  margin-left: 5px;
+  margin-top: 15px;
+  height: 30px;
+  flex: 1;
 }
 .top2 {
 
   width: 77%;
+  flex: 6;
 }
 .top3 {
-  margin-top: 10px;
+  margin-right: 5px;
+  margin-top: 15px;
+  height: 30px;
+  flex: 1;
 
 }
 .search1 {
   width: 100%;
   float: left;
-  height: 20%;
+  margin-top: 20px;
+  
 }
 .search2 {
-  margin-top: 30%;
+  margin-top: 85px;
   width: 100%;
   padding: 5px 5px;
 }
 .search3 {
-  margin-top: 30%;
+  margin-top: 60px;
   width: 100%;
 
   padding: 5px 5px;
 }
 .nearlys {
-  width: 80%;
+  margin-top: -10px;
   margin-left: 3%;
   float: left;
 }
 .deletes {
+  margin-top: 26px;
   margin-right: 10%;
   float: right;
 }
 .fond {
   margin-left: 2%;
+  margin-top: 20px;
 }
 .sort {
   margin-left: 2%;
@@ -185,10 +203,14 @@ export default {
 .two_item,
 .three_item {
   margin-left: 3%;
+  margin-top: 20px;
 }
 .one_item_ {
   float: left;
   margin-top: 5px;
   margin-left: 5px;
+}
+.search_retuen{
+  height: 1000px;
 }
 </style>

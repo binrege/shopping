@@ -1,39 +1,5 @@
-<template>
-  <div>
-    <!-- 基础用法 -->
-    <div >
-        <div width="100%">
-        <button @click="Buttom1" width="100%"></button>
-        </div>
-      <van-sku
-        v-model="showBase"
-        :sku="skuData.sku"
-        :goods="skuData.goods_info"
-        :goods-id="skuData.goods_id"
-        :hide-stock="skuData.sku.hide_stock"
-        :quota="skuData.quota"
-        :quota-used="skuData.quota_used"
-        :initial-sku="initialSku"
-        reset-stepper-on-hide
-        reset-selected-sku-on-hide
-        disable-stepper-input
-        :close-on-click-overlay="closeOnClickOverlay"
-        :custom-sku-validator="customSkuValidator"
-        @buy-clicked="onBuyClicked"
-        @add-cart="onAddCartClicked"
-      />
-      
-    </div>
-  </div>
-</template>
-
-<script> 
-
-export default {  
-    name:"test",
-  data() {
-    return {
-         sku: {
+export default {
+    sku: {
         // 所有sku规格类目与其值的从属关系，比如商品有颜色和尺码两大类规格，颜色下面又有红色和蓝色两个规格值。
         // 可以理解为一个商品可以有多个规格类目，一个规格类目下可以有多个规格值。
         tree: [{
@@ -134,45 +100,5 @@ export default {
         s1: "0001",
         s2: "1001",
         selectedNum: 3
-    },
-      skuData:skuData,
-      showBase: true,
-      showCustom: false,
-      showStepper: false,
-      showSoldout: false,
-      closeOnClickOverlay: true,
-      initialSku: {
-        s1: '30349',
-        s2: '1193',
-        selectedNum: 3
-      },
-      customSkuValidator: () => '请选择xxx!', 
-    };
-  },
-
-  methods: {
-    onBuyClicked(data) {
-      this.$toast('buy:' + JSON.stringify(data));
-      console.log(JSON.stringify(data))
-    },
-    tijiao(){
-
-    },
-    Buttom1(){
-this.showBase=true;
-    },
-
-    onAddCartClicked(data) {
-      this.$toast('add cart:' + JSON.stringify(data));
-    }, 
-  }
+    }
 };
-</script>
-
-<style lang="less">
-.demo-sku {
-  .sku-container {
-    padding: 0 15px;
-  }
-}
-</style>

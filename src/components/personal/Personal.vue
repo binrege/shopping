@@ -100,8 +100,7 @@
 
 <script>
 import foot from "../../components/footer/Foot";
-
-import axios from "axios";
+import axios from "_axios@0.19.0@axios/index";
 export default {
   data() {
     return {

@@ -1,17 +1,17 @@
 <template>
   <div>
-    <search> </search>
+    <search @homes="homes"> </search>
 
-    <div class="home">
+    <div class="home" v-model="showhome">
 
       <!-- {{user}} -->
 
       <div class="carousel">
         <div class="carousel1">
           <van-swipe :autoplay="3000" class="van">
-            <van-swipe-item v-for="(classify,index) in classifys" :key="index">
+            <van-swipe-item v-for="(image, index) in images" :key="index">
               <div class="carousel2">
-                <img v-lazy="classify.images" width="100%" />
+                <img v-lazy="image" width="100%" />
               </div>
             </van-swipe-item>
           </van-swipe>
@@ -20,7 +20,7 @@
       <div class="classify">
         <!-- <div class="classify-1" v-for="(product,index) in products" :key="index"> -->
         <div class="classify-1" v-for="(classify,index) in classifys" :key="index">
-          <div class="classify-1-1" :id="classify.classcid" >
+          <div class="classify-1-1" :id="classify.classcid" @click="Gotclassify">
             <div class="classify-image"  >
               <img :src="classify.cimages"  class="img"/>
             </div>
@@ -108,8 +108,10 @@
     name: "home",
     data() {
       return {
+        showhome:true,
         user: [
           {
+            id:"",
             username: "",
             password: "",
             index: []
@@ -143,8 +145,12 @@
         //   }
         // ],
         images: [
-          "https://img.yzcdn.cn/vant/apple-1.jpg",
-          "https://img.yzcdn.cn/vant/apple-2.jpg"
+          "https://img10.360buyimg.com/da/jfs/t1/65085/10/12471/98315/5d9ff835E20a9f27c/833d3164a618a0e8.jpg",
+          "https://img11.360buyimg.com/da/jfs/t1/39081/22/12393/126937/5d37b4b8E52d6ce7c/dcbe17e4d5047824.jpg",
+          "https://img14.360buyimg.com/da/jfs/t1/59402/20/5415/153057/5d37b3f4E565eee1d/b3818446414de902.jpg",
+          "https://img20.360buyimg.com/da/jfs/t1/55222/25/13370/79083/5da177c9Ec1cd8865/04dc4e350a2c3b2e.jpg",
+          "https://img11.360buyimg.com/da/jfs/t1/68986/16/12883/76884/5da17622E6bc485ae/f05b64eb6ada9775.jpg",
+          "https://img20.360buyimg.com/da/jfs/t1/44586/14/13928/100714/5da17ff0E64c2a126/703dc217cef43e05.jpg"
         ],
         titles: ["全部", "外套", "秋装", "裤子", "连衣裙", "西装", "鞋子"]
       };
@@ -182,6 +188,9 @@
               });
     },
     methods: {
+      Gotclassify(){
+
+      }
       // active1() {},
     }
   };

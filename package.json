@@ -13,6 +13,7 @@
     "dayjs": "^1.8.16",
     "fastclick": "^1.0.6",
     "good-storage": "^1.1.0",
+    "less-loader": "^5.0.0",
     "mock": "^0.1.1",
     "mockjs": "^1.0.1-beta3",
     "nprogress": "^0.2.0",

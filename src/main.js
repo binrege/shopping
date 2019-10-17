@@ -22,6 +22,9 @@ import './mock';
 import 'vant/lib/index.css';
 import { Swipe, SwipeItem } from 'vant';
 import qs from 'qs';
+import { Sku } from 'vant';
+
+Vue.use(Sku);
 Vue.prototype.$qs = qs;
 Vue.use(DropdownMenu).use(DropdownItem);
 Vue.use(Tag);
@@ -33,13 +36,13 @@ Vue.use(Dialog);
 // this.$axios.req('api/',{
 //
 // }).then().catch()
-Vue.prototype.$axios=axios;//将axios挂载在整个vue上，Vue是整个根实例，然后若想发送ajax请求，只需要this.$axios.路径
+Vue.prototype.$axios = axios; //将axios挂载在整个vue上，Vue是整个根实例，然后若想发送ajax请求，只需要this.$axios.路径
 
-Vue.prototype.$dayjs=dayjs;
+Vue.prototype.$dayjs = dayjs;
 Vue.config.productionTip = false;
 Vue.use(Swipe).use(SwipeItem);
 Vue.use(VueLazyload)
-// or with options
+    // or with options
 Vue.use(VueLazyload, {
     preLoad: 1.3,
     error: 'dist/error.png',
